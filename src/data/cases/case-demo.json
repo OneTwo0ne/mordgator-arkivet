@@ -1,0 +1,889 @@
+{
+  "id": "case-demo",
+  "title": "Döden på Grönvik",
+  "tagline": "En sommarfest tar en dödlig vändning på herrgården vid vattnet.",
+  "description": "Den 14 juli 1988 hittades affärsman Erik Lindström död i sin arbetsrum på Grönviks herrgård, Stockholms skärgård. Han hade bjudit fyra nära bekanta på sin årliga sommarmiddag. Ingen lämnade fastigheten förrän polisen anlände. Mordet begicks någon gång mellan klockan 22:00 och 23:30.",
+  "setting": "Grönviks herrgård, Stockholms skärgård, Sverige — sommaren 1988",
+  "estimatedDuration": "2–3 timmar",
+  "difficulty": "medium",
+  "minPlayers": 2,
+  "maxPlayers": 6,
+  "acts": [
+    {
+      "id": "act-1",
+      "number": 1,
+      "title": "Brottsplatsen",
+      "description": "Spelarna får tillgång till grundmaterial: polisrapporten, brottsplatsbeskrivningen, en lista över personer på plats och korta inledande personbeskrivningar.",
+      "playerIntro": "Ni har precis anlänt till Grönviks herrgård som utredare. Kvällen är varm. Polisen har spärrat av arbetsrummet. En kropp ligger på golvet. Fyra vittnen väntar i matsalen. Era glasögon är era enda verktyg.",
+      "availableMaterialIds": [
+        "mat-polisrapport-01",
+        "mat-brottsplats-beskrivning",
+        "mat-personlista",
+        "mat-foto-arbetsrum-01",
+        "mat-foto-arbetsrum-02",
+        "mat-obduktionsutlatande-prelim"
+      ],
+      "gmNoteIds": [
+        "gm-note-act1-intro",
+        "gm-note-atmosphere-act1"
+      ]
+    },
+    {
+      "id": "act-2",
+      "number": 2,
+      "title": "Vittnesmålen",
+      "description": "Spelarna får tillgång till fyra förhörsprotokoll och ett urval dokument som belyser relationer och konflikter. Här finns motsägelser att upptäcka.",
+      "playerIntro": "Förhören är klara. Ni har fått tillgång till protokollen. Läs dem noga. Alla fyra berättar en sak. Ingen berättar allt.",
+      "availableMaterialIds": [
+        "mat-forhorsprotokoll-marianne",
+        "mat-forhorsprotokoll-jonas",
+        "mat-forhorsprotokoll-helena",
+        "mat-forhorsprotokoll-bertil",
+        "mat-brev-erik-till-helena",
+        "mat-telefonlogg",
+        "mat-foto-tradgard"
+      ],
+      "gmNoteIds": [
+        "gm-note-act2-contradictions",
+        "gm-note-act2-helena"
+      ]
+    },
+    {
+      "id": "act-3",
+      "number": 3,
+      "title": "Bevisen",
+      "description": "Sista materialet släpps: bankdokument, forensisk slutrapport och ett brev Helena aldrig skickade. Nu har spelarna allt de behöver.",
+      "playerIntro": "Polisen har granskat Eriks privata handlingar. Bankens revisorer har lämnat sina svar. Rättsläkaren har skickat sin slutrapport. Allt material är nu tillgängligt.",
+      "availableMaterialIds": [
+        "mat-bankdokument-forskning",
+        "mat-forensisk-rapport-final",
+        "mat-brev-helena-oskickat",
+        "mat-notering-dagbok-erik",
+        "mat-foto-skrivbord-detalj"
+      ],
+      "gmNoteIds": [
+        "gm-note-act3-solution-guide",
+        "gm-note-act3-warning"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "char-erik",
+      "name": "Erik Lindström",
+      "age": 65,
+      "occupation": "Grundare och VD, Lindström Kapital AB",
+      "role": "victim",
+      "description": "Framgångsrik och frispråkig affärsman. Känd för sin skarpa blick för detaljer och låga tolerans för oärlighet. Ägde Grönviks herrgård sedan 1972.",
+      "relationship": "Offer",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-marianne",
+      "name": "Marianne Lindström",
+      "age": 58,
+      "occupation": "Pensionär, tidigare konstnär",
+      "role": "suspect",
+      "description": "Eriks fd. fru. Deltog i middagen på inbjudan, som hon gjort varje sommar sedan skilsmässan. Kall och kontrollerad under förhöret.",
+      "alibi": "Satt i salongen med Bertil Ek från ca 21:45 tills skriket hördes. Bertil bekräftar detta, med viss osäkerhet om exakt tidpunkt.",
+      "motive": "Inget verkligt motiv. Röd sill — spelarna kan misstänka henne på grund av skilsmässan.",
+      "relationship": "Före detta fru",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-jonas",
+      "name": "Jonas Lindström",
+      "age": 34,
+      "occupation": "Arkitekt, egenföretagare",
+      "role": "suspect",
+      "description": "Erik och Mariannes son. Har under det senaste året kämpat med ett nedgående arkitektkontor och stora privata skulder. Spänningen med fadern var synlig under middagen.",
+      "alibi": "Hävdar att han gick ut på terrassen för att ringa ett samtal ca 22:15. Inget samtal registrerat i telefonloggen för den tidpunkten.",
+      "motive": "Ville ha sitt arv nu, inte om 20 år. Men Jonas hade inte tillgång till giftet — han är en röd sill.",
+      "relationship": "Son",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-helena",
+      "name": "Helena Voss",
+      "age": 47,
+      "occupation": "CFO, Lindström Kapital AB",
+      "role": "suspect",
+      "description": "Eriks närmaste medarbetare och ekonomichef sedan tolv år. Intelligent, metodisk och ytligt sett lugn. Var den sista kände personen att tala enskilt med Erik under kvällen.",
+      "alibi": "Hävdar att hon var i biblioteket och läste från 21:30. Biblioteket gränsar till arbetsrummet. Inget vittne bekräftar hennes närvaro.",
+      "motive": "Har under tre år förskingrat 2,3 miljoner kronor från Lindström Kapital. Erik hade konfronterat henne och planerade att kontakta polisen.",
+      "relationship": "CFO och nära kollega",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-bertil",
+      "name": "Bertil Ek",
+      "age": 71,
+      "occupation": "Trädgårdsmästare och vaktmästare på Grönvik",
+      "role": "witness",
+      "description": "Har arbetat på Grönvik i 22 år. Lojal mot Erik men gammal och lite glemsk. Hörde ett ljud från arbetsrummet men var osäker på klockslaget. Hittade kroppen.",
+      "alibi": "Satt i salongen med Marianne. Stämmer med hennes berättelse.",
+      "motive": "Inget. Bertil är ett genuint vittne.",
+      "relationship": "Anställd och betrodd",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-gift-spar",
+      "title": "Spår av aconitum (stormhatt) i magsäcken",
+      "description": "Rättsläkaren identifierade spår av aconitinum i Eriks magsäck och blodbana. Giftet verkar snabbt och ger hjärtstillestånd inom 30–90 minuter.",
+      "type": "forensic",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-erik"
+      ],
+      "significance": "Giftet pekar mot planerat brott. Stormhatt finns i herrgårdens trädgård — Helena frågade om den vid ett besök i juni.",
+      "tags": [
+        "gift",
+        "forensik",
+        "stormhatt"
+      ]
+    },
+    {
+      "id": "ev-bankuttag",
+      "title": "Oregelbundna uttag från bolagskonto 2985",
+      "description": "14 separata uttag på sammanlagt 2 346 000 kr. Godkända av en enda signatur — CFO.",
+      "type": "financial",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-helena",
+        "char-erik"
+      ],
+      "significance": "Direkt bevis för Helenas förskingring.",
+      "tags": [
+        "ekonomi",
+        "förskingring",
+        "motiv"
+      ]
+    },
+    {
+      "id": "ev-telefonlogg",
+      "title": "Telefonlogg — Grönviks herrgård 14 juli 1988",
+      "description": "Jonas hävdar att han ringde ca 22:15. Loggen visar inga utgående samtal 21:50–23:10.",
+      "type": "document",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-jonas"
+      ],
+      "significance": "Jonas ljuger om sitt alibi — men av personliga skäl, inte för att han är mördaren.",
+      "tags": [
+        "alibi",
+        "telefon",
+        "jonas"
+      ]
+    },
+    {
+      "id": "ev-stormhatt-tradgard",
+      "title": "Stormhatt i trädgårdsland nr 7",
+      "description": "Bertil bekräftar att stormhatt odlas i trädgårdsland nr 7. Helena frågade om den vid ett besök i juni.",
+      "type": "testimony",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-helena",
+        "char-bertil"
+      ],
+      "significance": "Kopplar Helena till giftkällan.",
+      "tags": [
+        "gift",
+        "stormhatt",
+        "helena"
+      ]
+    },
+    {
+      "id": "ev-brev-konfrontation",
+      "title": "Brev från Erik till Helena, 10 juli 1988",
+      "description": "Erik kallar Helena till ett enskilt samtal på middagskvällen. 'Det gäller saken vi diskuterade i maj. Jag vill ha en förklaring.'",
+      "type": "letter",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-erik",
+        "char-helena"
+      ],
+      "significance": "Bevisar att Erik planerade att konfrontera Helena den kvällen han mördades.",
+      "tags": [
+        "brev",
+        "konfrontation",
+        "motiv"
+      ]
+    },
+    {
+      "id": "ev-dagbok-erik",
+      "title": "Eriks dagbok — 12 juli 1988",
+      "description": "Erik skriver om H.V. och sina misstankar. 'Jag vill inte tro det, men siffrorna talar sitt tydliga språk.'",
+      "type": "note",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-erik",
+        "char-helena"
+      ],
+      "significance": "Bekräftar Eriks avsikt. H.V. = Helena Voss.",
+      "tags": [
+        "dagbok",
+        "konfrontation",
+        "motiv"
+      ]
+    },
+    {
+      "id": "ev-brev-helena-oskickat",
+      "title": "Ej avsänt brev — Helenas handstil",
+      "description": "Funnet i dold ficka i Helenas väska. 'Jag ska betala tillbaka allt. Du behöver inte gå till polisen.' Aldrig skickat.",
+      "type": "letter",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-helena",
+        "char-erik"
+      ],
+      "significance": "Helena valde bort förlåtelse och valde mord.",
+      "tags": [
+        "brev",
+        "helena",
+        "erkännande"
+      ]
+    }
+  ],
+  "material": [
+    {
+      "id": "mat-polisrapport-01",
+      "type": "police-report",
+      "title": "Polisrapport — Grönviks herrgård, 14–15 juli 1988",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "POLISMYNDIGHETEN I STOCKHOLM\nRapport nr: 1988-07-141\nDatum: 15 juli 1988\nUpprättad av: Kriminalinspektör Sven Malm\n\nPLATS: Grönviks herrgård, Värmdö\nTID FÖR LARM: 23:47\nTID FÖR ANKOMST: 00:22\n\nOFFER: Erik Gösta Lindström, 65 år, folkbokförd Stockholm.\n\nFYND VID ANKOMST:\nOffret påträffades liggande på golvet i herrgårdens arbetsrum, östra flygeln. Inga synliga skador. Rättsläkare tillkallad. Rummet uppvisar inga tecken på inbrott eller strid.\n\nPERSONER PÅ PLATS:\n1. Marianne Lindström, 58, fd. fru till offret\n2. Jonas Lindström, 34, offrets son\n3. Helena Voss, 47, CFO Lindström Kapital AB\n4. Bertil Ek, 71, anställd på Grönvik sedan 1966\n\nINITIAL BEDÖMNING:\nOmständigheterna är oklara. Dödsorsak ej fastställd. Utredning inledd.",
+      "tags": [
+        "polisrapport",
+        "grundmaterial"
+      ]
+    },
+    {
+      "id": "mat-brottsplats-beskrivning",
+      "type": "document",
+      "title": "Brottsplatsbeskrivning — Arbetsrummet, östra flygeln",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "BROTTSPLATSBESKRIVNING\nRum: Arbetsrum, östra flygeln, bottenplan\nStorlek: ca 25 kvm\nTillfart: En dörr mot korridoren, ett fönster mot trädgården (låst inifrån)\n\nINREDNING:\n— Stort mahognybord med läderstol\n— Bokhyllor längs tre väggar\n— Sideboard med kristallkaraff och två glas\n\nFYND:\n— Kristallkaraffen är tömd. Ett glas är använt, det andra oanvänt.\n— Drickskanten på det använda glaset är avtorkad, men inte resten av glaset.\n— På skrivbordet: en öppen pärm med ekonomimaterial och ett halvskrivet brev adresserat till 'H'.\n— Inga tecken på kamp.\n— Arbetsrummet gränsar till biblioteket via en gemensam vägg.",
+      "tags": [
+        "brottsplats",
+        "grundmaterial"
+      ],
+      "relatedEvidenceIds": [
+        "ev-gift-spar"
+      ]
+    },
+    {
+      "id": "mat-personlista",
+      "type": "document",
+      "title": "Personlista — Vittnen och misstänkta",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "PERSONER PÅ PLATS VID GRÖNVIKS HERRGÅRD — 14 JULI 1988\n\n1. ERIK LINDSTRÖM (offer)\n   Ålder: 65 | Yrke: Affärsman, Lindström Kapital AB\n\n2. MARIANNE LINDSTRÖM\n   Ålder: 58 | Relation: Fd. fru (skilda 1985)\n\n3. JONAS LINDSTRÖM\n   Ålder: 34 | Yrke: Arkitekt | Relation: Son\n\n4. HELENA VOSS\n   Ålder: 47 | Yrke: CFO, Lindström Kapital AB\n\n5. BERTIL EK\n   Ålder: 71 | Yrke: Trädgårdsmästare/vaktmästare sedan 1966",
+      "tags": [
+        "grundmaterial",
+        "personer"
+      ]
+    },
+    {
+      "id": "mat-foto-arbetsrum-01",
+      "type": "photo",
+      "title": "Foto — Arbetsrummet, översikt (00:28)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "assetPath": "cases/case-demo/images/arbetsrum-oversikt.jpg",
+      "content": "[Fotografi: Vidvinkelsbild av arbetsrummet. Offret syns på golvet. Skrivbordet och sideboardet är synliga. Ljuset är tänt.]",
+      "tags": [
+        "foto",
+        "brottsplats"
+      ]
+    },
+    {
+      "id": "mat-foto-arbetsrum-02",
+      "type": "photo",
+      "title": "Foto — Sideboard med glas och karaff (00:31)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "assetPath": "cases/case-demo/images/sideboard-glas.jpg",
+      "content": "[Fotografi: Närbild av sideboardet. Kristallkaraffen tömd. Ett använt whiskyglas med synliga fingeravtryck på sidan — men drickskanten är avtorkad.]",
+      "tags": [
+        "foto",
+        "bevis",
+        "glas"
+      ],
+      "relatedEvidenceIds": [
+        "ev-gift-spar"
+      ]
+    },
+    {
+      "id": "mat-obduktionsutlatande-prelim",
+      "type": "forensic",
+      "title": "Preliminärt obduktionsutlåtande — rättsläkare K. Ström",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "PRELIMINÄRT UTLÅTANDE\nDatum: 15 juli 1988\nRättsläkare: Kristina Ström\n\nYTTRE UNDERSÖKNING:\nInga synliga traumaskador. Lätt blåaktig missfärgning kring läppar och fingerspetsar. Pupillerna vidgade.\n\nSANNOLIK DÖDSORSAK (preliminär):\nHjärtarytmi eller hjärtstillestånd. Toxikologisk analys beställd.\n\nBEDÖMD TID FÖR DÖDEN:\nMellan 22:00 och 23:30.",
+      "tags": [
+        "forensik",
+        "obduktion"
+      ],
+      "relatedEvidenceIds": [
+        "ev-gift-spar"
+      ]
+    },
+    {
+      "id": "mat-forhorsprotokoll-marianne",
+      "type": "testimony",
+      "title": "Förhörsprotokoll — Marianne Lindström",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — Marianne Lindström, 58 år\nFörhörsledare: Kriminalinspektör Sven Malm, 15 juli 1988\n\nSM: Hur kände ni er relation till Erik Lindström?\nML: Vi var gifta i 21 år. Skilde oss 1985. Det var inte ovänligt.\n\nSM: Var befann ni er mellan 22:00 och 23:30?\nML: I salongen. Bertil satt också där. Vi drack kaffe och pratade om trädgården. Jag lämnade inte salongen.\n\nSM: Hur var stämningen under kvällen?\nML: Spänd. Erik verkade distraherad. Helena satt tyst och drack mer vin än vanligt.\n\nSM: Kände ni till Eriks ekonomiska situation?\nML: Han var förmögen. Det visste alla. Detaljerna — nej, det var inte längre min angelägenhet.",
+      "tags": [
+        "förhör",
+        "vittnesmål",
+        "marianne"
+      ],
+      "relatedCharacterIds": [
+        "char-marianne"
+      ]
+    },
+    {
+      "id": "mat-forhorsprotokoll-jonas",
+      "type": "testimony",
+      "title": "Förhörsprotokoll — Jonas Lindström",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — Jonas Lindström, 34 år\nFörhörsledare: Kriminalinspektör Sven Malm, 15 juli 1988\n\nSM: Beskriv er relation till er far.\nJL: Komplicerad. Vi älskade varandra men var ofta oense.\n\nSM: Var befann ni er mellan 22:00 och 23:30?\nJL: Jag lämnade bordet ca 22:15 och gick ut på terrassen för att ringa ett telefonsamtal.\n\nSM: Till vem?\nJL: En affärskontakt. Det är privat.\n\nSM: Kan någon bekräfta detta?\nJL: Nej, jag var ensam på terrassen.\n\nSM: Visste ni att er far planerade att se över sitt testamente?\nJL: (lång paus) Vad menar ni med det?",
+      "tags": [
+        "förhör",
+        "vittnesmål",
+        "jonas",
+        "alibi"
+      ],
+      "relatedCharacterIds": [
+        "char-jonas"
+      ],
+      "relatedEvidenceIds": [
+        "ev-telefonlogg"
+      ]
+    },
+    {
+      "id": "mat-forhorsprotokoll-helena",
+      "type": "testimony",
+      "title": "Förhörsprotokoll — Helena Voss",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — Helena Voss, 47 år\nFörhörsledare: Kriminalinspektör Sven Malm, 15 juli 1988\n\nSM: Hur länge har ni arbetat med Erik Lindström?\nHV: Tolv år. Vi byggde bolaget tillsammans, nästan.\n\nSM: Pratade ni enskilt med honom under kvällen?\nHV: Kort. Vi diskuterade en affärsfråga i arbetsrummet ca 19:30, innan middagen.\n\nSM: Var befann ni er mellan 22:00 och 23:30?\nHV: I biblioteket. Jag ville vara för mig själv. Jag läste.\n\nSM: Kan någon bekräfta det?\nHV: (paus) Nej. Jag var ensam.\n\nSM: Biblioteket gränsar till arbetsrummet, stämmer det?\nHV: Det... ja. Det stämmer. Men jag hörde ingenting.\n\nSM: Ingenting alls?\nHV: Möjligen steg i korridoren. Men det kan ha varit Bertil.",
+      "tags": [
+        "förhör",
+        "vittnesmål",
+        "helena",
+        "alibi"
+      ],
+      "relatedCharacterIds": [
+        "char-helena"
+      ]
+    },
+    {
+      "id": "mat-forhorsprotokoll-bertil",
+      "type": "testimony",
+      "title": "Förhörsprotokoll — Bertil Ek",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — Bertil Ek, 71 år\nFörhörsledare: Kriminalinspektör Sven Malm, 15 juli 1988\n\nSM: Berätta vad ni hörde och såg under kvällen.\nBE: Fröken Marianne och jag satt i salongen. Herrn Jonas hade gått ut. Fröken Helena var inte med oss.\n\nSM: Hörde ni något från arbetsrummet?\nBE: Jo. Jag hörde ett ljud — som när man knuffar till ett bord. Men jag är lite svårhörd.\n\nSM: Vad klockan var det?\nBE: Det är svårt att säga. Kan ha varit halv elva. Kanske lite senare.\n\nSM: Ni nämner att fröken Helena frågade om trädgårdsväxterna?\nBE: Ja, i juni. Hon frågade vad som var vad. Var nyfiken på stormhatten. Frågade om den var giftig. Jag sa att alla trädgårdsmästare vet att man inte äter på den.",
+      "tags": [
+        "förhör",
+        "vittnesmål",
+        "bertil",
+        "stormhatt"
+      ],
+      "relatedCharacterIds": [
+        "char-bertil",
+        "char-helena"
+      ],
+      "relatedEvidenceIds": [
+        "ev-stormhatt-tradgard"
+      ]
+    },
+    {
+      "id": "mat-brev-erik-till-helena",
+      "type": "letter",
+      "title": "Brev — Erik Lindström till Helena Voss, 10 juli 1988",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "Helena —\n\nJag har nu gått igenom revisionsmaterialet. Jag ber dig att tisdagskvällen vara tillgänglig för ett samtal i enrum. Det gäller saken vi diskuterade i maj. Jag vill ha en förklaring.\n\n— E.L.",
+      "tags": [
+        "brev",
+        "konfrontation",
+        "motiv"
+      ],
+      "relatedCharacterIds": [
+        "char-erik",
+        "char-helena"
+      ]
+    },
+    {
+      "id": "mat-telefonlogg",
+      "type": "document",
+      "title": "Telefonlogg — Grönviks herrgård, 14 juli 1988",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "TELEFONLOGG — GRÖNVIKS HERRGÅRD\nDatum: 14 juli 1988\n\n09:14  INGÅENDE  Lindström Kapital AB, Stockholm\n09:45  UTGÅENDE  Lindström Kapital AB, Stockholm (2 min)\n14:22  INGÅENDE  Okänt nummer\n17:05  UTGÅENDE  Taxi Värmdö (bokning)\n21:12  INGÅENDE  Okänt nummer, kort, kopplas bort\n——————————————————————\n[Inga registrerade samtal 21:50–23:10]\n——————————————————————\n23:47  UTGÅENDE  112 (nödnummer) — Bertil Ek",
+      "tags": [
+        "alibi",
+        "telefon",
+        "jonas"
+      ],
+      "relatedCharacterIds": [
+        "char-jonas"
+      ],
+      "relatedEvidenceIds": [
+        "ev-telefonlogg"
+      ]
+    },
+    {
+      "id": "mat-foto-tradgard",
+      "type": "photo",
+      "title": "Foto — Trädgårdsland nr 7, östra flygeln",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "assetPath": "cases/case-demo/images/tradgard-stormhatt.jpg",
+      "content": "[Fotografi: Trädgårdsland nr 7. Röda markeringspinnar sticker upp. Violetta blomstaplar och fingrat delade blad — Aconitum napellus. En av växterna har ett avbrutet skott nära marken.]",
+      "tags": [
+        "foto",
+        "trädgård",
+        "stormhatt"
+      ],
+      "relatedEvidenceIds": [
+        "ev-stormhatt-tradgard"
+      ]
+    },
+    {
+      "id": "mat-bankdokument-forskning",
+      "type": "financial",
+      "title": "Revisionsutdrag — Lindström Kapital AB, konto 2985",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "REVISIONSUTDRAG\nBank: Svenska Handelsbanken\nKonto: 2985-xxxx (Lindström Kapital AB, driftskonto)\nPeriod: mars 1985 – juni 1988\n\nOREGELBUNDNA UTTAG:\nAntal transaktioner: 14\nTotal summa: 2 346 000 SEK\nGodkännande: CFO (ensam signatur)\nMottagarkonto: ej kopplat till bolagets leverantörsreskontra\n\nKommentar från revisor:\n'Uttagen saknar fakturamatchning. Mottagarkontot är privatägt. Ärendet kräver förklaring från ansvarig CFO.'\n\nDokumentet beställdes av E. Lindström den 8 juli 1988.",
+      "tags": [
+        "ekonomi",
+        "förskingring",
+        "helena"
+      ],
+      "relatedCharacterIds": [
+        "char-helena"
+      ],
+      "relatedEvidenceIds": [
+        "ev-bankuttag"
+      ]
+    },
+    {
+      "id": "mat-forensisk-rapport-final",
+      "type": "forensic",
+      "title": "Slutlig toxikologisk rapport — rättsläkare K. Ström",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "TOXIKOLOGISK RAPPORT — SLUTLIG\nDatum: 22 juli 1988\nRättsläkare: Kristina Ström\n\nANALYSRESULTAT:\nAconitinum påvisat i magsäck och blod. Tillräcklig koncentration för hjärtstillestånd inom 45–90 minuter vid intag via dryck. Smak- och luktlöst i låga koncentrationer.\n\nINTAGSSÄTT:\nTroligtvis via dryck. Giftet intogs ca 30–60 minuter före döden (21:30–22:30).\n\nKÄLLA:\nAconitum napellus. Växten finns i Grönviks trädgård.\n\nSLUTSATS:\nDöden är ett brott. Kräver tillgång till giftet, förmåga att bereda det och möjlighet att tillföra det i offrets dryck.",
+      "tags": [
+        "forensik",
+        "toxikologi",
+        "gift"
+      ],
+      "relatedEvidenceIds": [
+        "ev-gift-spar",
+        "ev-stormhatt-tradgard"
+      ]
+    },
+    {
+      "id": "mat-brev-helena-oskickat",
+      "type": "letter",
+      "title": "Ej avsänt brev — Helena Voss handstil, odaterat",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "Jag vet att det du hittade ser ut som det ser ut. Men det finns en förklaring. Ge mig tid. Jag ska betala tillbaka allt. Du behöver inte gå till polisen. Jag ber dig.\n\n[Brevet är inte undertecknat och ej avsänt. Funnet i en dold ficka i Helenas handväska vid husrannsakan 16 juli 1988.]",
+      "tags": [
+        "brev",
+        "helena",
+        "erkännande"
+      ],
+      "relatedCharacterIds": [
+        "char-helena"
+      ]
+    },
+    {
+      "id": "mat-notering-dagbok-erik",
+      "type": "note",
+      "title": "Eriks dagbok — anteckning 12 juli 1988",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "12 juli\n\nRevisorns siffror stämmer inte. Jag har räknat igenom det tre gånger. H.V. Jag vill inte tro det, men siffrorna talar sitt tydliga språk.\n\nMiddag fredag — bättre att göra det ansikte mot ansikte. Om hon erkänner kan jag kanske undvika polisen. Om inte — ja, om inte måste jag fatta ett hårt beslut.\n\nJag ska tala med advokaten på måndag.",
+      "tags": [
+        "dagbok",
+        "motiv",
+        "konfrontation"
+      ],
+      "relatedCharacterIds": [
+        "char-erik",
+        "char-helena"
+      ]
+    },
+    {
+      "id": "mat-foto-skrivbord-detalj",
+      "type": "photo",
+      "title": "Foto — Skrivbordet, närbild (00:35)",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "assetPath": "cases/case-demo/images/skrivbord-detalj.jpg",
+      "content": "[Fotografi: Närbild på skrivbordet. Öppen pärm märkt 'Revision Q1–Q2 1988'. Halvskrivet brev, adresserat till 'H'. Synliga ord: '...detta kan inte fortsätta. Jag har nu beslutat mig för att...' Resten dolt under pärmen.]",
+      "tags": [
+        "foto",
+        "skrivbord",
+        "brev"
+      ],
+      "relatedCharacterIds": [
+        "char-erik"
+      ]
+    }
+  ],
+  "clues": [
+    {
+      "id": "clue-01",
+      "title": "Ledtråd 1 — Om glaset",
+      "hint": "Handlar om föremål i arbetsrummet.",
+      "content": "Det använda glaset hade fingeravtryck, men drickskanten var avtorkad. Varför torka av just drickskanten — men inget annat? Den som tillförde gift i glaset behövde ta bort spår av sin kontakt med kanten.",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "isEmergencyOnly": false,
+      "relatedEvidenceIds": [
+        "ev-gift-spar"
+      ]
+    },
+    {
+      "id": "clue-02",
+      "title": "Ledtråd 2 — Om alibina",
+      "hint": "Handlar om vem som faktiskt hade möjlighet.",
+      "content": "Marianne och Bertil bekräftar varandra (trovärdiga). Jonas var ensam — hans lögn om telefonen gömmer något annat, inte mord. Helena är den enda utan vittnestäckning under hela mordtidsperioden, i ett rum som gränsar direkt till arbetsrummet.",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "isEmergencyOnly": false,
+      "relatedCharacterIds": [
+        "char-helena",
+        "char-jonas"
+      ]
+    },
+    {
+      "id": "clue-03",
+      "title": "Ledtråd 3 — Om motivet",
+      "hint": "Handlar om varför, inte vem.",
+      "content": "Revisionsutdraget, dagboksanteckningen och det ej avsända brevet pekar alla i samma riktning: Erik visste om förskingringen och planerade att agera. Helena stod inför avslöjande och rättsliga konsekvenser. Hon hade motiv, möjlighet och — via trädgårdsbesöket i juni — tillgång till giftkällan.",
+      "actAvailability": [
+        3
+      ],
+      "isEmergencyOnly": true,
+      "relatedCharacterIds": [
+        "char-helena"
+      ],
+      "relatedEvidenceIds": [
+        "ev-bankuttag",
+        "ev-dagbok-erik",
+        "ev-brev-helena-oskickat"
+      ]
+    }
+  ],
+  "solution": {
+    "perpetratorId": "char-helena",
+    "motive": "Helena Voss hade under tre år förskingrat 2,3 miljoner kronor. Erik hade anlitat en extern revisor och planerade att konfrontera henne och därefter kontakta polisen. Helena stod inför avslöjande, rättsliga konsekvenser och ekonomisk ruin.",
+    "method": "Helena identifierade stormhattplantan i trädgårdsland nr 7 vid sitt besök i juni. Hon beredde ett aconitinextrakt och förde det med sig till middagen. Under kvällen tillsatte hon giftet i Eriks whiskyglas och avtorkade drickskanten. Sedan gick hon till biblioteket för att etablera ett skenbart alibi.",
+    "timeline": [
+      {
+        "time": "Juni 1988",
+        "description": "Helena besöker trädgårdsland nr 7 och frågar Bertil om stormhattens giftiga egenskaper.",
+        "characterIds": [
+          "char-helena",
+          "char-bertil"
+        ]
+      },
+      {
+        "time": "8 juli",
+        "description": "Erik beställer revisionsutdrag från banken.",
+        "characterIds": [
+          "char-erik"
+        ]
+      },
+      {
+        "time": "10 juli",
+        "description": "Erik skickar brev till Helena och kallar henne till samtal på middagskvällen.",
+        "characterIds": [
+          "char-erik",
+          "char-helena"
+        ]
+      },
+      {
+        "time": "12 juli",
+        "description": "Erik skriver i dagboken om H.V. och beslutar sig. Planerar advokatsamtal på måndag.",
+        "characterIds": [
+          "char-erik"
+        ]
+      },
+      {
+        "time": "14 juli, 19:30",
+        "description": "Helena och Erik talar enskilt i arbetsrummet. Tonen är formell.",
+        "characterIds": [
+          "char-erik",
+          "char-helena"
+        ]
+      },
+      {
+        "time": "14 juli, ca 21:45–22:00",
+        "description": "Helena återvänder till arbetsrummet. Tillsätter gift i Eriks whiskyglas. Avtorkar drickskanten. Erik dricker.",
+        "characterIds": [
+          "char-erik",
+          "char-helena"
+        ]
+      },
+      {
+        "time": "14 juli, ca 22:15",
+        "description": "Jonas går ut på terrassen för att försöka ringa sin bank — får inget svar.",
+        "characterIds": [
+          "char-jonas"
+        ]
+      },
+      {
+        "time": "14 juli, ca 22:20–23:00",
+        "description": "Helena befinner sig i biblioteket. Giftet verkar. Erik förlorar medvetandet.",
+        "characterIds": [
+          "char-erik",
+          "char-helena"
+        ]
+      },
+      {
+        "time": "14 juli, ca 23:40",
+        "description": "Bertil hör ett ljud och går till arbetsrummet. Hittar Erik på golvet.",
+        "characterIds": [
+          "char-bertil",
+          "char-erik"
+        ]
+      },
+      {
+        "time": "14 juli, 23:47",
+        "description": "Bertil ringer 112.",
+        "characterIds": [
+          "char-bertil"
+        ]
+      }
+    ],
+    "keyEvidenceIds": [
+      "ev-gift-spar",
+      "ev-bankuttag",
+      "ev-stormhatt-tradgard",
+      "ev-brev-konfrontation",
+      "ev-dagbok-erik",
+      "ev-brev-helena-oskickat"
+    ],
+    "misleadingTrails": [
+      "Jonas ljög om sitt telefonsamtal — men lögnen gömmer privata ekonomiska problem, inte ett mord.",
+      "Marianne har ett historiskt motiv via skilsmässan, men hennes alibi är det starkaste av alla.",
+      "Det halvskrivna brevet på skrivbordet adresseras till 'H' — men det behöver inte syfta på Helena specifikt."
+    ],
+    "importantDetails": [
+      "Drickskanten på glaset var avtorkad — men inte resten av glaset. Typiskt spår efter någon som tillsatt gift.",
+      "Helena frågade specifikt om stormhattens giftighet i juni — månader innan mordet.",
+      "Det ej avsända brevet hittades i en gömd ficka. Helena hade börjat skriva men valt en annan lösning.",
+      "Erik planerade advokatsamtal 'på måndag' — Helena hade en smal tidsram."
+    ],
+    "fullNarrative": "Helena Voss mördade Erik Lindström med ett planerat förgiftning. Bakgrunden är hennes förskingring av 2,3 miljoner kronor under tre år. När Erik anlitade en revisor och fick siffrorna bekräftade kallade han Helena till ett enskilt samtal vid middagen den 14 juli.\n\nHelena hade vid ett besök i juni identifierat stormhattplantan i trädgård nr 7 och frågat Bertil om dess giftiga egenskaper. I dagarna därpå beredde hon ett aconitinextrakt.\n\nUnder kvällen, när de övriga satt i salongen och Jonas var ute, gick Helena till arbetsrummet. Hon tillsatte extraktet i Eriks whiskyglas och avtorkade drickskanten. Sedan gick hon till det angränsande biblioteket.\n\nErik drack. Giftet verkade. Han avled ensam i arbetsrummet.\n\nHelena hade skrivit ett brev till Erik där hon bad om förlåtelse. Men hon skickade det aldrig. I stället valde hon att ta bort hotet permanent."
+  },
+  "gmNotes": [
+    {
+      "id": "gm-note-act1-intro",
+      "title": "Introduktion för GM — Akt 1",
+      "content": "Välkommen till Döden på Grönvik. Läs upp eller parafrasera spelarnas intro. Betona att de har tillgång till allt material i denna akt och kan navigera fritt. Det finns ingen 'rätt ordning'.\n\nSäg gärna: 'Allt ni ser är vad polisen hade tillgång till under de första timmarna. Läs det ni vill, i den ordning ni vill.'",
+      "actRelevance": [
+        1
+      ],
+      "type": "instruction"
+    },
+    {
+      "id": "gm-note-atmosphere-act1",
+      "title": "Stämning — Akt 1",
+      "content": "Undvik att kommentera vad spelarna läser eller peka på detaljer. Om de missar något — det är okej.\n\nOm någon frågar 'men är det viktigt att...' — svara neutralt: 'Allt material är vad polisen hade tillgång till. Ni bedömer vad som är viktigt.'",
+      "actRelevance": [
+        1
+      ],
+      "type": "atmosphere"
+    },
+    {
+      "id": "gm-note-act2-contradictions",
+      "title": "Nyckelmottsägelser att hålla koll på — Akt 2",
+      "content": "1. JONAS: Hävdar att han ringde ett samtal ca 22:15. Telefonloggen visar inga utgående samtal 21:50–23:10. Hans alibi är falskt — men av privata skäl, inte för att han mördade.\n\n2. HELENA: Hävdar att hon var i biblioteket och hörde 'ingenting'. Biblioteket gränsar direkt till arbetsrummet.\n\n3. BERTIL: Osäker på exakt tidpunkt — det är äkta glömska, inte lögn.\n\nLåt spelarna hitta dessa på egen hand.",
+      "actRelevance": [
+        2
+      ],
+      "type": "warning"
+    },
+    {
+      "id": "gm-note-act2-helena",
+      "title": "Om Helena Voss — bakgrund för GM",
+      "content": "Helena planerade detta noggrant. Hon räknade med att Eriks ålder och drickande skulle skymma dödsorsaken.\n\nViktig detalj: Helena sa i förhöret att hon och Erik talade i arbetsrummet 'ca 19:30, innan middagen'. Det är då hon identifierade glaset.",
+      "actRelevance": [
+        2,
+        3
+      ],
+      "type": "background"
+    },
+    {
+      "id": "gm-note-act3-solution-guide",
+      "title": "Lösningsguide för GM — Akt 3",
+      "content": "I akt 3 har spelarna allt de behöver. Centrala kopplingar:\n\n1. Gift → trädgårdsbesök i juni → Helena frågade om giftighet\n2. Motiv → förskingring → revisionsutdrag → Eriks dagbok → brev till Helena\n3. Möjlighet → Helena ensam i biblioteket, gränsar till arbetsrummet, drickskanten avtorkad\n4. Det ej avsända brevet = Helena valde bort förlåtelse\n\nLedtråd 3 är nödjälp och avslöjar i princip lösningen.",
+      "actRelevance": [
+        3
+      ],
+      "type": "instruction"
+    },
+    {
+      "id": "gm-note-act3-warning",
+      "title": "Varning — Jonas är en röd sill",
+      "content": "Många grupper fastnar på Jonas. Hans falska alibi verkar avgörande.\n\nSanningen: Jonas försökte ringa sin bank angående skulder och fick inget svar. Pinsamt, inte brottsligt.\n\nOm spelarna väljer Jonas: låt dem presentera sin teori, öppna sedan lösningen och gå igenom vad som pekade rätt och fel.",
+      "actRelevance": [
+        3
+      ],
+      "type": "warning"
+    }
+  ]
+}
