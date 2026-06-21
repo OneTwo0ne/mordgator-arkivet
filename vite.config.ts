@@ -30,8 +30,8 @@ export default defineConfig({
         description:
           'Ett digitalt utredningsarkiv för mordgåtor och detektivfall. Spelledare och spelare analyserar dokument, foton och förhör för att lösa fallet.',
         lang: 'sv',
-        theme_color: '#2b2b28',
-        background_color: '#e8e6e0',
+        theme_color: '#15120c',
+        background_color: '#15120c',
         display: 'standalone',
         start_url: BASE,
         scope: BASE,

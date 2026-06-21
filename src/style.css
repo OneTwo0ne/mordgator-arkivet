@@ -1,23 +1,26 @@
 @import 'tailwindcss';
 
 /* ============================================================
-   MORDGÅTOR — designtokens
-   Estetik: digitalt utredningsarkiv, sent 1980-tal.
-   Neutrala toner, ingen färgglädje. Sans för UI, monospace för
-   dokumentinnehåll. Accent (oxblod) endast för GM-läge/varningar.
+   ARKIVET — designtokens (noir / true crime, dark mode)
+   Varm nära-svart (umbra), aldrig ren svart — undviker halation.
+   Elfenbenstext, sparsam accent (bevissnöre-rött + dämpad mässing).
+   Serif för rubriker, monospace för etiketter & maskinskrivna dokument.
+   Tokennamnen behålls (paper/ink/oxblood) men pekar nu på mörka värden.
    ============================================================ */
 @theme {
-  --color-paper: #e7e4dc; /* arbetsytans bakgrund */
-  --color-paper-2: #f3f1ea; /* kort / ark */
-  --color-paper-3: #faf9f5; /* upphöjda ytor (dokument) */
-  --color-manila: #d9cfb4; /* mappflik / arkivkänsla */
-  --color-ink: #26241f; /* primär text */
-  --color-ink-soft: #57534a; /* sekundär text */
-  --color-ink-faint: #8a857a; /* metadata, etiketter */
-  --color-line: #c6c1b4; /* hårfina linjer / ramar */
-  --color-line-strong: #a8a294;
-  --color-oxblood: #7c2d2d; /* GM-läge, varning, stämpel */
-  --color-oxblood-soft: #9a4a45;
+  --color-paper: #15120c; /* arbetsytans grund */
+  --color-paper-2: #1f1a11; /* kort / paneler */
+  --color-paper-3: #241e14; /* upphöjda ytor (dokument-"ark") */
+  --color-manila: #2c2618; /* mappflik / sektionsyta */
+  --color-ink: #ece4d2; /* primär text (varm elfenben, ej ren vit) */
+  --color-ink-soft: #c9bfa8; /* dokumenttext */
+  --color-ink-faint: #9d9078; /* sekundär text / metadata */
+  --color-ink-dim: #6f664f; /* etiketter, svag metadata */
+  --color-line: rgba(184, 162, 120, 0.16); /* hårfina linjer */
+  --color-line-strong: rgba(184, 162, 120, 0.34);
+  --color-oxblood: #b23a30; /* accent: bevissnöre-rött, stämpel, varning */
+  --color-oxblood-soft: #c96a60;
+  --color-brass: #c9a24b; /* sekundär accent: dämpad mässing */
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
@@ -25,11 +28,19 @@
   --font-mono:
     ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, 'Courier New',
     monospace;
-  --font-serif: 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-serif:
+    'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
 }
 
 html {
-  background: var(--color-paper);
+  background:
+    radial-gradient(
+      120% 80% at 50% -10%,
+      rgba(201, 162, 75, 0.06),
+      transparent 60%
+    ),
+    var(--color-paper);
+  background-attachment: fixed;
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -62,10 +73,16 @@ body {
   }
 }
 
-/* Maskinskriven dokumenttext */
+/* Maskinskriven dokumenttext — ~50–75 tecken/rad för läsbarhet */
 .doc-text {
   font-family: var(--font-mono);
   white-space: pre-wrap;
-  line-height: 1.6;
-  color: var(--color-ink);
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+}
+
+/* Synlig tangentbordsfokus genomgående */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
 }
