@@ -3,9 +3,10 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// Repo hostas på GitHub Pages som projektsajt: OneTwo0ne.github.io/mordgator-pwa/
+// "Arkivet" hostas på GitHub Pages som projektsajt:
+// OneTwo0ne.github.io/mordgator-arkivet/
 // base måste därför matcha repo-namnet. Hash-routing används så att djuplänkar funkar.
-const BASE = '/mordgator-pwa/'
+const BASE = '/mordgator-arkivet/'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -24,8 +25,8 @@ export default defineConfig({
       },
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'Mordgåtor — Digitalt utredningsarkiv',
-        short_name: 'Mordgåtor',
+        name: 'Arkivet — Mordgåtor',
+        short_name: 'Arkivet',
         description:
           'Ett digitalt utredningsarkiv för mordgåtor och detektivfall. Spelledare och spelare analyserar dokument, foton och förhör för att lösa fallet.',
         lang: 'sv',

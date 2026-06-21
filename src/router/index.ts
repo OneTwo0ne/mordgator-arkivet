@@ -41,6 +41,6 @@ export const router = createRouter({
 router.afterEach((to) => {
   const title = (to.meta.title as string | undefined) ?? ''
   document.title = title
-    ? `${title} — Mordgåtor`
-    : 'Mordgåtor — Utredningsarkiv'
+    ? `${title} — Arkivet`
+    : 'Arkivet — Mordgåtor'
 })
