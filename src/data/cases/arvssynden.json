@@ -27,6 +27,7 @@
         "mat-forhör-lena-01",
         "mat-forhör-petra-01",
         "mat-forhör-marcus-01",
+        "mat-planritning",
         "mat-foto-brottsplats-01",
         "mat-foto-brottsplats-03",
         "mat-foto-brottsplats-04",
@@ -833,6 +834,20 @@
       "relatedEvidenceIds": [
         "ev-prismat"
       ]
+    },
+    {
+      "id": "mat-planritning",
+      "type": "photo",
+      "title": "Planritning — plan 4",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "[Planritning — Lindqvist & Wester KB, plan 4, Birger Jarlsgatan 42]\nKatarinas hörnkontor i sydvästra hörnet. Kopieringsrummet i västra flygeln. Central korridor med reception. Hiss och trapphus. Östra flygeln (där städaren Reza befann sig) skild från den västra av korridoren.",
+      "assetPath": "cases/arvssynden/images/planritning.png"
     },
     {
       "id": "mat-foto-brottsplats-01",

@@ -78,6 +78,10 @@ const TEXT_MATERIALS = [
 // Foton (innehåll = bildtext här; bild kopieras separat). Fotografi 3 = nyckelledtråd.
 const PHOTO_MATERIALS = [
   {
+    id: 'mat-planritning', type: 'photo', title: 'Planritning — plan 4', lvl: 1, img: 'planritning.png',
+    content: '[Planritning — Lindqvist & Wester KB, plan 4, Birger Jarlsgatan 42]\nKatarinas hörnkontor i sydvästra hörnet. Kopieringsrummet i västra flygeln. Central korridor med reception. Hiss och trapphus. Östra flygeln (där städaren Reza befann sig) skild från den västra av korridoren.',
+  },
+  {
     id: 'mat-foto-brottsplats-01', type: 'photo', title: 'Foto — arbetsrummet, översikt', lvl: 1, img: 'b1-brottsplats.png',
     content: '[Fotografi 1 — Översiktsbild, arbetsrummet]\nTaget från dörröppningen mot söder. Skrivbordet i bildens mitt, offret synlig på golvet framför det. Bokhyllorna längs höger vägg. Persienner halvt nedfällda. Taklampa och skrivbordslampa tända. Rummet i övrigt ostört. Kristallprismat synligt på bokhyllan i bakgrunden.',
   },
