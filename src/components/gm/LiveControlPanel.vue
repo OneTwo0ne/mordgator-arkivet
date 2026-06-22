@@ -5,6 +5,7 @@ import { sessionService } from '../../services/sessionService'
 import {
   createSession,
   isRealtimeAvailable,
+  resetSession,
   setManyVisibility,
   setSolutionRevealed,
   setVisibility,
@@ -158,6 +159,37 @@ async function toggleSolution() {
   )
 }
 
+async function doReset() {
+  if (!sessionId.value) return
+  if (
+    !window.confirm(
+      'Återställ sessionen? Allt material döljs utom akt 1, och lösningen stängs. Spelarnas vy uppdateras direkt — samma länk gäller.',
+    )
+  )
+    return
+  await resetSession(sessionId.value, defaultVisible())
+}
+
+function endSession() {
+  if (
+    !window.confirm(
+      'Avsluta den här sessionen och starta en ny? Du får en NY länk att dela. Den gamla länken slutar uppdateras.',
+    )
+  )
+    return
+  if (unsubscribe) {
+    unsubscribe()
+    unsubscribe = null
+  }
+  try {
+    localStorage.removeItem(storageKey.value)
+  } catch {
+    // ignoreras
+  }
+  sessionId.value = null
+  sessionState.value = null
+}
+
 async function copyLink() {
   try {
     await navigator.clipboard.writeText(sessionLink.value)
@@ -306,6 +338,27 @@ onBeforeUnmount(() => {
               :class="sessionState?.solutionRevealed ? 'left-4' : 'left-0.5'"
             />
           </button>
+        </div>
+
+        <!-- Sessionsåtgärder -->
+        <div class="flex flex-wrap items-center gap-4 border-t border-line pt-4">
+          <button
+            type="button"
+            class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase hover:text-ink"
+            @click="doReset"
+          >
+            Återställ session
+          </button>
+          <button
+            type="button"
+            class="font-mono text-[0.65rem] tracking-wider text-oxblood-soft uppercase hover:text-oxblood"
+            @click="endSession"
+          >
+            Avsluta · starta ny
+          </button>
+          <span class="ml-auto text-xs text-ink-dim"
+            >Återställ = samma länk, allt utom akt 1 döljs · Ny = ny länk att dela</span
+          >
         </div>
       </div>
     </template>

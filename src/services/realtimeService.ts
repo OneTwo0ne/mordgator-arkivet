@@ -109,3 +109,14 @@ export async function setSolutionRevealed(
 ): Promise<void> {
   await set(ref(getDb(), `sessions/${sessionId}/solutionRevealed`), revealed)
 }
+
+/** Nollställer en session: ersätter synligt material och stänger lösningen. */
+export async function resetSession(
+  sessionId: string,
+  visible: VisibleInit,
+): Promise<void> {
+  await update(ref(getDb(), `sessions/${sessionId}`), {
+    visible,
+    solutionRevealed: false,
+  })
+}
