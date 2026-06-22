@@ -25,6 +25,14 @@ const routes: RouteRecordRaw[] = [
     meta: { title: 'Utredningsakt' },
   },
   {
+    // Realtidssession: GM styr synligt material live över samma länk.
+    path: '/play/:sessionId',
+    name: 'player-session',
+    component: () => import('../views/player/PlayerCaseView.vue'),
+    props: true,
+    meta: { title: 'Utredningsakt' },
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/',
   },

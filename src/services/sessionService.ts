@@ -33,6 +33,13 @@ class SessionService implements ISessionService {
     return `${origin}${basePath}#/case/${caseId}/player`
   }
 
+  createSessionLink(sessionId: string): string {
+    // Länk till en realtidssession som GM styr. Akt-oberoende.
+    const origin = window.location.origin
+    const basePath = window.location.pathname
+    return `${origin}${basePath}#/play/${sessionId}`
+  }
+
   parseSessionFromUrl(): GameSession | null {
     const { path, query } = parseHash()
     const match = PLAYER_PATH.exec(path)

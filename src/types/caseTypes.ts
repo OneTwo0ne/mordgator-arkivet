@@ -176,6 +176,8 @@ export interface ISessionService {
   // actNumber är valfritt och utelämnas ur länken: spelarlänken är
   // akt-oberoende (en länk för hela sessionen).
   createPlayerLink(caseId: string, actNumber?: number): string
+  // Länk till en realtidssession (GM styr synligt material live).
+  createSessionLink(sessionId: string): string
   parseSessionFromUrl(): GameSession | null
   getCurrentAct(): number
 }

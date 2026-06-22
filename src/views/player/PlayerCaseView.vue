@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { caseService } from '../../services/caseService'
+import {
+  isRealtimeAvailable,
+  subscribeSession,
+  type SessionState,
+  type VisibleKind,
+} from '../../services/realtimeService'
 import type {
   Case,
   Character,
@@ -17,25 +23,69 @@ import MaterialReader from '../../components/player/MaterialReader.vue'
 import EvidenceBoard from '../../components/player/EvidenceBoard.vue'
 import AppButton from '../../components/common/AppButton.vue'
 
-const props = defineProps<{ caseId: string }>()
+// Två lägen: live-session (?sessionId — GM styr synligt material) eller
+// statiskt (?caseId — allt synligt, för förhandsgranskning/utan realtid).
+const props = defineProps<{ caseId?: string; sessionId?: string }>()
+const liveMode = computed(() => Boolean(props.sessionId))
 
 const caseData = ref<Case | null>(null)
+const resolvedCaseId = ref<string | null>(props.caseId ?? null)
 const loading = ref(true)
 const error = ref<string | null>(null)
+const sessionMissing = ref(false)
+const sessionState = ref<SessionState | null>(null)
 
-// Hela fallet på en gång — en sessionslänk, inga akter att byta mellan.
-const material = ref<MaterialItem[]>([])
-const characters = ref<Character[]>([])
-const evidence = ref<Evidence[]>([])
-const clues = ref<Clue[]>([])
+// Hela fallet (spelarsäkert) — vad som faktiskt visas avgörs sedan av live-läget.
+const allMaterial = ref<MaterialItem[]>([])
+const allCharacters = ref<Character[]>([])
+const allEvidence = ref<Evidence[]>([])
+const allClues = ref<Clue[]>([])
 
 type Section = 'oversikt' | 'material' | 'personer' | 'bevis' | 'tavla' | 'losning'
 const activeSection = ref<Section>('oversikt')
-
 const confirmingSolution = ref(false)
 const solutionRevealed = ref(false)
 
-// Öppningstext: första aktens spelarintro sätter scenen för hela sessionen.
+// Lösningen öppnas antingen av spelarna själva eller av GM (live).
+const solutionOpen = computed(
+  () =>
+    solutionRevealed.value ||
+    (liveMode.value && sessionState.value?.solutionRevealed === true),
+)
+
+let unsubscribe: (() => void) | null = null
+
+// Synlighetsfilter: i live-läge bara det GM slagit på; annars allt.
+function visibleSet(kind: VisibleKind): Record<string, boolean> | null {
+  if (!liveMode.value) return null
+  return sessionState.value?.visible?.[kind] ?? {}
+}
+
+const material = computed(() => {
+  const s = visibleSet('material')
+  return s ? allMaterial.value.filter((m) => s[m.id]) : allMaterial.value
+})
+const characters = computed(() => {
+  const s = visibleSet('characters')
+  return s ? allCharacters.value.filter((c) => s[c.id]) : allCharacters.value
+})
+const evidence = computed(() => {
+  const s = visibleSet('evidence')
+  return s ? allEvidence.value.filter((e) => s[e.id]) : allEvidence.value
+})
+const clues = computed(() => {
+  const s = visibleSet('clues')
+  return s ? allClues.value.filter((c) => s[c.id]) : allClues.value
+})
+
+const totalVisible = computed(
+  () =>
+    material.value.length +
+    characters.value.length +
+    evidence.value.length +
+    clues.value.length,
+)
+
 const opening = computed(() => {
   const acts = caseData.value?.acts ?? []
   const first = [...acts].sort((a, b) => a.number - b.number)[0]
@@ -50,25 +100,59 @@ const navItems: { key: Section; label: string }[] = [
   { key: 'tavla', label: 'Anslagstavla' },
 ]
 
+async function loadCaseLists(caseId: string) {
+  const [data, m, ch, ev, cl] = await Promise.all([
+    caseService.getCase(caseId),
+    caseService.getAllMaterial(caseId, false),
+    caseService.getAllCharacters(caseId, false),
+    caseService.getAllEvidence(caseId, false),
+    caseService.getAllClues(caseId),
+  ])
+  caseData.value = data
+  allMaterial.value = m
+  allCharacters.value = ch
+  allEvidence.value = ev
+  allClues.value = cl
+}
+
 onMounted(async () => {
   try {
-    const [data, m, ch, ev, cl] = await Promise.all([
-      caseService.getCase(props.caseId),
-      caseService.getAllMaterial(props.caseId, false),
-      caseService.getAllCharacters(props.caseId, false),
-      caseService.getAllEvidence(props.caseId, false),
-      caseService.getAllClues(props.caseId),
-    ])
-    caseData.value = data
-    material.value = m
-    characters.value = ch
-    evidence.value = ev
-    clues.value = cl
+    if (liveMode.value && props.sessionId) {
+      if (!isRealtimeAvailable()) {
+        error.value =
+          'Realtid är inte konfigurerad ännu. Be spelledaren kontrollera Firebase-inställningarna.'
+        loading.value = false
+        return
+      }
+      unsubscribe = subscribeSession(props.sessionId, async (state) => {
+        if (!state) {
+          sessionMissing.value = true
+          loading.value = false
+          return
+        }
+        sessionMissing.value = false
+        sessionState.value = state
+        if (resolvedCaseId.value !== state.caseId) {
+          resolvedCaseId.value = state.caseId
+          await loadCaseLists(state.caseId)
+        }
+        loading.value = false
+      })
+    } else if (props.caseId) {
+      await loadCaseLists(props.caseId)
+      loading.value = false
+    } else {
+      error.value = 'Ingen session angiven.'
+      loading.value = false
+    }
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Kunde inte läsa fallet.'
-  } finally {
     loading.value = false
   }
+})
+
+onBeforeUnmount(() => {
+  if (unsubscribe) unsubscribe()
 })
 
 function go(section: Section) {
@@ -84,9 +168,15 @@ function revealSolution() {
 <template>
   <div class="min-h-svh">
     <p v-if="loading" class="px-6 py-10 text-sm text-ink-faint">
-      Öppnar utredningsakten…
+      {{ liveMode ? 'Ansluter till sessionen…' : 'Öppnar utredningsakten…' }}
     </p>
     <p v-else-if="error" class="px-6 py-10 text-sm text-oxblood">{{ error }}</p>
+    <p
+      v-else-if="sessionMissing"
+      class="px-6 py-10 text-sm text-ink-faint"
+    >
+      Sessionen hittades inte. Kontrollera länken med spelledaren.
+    </p>
 
     <template v-else-if="caseData">
       <!-- Topbar -->
@@ -180,6 +270,14 @@ function revealSolution() {
             </div>
           </div>
 
+          <p
+            v-if="liveMode && totalVisible === 0"
+            class="mt-8 border border-line bg-paper-2 p-5 text-sm text-ink-faint"
+          >
+            Inget material är tillgängligt ännu. Spelledaren öppnar upp det
+            efter hand — håll utkik, det dyker upp här automatiskt.
+          </p>
+
           <!-- Förseglade ledtrådar -->
           <div v-if="clues.length" class="mt-12">
             <SectionHeading :count="clues.length">Förseglade ledtrådar</SectionHeading>
@@ -188,7 +286,7 @@ function revealSolution() {
                 v-for="clue in clues"
                 :key="clue.id"
                 :clue="clue"
-                :case-id="caseId"
+                :case-id="resolvedCaseId ?? ''"
               />
             </div>
           </div>
@@ -198,23 +296,25 @@ function revealSolution() {
         <section v-else-if="activeSection === 'material'" class="fade-in">
           <SectionHeading :count="material.length">Material</SectionHeading>
           <MaterialReader v-if="material.length" :items="material" />
-          <p v-else class="text-sm text-ink-dim">Inget material i fallet.</p>
+          <p v-else class="text-sm text-ink-dim">Inget material tillgängligt ännu.</p>
         </section>
 
         <!-- PERSONER -->
         <section v-else-if="activeSection === 'personer'" class="fade-in">
           <SectionHeading :count="characters.length">Personer i fallet</SectionHeading>
-          <div class="grid gap-3 md:grid-cols-2">
+          <div v-if="characters.length" class="grid gap-3 md:grid-cols-2">
             <CharacterCard v-for="ch in characters" :key="ch.id" :character="ch" />
           </div>
+          <p v-else class="text-sm text-ink-dim">Inga personer tillgängliga ännu.</p>
         </section>
 
         <!-- BEVIS -->
         <section v-else-if="activeSection === 'bevis'" class="fade-in">
           <SectionHeading :count="evidence.length">Bevis</SectionHeading>
-          <div class="grid gap-3 md:grid-cols-2">
+          <div v-if="evidence.length" class="grid gap-3 md:grid-cols-2">
             <EvidenceCard v-for="ev in evidence" :key="ev.id" :evidence="ev" />
           </div>
+          <p v-else class="text-sm text-ink-dim">Inga bevis tillgängliga ännu.</p>
         </section>
 
         <!-- ANSLAGSTAVLA -->
@@ -228,13 +328,13 @@ function revealSolution() {
           <EvidenceBoard
             :characters="characters"
             :evidence="evidence"
-            :case-id="caseId"
+            :case-id="resolvedCaseId ?? ''"
           />
         </section>
 
         <!-- LÖSNING -->
         <section v-else-if="activeSection === 'losning'" class="fade-in">
-          <template v-if="!solutionRevealed">
+          <template v-if="!solutionOpen">
             <div
               v-if="!confirmingSolution"
               class="border border-line bg-paper-2 p-8 text-center"

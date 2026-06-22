@@ -17,6 +17,7 @@ import EvidenceCard from '../../components/common/EvidenceCard.vue'
 import SolutionPanel from '../../components/common/SolutionPanel.vue'
 import ActSelector from '../../components/gm/ActSelector.vue'
 import GMNoteCard from '../../components/gm/GMNoteCard.vue'
+import LiveControlPanel from '../../components/gm/LiveControlPanel.vue'
 
 const props = defineProps<{ caseId: string }>()
 
@@ -112,8 +113,14 @@ async function copyPlayerLink() {
         </p>
       </header>
 
-      <!-- Aktstyrning + spelarlänk -->
+      <!-- Live-styrning: dela länk + slå på/av material i realtid -->
+      <LiveControlPanel :case-data="caseData" />
+
+      <!-- Förhandsgranskning per akt (påverkar bara GM:s egen vy) -->
       <section class="mt-8 border border-line bg-paper-2 p-5">
+        <p class="mb-3 font-mono text-[0.7rem] tracking-[0.2em] text-ink-faint uppercase">
+          Förhandsgranskning
+        </p>
         <ActSelector :acts="caseData.acts" v-model="currentAct" />
 
         <div
@@ -128,11 +135,11 @@ async function copyPlayerLink() {
           <p
             class="mb-2 text-[0.7rem] tracking-[0.18em] text-ink-faint uppercase"
           >
-            Spelarlänk för hela sessionen
+            Statisk länk — visar allt direkt (utan live-styrning)
           </p>
           <div class="flex flex-wrap items-center gap-3">
-            <AppButton variant="solid" @click="copyPlayerLink">
-              {{ copied ? 'Kopierad!' : 'Kopiera spelarlänk' }}
+            <AppButton variant="outline" @click="copyPlayerLink">
+              {{ copied ? 'Kopierad!' : 'Kopiera statisk länk' }}
             </AppButton>
             <code
               class="min-w-0 flex-1 truncate bg-paper-3 px-3 py-2 font-mono text-xs text-ink-soft"
@@ -140,12 +147,9 @@ async function copyPlayerLink() {
             >
           </div>
           <p class="mt-3 text-xs leading-relaxed text-ink-dim">
-            En enda länk för hela spelomgången — spelarna ser allt material direkt
-            och behöver aldrig byta länk. Aktväljaren ovan styr bara <em>din</em>
-            förhandsgranskning här nedanför, inte vad spelarna ser.
-            <span class="text-ink-faint"
-              >(På önskelistan: styra vad spelarna ser i realtid.)</span
-            >
+            Använd hellre live-länken ovan om du vill styra vad spelarna ser.
+            Den här länken visar allt material direkt och är mest till för
+            förhandstitt eller om realtid inte är aktiverat.
           </p>
         </div>
       </section>

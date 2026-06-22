@@ -3,7 +3,20 @@
 Idéer som är beslutade på sikt men medvetet utelämnade i nuläget (oftast för att
 de kräver backend/realtid och därmed kostar pengar att driva).
 
-## Realtidsstyrd akt-reveal (GM styr över samma länk)
+## ✅ Realtidsstyrd material-reveal (GM styr över samma länk) — IMPLEMENTERAD
+
+Byggd med Firebase Realtime Database. GM startar en live-session i GM-vyn, delar
+en `/play/<sessionId>`-länk, och slår på/av varje sak (material, personer, bevis,
+ledtrådar, lösning) i realtid — ändringar syns direkt hos alla anslutna spelare.
+Akt 1:s material är påslaget vid start. Kräver Firebase-konfig i
+`src/config/firebase.ts`; utan konfig kör appen i statiskt läge (allt synligt).
+
+Kvarvarande idéer på sikt: per-akt-snabbknappar ("öppna hela akt 2"), närvaro
+(se hur många spelare som är anslutna), och säkrare databasregler.
+
+---
+
+### Ursprunglig beskrivning (för historik)
 
 **Vad:** Spelarna använder *en* sessionslänk hela spelomgången. GM kan i realtid
 öppna upp nytt material (nästa akt) utan att spelarna byter länk eller laddar om.
