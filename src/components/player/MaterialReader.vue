@@ -122,7 +122,7 @@ onBeforeUnmount(() => {
         <button
           v-if="hasUnread"
           type="button"
-          class="rounded-md border px-4 py-2.5 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
+          class="rounded-md border px-2.5 py-2 font-mono text-[0.6rem] tracking-wider uppercase transition-colors"
           :class="
             stateFilter === 'new'
               ? 'border-oxblood bg-oxblood text-ink'
@@ -134,7 +134,7 @@ onBeforeUnmount(() => {
         </button>
         <button
           type="button"
-          class="rounded-md border px-4 py-2.5 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
+          class="rounded-md border px-2.5 py-2 font-mono text-[0.6rem] tracking-wider uppercase transition-colors"
           :class="
             stateFilter === 'all'
               ? 'border-oxblood bg-oxblood text-ink'
