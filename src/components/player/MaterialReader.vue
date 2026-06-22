@@ -20,8 +20,8 @@ const query = ref('')
 // Tillståndsfilter, skilt från kategorierna: allt material eller bara oläst.
 const stateFilter = ref<'all' | 'new'>('all')
 const selectedId = ref<string | null>(null)
-// Ihopfällda grupper (dragspel). Tomt = alla utfällda.
-const collapsed = ref<string[]>([])
+// Dragspel: högst en öppen kategori åt gången. null = alla stängda (standard).
+const openKey = ref<string | null>(null)
 
 const unreadCount = computed(() => props.unreadIds?.length ?? 0)
 const hasUnread = computed(() => unreadCount.value > 0)
@@ -70,27 +70,22 @@ const selected = computed(
   () => props.items.find((i) => i.id === selectedId.value) ?? null,
 )
 
-// När man filtrerar till "Nytt" fälls allt ut så inget nytt göms i en hopfälld grupp.
-function isCollapsed(key: string): boolean {
-  if (stateFilter.value === 'new') return false
-  return collapsed.value.includes(key)
+// I "Nytt"-filtret fälls allt ut så inget nytt göms i en stängd grupp.
+function isOpen(key: string): boolean {
+  if (stateFilter.value === 'new') return true
+  return openKey.value === key
 }
 function toggleGroup(key: string) {
-  const i = collapsed.value.indexOf(key)
-  if (i >= 0) collapsed.value.splice(i, 1)
-  else collapsed.value.push(key)
+  openKey.value = openKey.value === key ? null : key
 }
 
-// Håll ett giltigt val bland synliga dokument (utan att markera som läst).
-watch(
-  flatItems,
-  (list) => {
-    if (!list.some((i) => i.id === selectedId.value)) {
-      selectedId.value = list[0]?.id ?? null
-    }
-  },
-  { immediate: true },
-)
+// Rensa valet om det inte längre finns bland synliga dokument (utan auto-val:
+// kategorierna är stängda från start, så inget markeras läst i onödan).
+watch(flatItems, (list) => {
+  if (selectedId.value && !list.some((i) => i.id === selectedId.value)) {
+    selectedId.value = null
+  }
+})
 
 watch(hasUnread, (unread) => {
   if (!unread && stateFilter.value === 'new') stateFilter.value = 'all'
@@ -164,7 +159,7 @@ onBeforeUnmount(() => {
           >
             <span
               class="font-mono text-[0.6rem] text-ink-faint transition-transform"
-              :class="isCollapsed(g.key) ? '-rotate-90' : ''"
+              :class="isOpen(g.key) ? '' : '-rotate-90'"
               >▾</span
             >
             <span
@@ -181,7 +176,7 @@ onBeforeUnmount(() => {
           </button>
 
           <!-- Gruppens dokument -->
-          <template v-if="!isCollapsed(g.key)">
+          <template v-if="isOpen(g.key)">
             <button
               v-for="item in g.items"
               :key="item.id"
