@@ -1,0 +1,1139 @@
+{
+  "id": "arvssynden",
+  "title": "Arvssynden",
+  "tagline": "En advokat dör på sitt kontor en fredagskväll. Polisen tror att hon föll. Det stämmer inte.",
+  "description": "Den 13 oktober 2023 hittades Katarina Wester, senior partner på advokatbyrån Lindqvist & Wester, död i sitt arbetsrum. Polisen rubricerade det som ett olycksfall — hon ska ha fallit och slagit huvudet mot skrivbordet. Men forensiken stämmer inte med en olycka, och ju djupare utredarna gräver desto tydligare blir det att någon mycket nära Katarina hade allt att förlora på att låta henne leva till måndag.",
+  "setting": "Advokatbyrån Lindqvist & Wester KB, Birger Jarlsgatan 42, Stockholm — hösten 2023",
+  "estimatedDuration": "2–3 timmar",
+  "difficulty": "hard",
+  "minPlayers": 2,
+  "maxPlayers": 6,
+  "acts": [
+    {
+      "id": "act-1",
+      "number": 1,
+      "title": "Orientering",
+      "description": "Spelarna tar emot den initiala polisakt: Katarina Wester hittades död, preliminärt rubricerat som olycksfall. De läser vittnesmål, brottsplatsbeskrivning och teknisk dokumentation och börjar bilda sig en uppfattning.",
+      "playerIntro": "Fredagen den 13 oktober 2023. Kl. 21:02 ringer städaren Reza Tehrani 112 från fjärde våningen på Birger Jarlsgatan 42 i Stockholm. Han har hittat Katarina Wester — senior partner på advokatbyrån Lindqvist & Wester — livlös på golvet i sitt arbetsrum. Polisen rubricerar dödsfallet som misstänkt olycksfall. Ni är utredarna. Det är upp till er att avgöra vad som verkligen hände.",
+      "availableMaterialIds": [
+        "mat-polisrapport-01",
+        "mat-brottsplats-01",
+        "mat-kriminalteknisk-01",
+        "mat-personlista-01",
+        "mat-kameralog-01",
+        "mat-forhör-reza-01",
+        "mat-forhör-erik-01",
+        "mat-forhör-joakim-01",
+        "mat-forhör-lena-01",
+        "mat-forhör-petra-01",
+        "mat-forhör-marcus-01",
+        "mat-foto-brottsplats-01",
+        "mat-foto-brottsplats-03",
+        "mat-foto-brottsplats-04",
+        "mat-foto-brottsplats-05"
+      ],
+      "gmNoteIds": [
+        "gm-intro-akt1",
+        "gm-akt1-stamning"
+      ]
+    },
+    {
+      "id": "act-2",
+      "number": 2,
+      "title": "Fördjupning",
+      "description": "Spelarna begär uppföljningsmaterial, jämför kameraloggen med alibin, genomför uppföljningsförhör och undersöker ekonomiska spår. Bilden av en olycka börjar spricka.",
+      "playerIntro": "Utredningen fördjupas. Ni har identifierat frågor materialet inte svarar på. Det är dags att gräva djupare — begära loggar, genomföra uppföljningsförhör, undersöka platser och föremål noggrant. Ni styr er egen utredning.",
+      "availableMaterialIds": [
+        "mat-prelim-rmv",
+        "mat-forhör-reza-02",
+        "mat-forhör-erik-02",
+        "mat-forhör-joakim-02",
+        "mat-forhör-lena-02",
+        "mat-forhör-thomas-01",
+        "mat-forhör-maja-01",
+        "mat-datorlogg-erik",
+        "mat-datorlogg-katarina",
+        "mat-samtalslogg-erik",
+        "mat-samtalslogg-joakim",
+        "mat-bankutdrag-arvestum",
+        "mat-kalender-katarina"
+      ],
+      "gmNoteIds": [
+        "gm-akt2-motsagelser",
+        "gm-akt2-nivå3",
+        "gm-roda-sillar"
+      ]
+    },
+    {
+      "id": "act-3",
+      "number": 3,
+      "title": "Lösning",
+      "description": "Spelarna sätter ihop motiv, medel och tillfälle och presenterar sin teori för GM.",
+      "playerIntro": "Ni har nu ett underlag. Det är dags att sätta ihop de sista bitarna. När ni är redo att presentera er teori — vem som begick mordet, hur, och varför — säger ni till.",
+      "availableMaterialIds": [
+        "mat-brev-enell",
+        "mat-arvestum-mapp",
+        "mat-handskar-01",
+        "mat-prismat-teknisk"
+      ],
+      "gmNoteIds": [
+        "gm-losningsguide-akt3"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "char-katarina",
+      "name": "Katarina Wester",
+      "age": 58,
+      "occupation": "Senior partner och delägare, Lindqvist & Wester KB",
+      "role": "victim",
+      "description": "En av Stockholms mest respekterade advokater inom arvs- och fastighetsrätt. Metodisk, kompromisslös och intellektuellt skarp — men inte av den typ som väckte värme. Kollegor beskriver henne som rättvis men svår att läsa. Hon levde för jobbet.",
+      "relationship": "Offer",
+      "imageAssetPath": "cases/arvssynden/images/portratt-katarina.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-erik",
+      "name": "Erik Sandström",
+      "age": 44,
+      "occupation": "Partner, Lindqvist & Wester KB",
+      "role": "suspect",
+      "description": "Den på byrån som folk söker sig till när de behöver prata. Han lyssnar, han minns, han frågar upp. Han och Katarina utgjorde byråns kärna — hon med precisionen, han med förmågan att få klienter att känna sig sedda. Verkar genuint förkrossad av hennes död.",
+      "alibi": "Uppger att han stannade kvar för att avsluta en inlaga, lämnade byggnaden strax efter halv åtta och körde hem. Hustrun Helena bekräftar att han var hemma vid halv nio och att de åt middag tillsammans.",
+      "motive": "GÄRNINGSPERSON. Han och Katarina manipulerade 2019 Anders Lindgrens testamente och förde 4,6 MSEK till skalbolaget Arvestum Consulting. Katarina hade beslutat att bekänna för myndigheterna på måndag. Ett desperat mord för att stoppa sin egen undergång — karriär, familj, frihet.",
+      "relationship": "Katarinas protégé i tolv år",
+      "imageAssetPath": "cases/arvssynden/images/portratt-erik.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-joakim",
+      "name": "Joakim Wester",
+      "age": 53,
+      "occupation": "Fastighetsutvecklare, VD Wester Fastigheter AB",
+      "role": "suspect",
+      "description": "Katarinas ex-make, skild 2010 efter sexton år. Affärsmannen som alltid hittar en väg runt ett hinder. Delar äganderätten till en fastighet på Lidingö som hans bolag behöver för ett projekt värt ca 40 MSEK — Katarina ägde 30% och vägrade sälja.",
+      "alibi": "Hade möte med fastighetsadvokaten Johan Roos på plan 5 i samma byggnad, avslutade ca 19:45–19:50 och lämnade byggnaden strax efter 20:00. Entrékameran bekräftar utpassering 20:02 — nästan en halvtimme efter Erik.",
+      "motive": "RÖD SILL. Visste inte att Katarina jobbade kvar den kvällen och kände inte till Arvestum. Bitter men inte mördare. Hans 8 oredovisade minuter spenderade han i lobbyn — samtalsloggen (22 min med projektledaren) bekräftar resten.",
+      "relationship": "Ex-make, pågående fastighetstvist",
+      "imageAssetPath": "cases/arvssynden/images/portratt-joakim.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-lena",
+      "name": "Lena Björk",
+      "age": 49,
+      "occupation": "Junior partner, Lindqvist & Wester KB",
+      "role": "suspect",
+      "description": "Kom till byrån för nio år sedan med starka meriter och förväntan om att bli delägare. Det har inte hänt — Katarina röstade nej varje gång, med skäl som aldrig riktigt höll. Två dagar innan mordet sa hon i en korridor: \"Du kommer att ångra det här.\"",
+      "alibi": "Uppger att hon lämnade kontoret 18:45 (kamerabekräftat), gick på en yogaklass 19:00–20:30 och sedan hem. Instruktören minns henne i klassen.",
+      "motive": "RÖD SILL. \"Du kommer att ångra det\" syftade på att hon tänkte lämna byrån och ta tre klienter med sig. Hon checkade ut från yogan tidigt och satt på Kafé Saturnus och färdigställde sin ansökan till en konkurrerande byrå — en hemlighet hon ville hålla, inte ett mord.",
+      "relationship": "Junior partner, blockerad från delägarskap",
+      "imageAssetPath": "cases/arvssynden/images/portratt-lena.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-reza",
+      "name": "Reza Tehrani",
+      "age": 38,
+      "occupation": "Lokalvårdare, Städproffs AB",
+      "role": "witness",
+      "description": "Har arbetat på fjärde våningen i fyra år. Känner lokalerna och rytmerna. Fann Katarinas kropp kl. 21:02 och ringde 112. Den enda person som med säkerhet befann sig på våningen under den kritiska tidsperioden.",
+      "alibi": "Var i den östra flygeln med hörlurar på under kvällen. Rörelsesensorn loggar honom där 18:58 och 20:44. Passerade Katarinas dörr ca 19:07 och såg ljuset tänt.",
+      "motive": "RÖD SILL / NYCKELVITTNE. I augusti 2023 skickade Katarina ett klagomål om städningen som hotade hans kontrakt — ett motiv. Men han hade inget med mordet att göra. Det han vet: ljuset under dörren 19:07 (hon levde) och en man i marinblå kostym mot hissen ca 19:24 (avslöjas i uppföljningsförhör).",
+      "relationship": "Städaren på våningen — en av få Katarina hälsade på",
+      "imageAssetPath": "cases/arvssynden/images/portratt-reza.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-petra",
+      "name": "Petra Holm",
+      "age": 45,
+      "occupation": "Receptionist, Lindqvist & Wester KB",
+      "role": "witness",
+      "description": "Receptionist i åtta år — byråns informella minne. Hjälpsam och vaksam, lägger märke till saker. Lämnade kontoret 17:28 (kamerabekräftat).",
+      "alibi": "Lämnade byggnaden 17:28, långt före mordet.",
+      "motive": "VITTNE. Bekräftar att Erik sa att han stannade kvar (17:20). Noterade att Katarina i slutet av september tog emot ett rekommenderat brev som hon signerade själv direkt i receptionen — ovanligt.",
+      "relationship": "Receptionist",
+      "imageAssetPath": "cases/arvssynden/images/portratt-petra.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-marcus",
+      "name": "Marcus Ek",
+      "age": 32,
+      "occupation": "Junior associate, Lindqvist & Wester KB",
+      "role": "other",
+      "description": "Junior associate, anställd i två år. Kooperativ och uppriktig. Lämnade kontoret ca 17:45.",
+      "motive": "VITTNE. Lade märke till att Katarina och Erik hade ett kort, spänt utbyte på morgonen — \"de pratade lågt och Erik stängde Katarinas dörr, vilket var ovanligt.\"",
+      "relationship": "Kollega, ytlig kontakt",
+      "imageAssetPath": "cases/arvssynden/images/portratt-marcus.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-thomas",
+      "name": "Thomas Lindqvist",
+      "age": 71,
+      "occupation": "Grundare och namnpartner (halvpensionerad)",
+      "role": "other",
+      "description": "Byråns grundare, på kontoret två dagar i veckan. Var hemma i Djursholm mordkvällen. Sörjer genuint och vill inte tro att något var fel.",
+      "motive": "BAKGRUND. Kan bekräfta att Katarinas beteende ändrades i slutet av september — inställda luncher, distraktion. Lämnade Arvestum-ärendet 2019 till Katarina utan att granska det.",
+      "relationship": "Grundarpartner, 24 år som kollegor",
+      "imageAssetPath": "cases/arvssynden/images/portratt-thomas.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    },
+    {
+      "id": "char-maja",
+      "name": "Maja Lindgren",
+      "age": 46,
+      "occupation": "Dotter till Anders Lindgren",
+      "role": "other",
+      "description": "Dotter till den avlidne klienten Anders Lindgren. Bestämd och fokuserad. Anlitade advokat Jonas Enell för att granska oegentligheter i sin fars dödsbo.",
+      "motive": "BAKGRUND / KATALYSATOR. Hennes advokats brev till Katarina i september 2023 var det som fick Katarina att besluta sig för att bekänna — den utlösande händelsen bakom mordet. Hon visste inget om mordet.",
+      "relationship": "Arvinge med pågående juridisk process",
+      "imageAssetPath": "cases/arvssynden/images/portratt-maja.jpg",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "gmOnly": false
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-skrivbordshorn",
+      "title": "Skrivbordshörnet utan blod",
+      "description": "Skrivbordshörnet som Katarina enligt den initiala bedömningen ska ha fallit mot är rent — inget blod, inga vävnadsrester. Blodet finns på golvet, inte på hörnet.",
+      "type": "forensic",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "significance": "Bevisar att olycksförklaringen inte håller. Mordet var inscenerat."
+    },
+    {
+      "id": "ev-prismat",
+      "title": "Kristallprismat (mordvapen)",
+      "description": "Advokatsamfundets hederspris i fasettpipat glas, ca 1,8 kg, från Katarinas bokhylla. Bär mikrorester av hår och vävnad i en spricka längs basen — men saknar helt fingeravtryck.",
+      "type": "physical",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "significance": "Mordvapnet. Frånvaron av fingeravtryck på ett föremål som stod framme visar att det hanterats med handskar."
+    },
+    {
+      "id": "ev-handskar",
+      "title": "Plasthandskar i papperskorgen",
+      "description": "Två tunna plasthandskar funna i papperskorgen i kopieringsrummet. DNA på insidan konsistent med en manlig donator. Mikrofragment av kristallglas på insidan av höger handske.",
+      "type": "physical",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-erik"
+      ],
+      "significance": "Direkt koppling mellan bäraren och mordvapnet. Bäraren hanterade prismatet med handskarna."
+    },
+    {
+      "id": "ev-datorlogg",
+      "title": "Eriks datoraktivitet",
+      "description": "Söktermer kl. 10:15: \"advokatsamfundet anmälan konsekvenser\", \"whistleblower skydd advokat\". Inga dokument sparade under kvällen. Datorn stängdes av manuellt kl. 19:24.",
+      "type": "digital",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-erik"
+      ],
+      "significance": "Visar att Erik kände till anmälningshotet redan på morgonen, att han inte producerade något trots påstått övertidsarbete, och att han var aktiv i byggnaden under mordtidsramen."
+    },
+    {
+      "id": "ev-arvestum",
+      "title": "Arvestum Consulting — testamentsbedrägeriet",
+      "description": "Tilläggstestamente (2019) som omdirigerar 4,6 MSEK från Anders Lindgrens dödsbo till skalbolaget Arvestum Consulting AB, bevittnat av Katarina Wester och Erik Sandström. Konsultfakturor 2020–2021.",
+      "type": "financial",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-erik",
+        "char-katarina"
+      ],
+      "significance": "Motivet. Erik och Katarina var gemensamma gärningsmän i bedrägeriet 2019."
+    },
+    {
+      "id": "ev-enell",
+      "title": "Brevet från advokat Enell",
+      "description": "Brev från advokat Jonas Enell (29 sep 2023) på uppdrag av Maja Lindgren: oegentligheter i tilläggstestamentet har identifierats och en anmälan till Advokatsamfundet och eventuellt polisen är på väg.",
+      "type": "document",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-katarina",
+        "char-maja"
+      ],
+      "significance": "Förklarar varför Katarina dog just den fredagen — hotet om avslöjande var akut."
+    },
+    {
+      "id": "ev-kalender",
+      "title": "Kalenderbokning 16 oktober",
+      "description": "Katarinas kalender har en bokning: \"Möte Advokatsamfundet — förberedelse\", den 16 oktober.",
+      "type": "document",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-katarina"
+      ],
+      "significance": "Bekräftar att Katarinas beslut att bekänna var reellt och tre dagar bort när hon mördades."
+    },
+    {
+      "id": "ev-kameralog",
+      "title": "Entrékamerans logg",
+      "description": "Erik lämnade byggnaden 19:37, Joakim 20:02. Katarina registrerades aldrig som utpasserad. Erik var sista person från plan 4 medan Katarina ännu levde.",
+      "type": "document",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "significance": "Placerar Erik i byggnaden under mordtidsramen — men pekar ytligt även mot Joakim, vilket håller den falska teorin vid liv."
+    },
+    {
+      "id": "ev-rmv",
+      "title": "Preliminärt rättsmedicinskt utlåtande",
+      "description": "RMV bedömer dödstidpunkten till mellan 18:30 och 20:30 och noterar att kroppens position (livmorfärgningen) inte är helt konsistent med fyndpositionen — kroppen kan ha förflyttats efter dödsfallet.",
+      "type": "forensic",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "significance": "Det första forensiska tecknet på att dödsfallet kanske inte var en enkel olycka."
+    },
+    {
+      "id": "ev-reza-obs",
+      "title": "Rezas observation — marinblå kostym",
+      "description": "I uppföljningsförhör minns Reza en man i mörk marinblå kostym som gick mot hissen ca 19:24. Han såg bara en rygg.",
+      "type": "testimony",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "relatedCharacterIds": [
+        "char-reza"
+      ],
+      "significance": "Erik bar marinblå kostym den dagen. Kopplar honom till tiden och platsen."
+    }
+  ],
+  "material": [
+    {
+      "id": "mat-polisrapport-01",
+      "type": "police-report",
+      "title": "Polisrapport — initial",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "POLISMYNDIGHETEN STOCKHOLM\nRapport nr: 2023-10-1687\nDatum: 2023-10-14\nUpprättad av: Kriminalinspektör Anna Södergren, City-polisen\n\n---\n\nPLATS: Lindqvist & Wester KB, Birger Jarlsgatan 42, plan 4, Stockholm\nTID FÖR LARM: 2023-10-13, kl. 21:02\nTID FÖR ANKOMST: 2023-10-13, kl. 21:26\n\nOFFER: Katarina Wester, 58 år, Linnégatan 14, 114 47 Stockholm\n\n---\n\nFYND VID ANKOMST:\n\nPatrull 413 (Karlsson/Lindström) anlände till adressen kl. 21:26 efter larm om\nperson som påträffats livlös. Larmet inkom från Reza Tehrani (38), lokalvårdare,\nverksam i fastigheten.\n\nPå plan 4 påträffades Katarina Wester liggande på golvet i sitt arbetsrum,\ni anslutning till sin skrivbordsplats. Ambulanspersonal konstaterade döden\nkl. 21:41. Inga livstecken.\n\nRummet var låst invändigt. Tehrani hade öppnat dörren med hjälp av en\nuniversalnyckel tillhörande städbolaget. Dörrens lås visade inga tecken på\nmanipulering.\n\nInitial bedömning på plats: Wester bedöms ha fallit och slagit huvudet mot\nskrivbordshörnet. Inga omedelbara fynd som tyder på utomstående inblandning\nuppmärksammades av patrullen vid ankomsten. Sår i vänster tinning konsistent\nmed skrivbordets hörn.\n\n---\n\nPERSONER PÅ PLATS:\n\nReza Tehrani (38), lokalvårdare, Städproffs AB.\n— Fann offret kl. 21:02. Ringde 112. Stannade vid entrén tills patrullen anlände.\n— Uppgav att han arbetat på fjärde våningen från kl. 18:50 och rört sig mellan\n   östra och västra flygeln. Fann offret i samband med att han avslutade arbetet\n   i västra flygeln.\n\nAmbulanspersonal: Björn Ek och Sara Nilsson, Falck. Anlände 21:38.\n\n---\n\nÅTGÄRDER:\n\n- Platsen säkrades och spärrades av kl. 21:45.\n- Kriminaltekniker (NFC) tillkallades. Ankomst kl. 22:18.\n- Närmast anhörig: Ingen registrerad make/partner. Offrets ex-make Joakim Wester\n  (53) kontaktades kl. 22:05. Uppgav sig ha lämnat fastigheten tidigare under\n  kvällen.\n- Kollegan Erik Sandström (44) kontaktades per telefon kl. 21:45. Uppvisade\n  kraftig chockreaktion. Ombads inställa sig för förhör nästkommande morgon.\n\n---\n\nINITIAL BEDÖMNING:\n\nDödsfallet rubriceras preliminärt som misstänkt olycksfall i väntan på\nkriminalteknisk undersökning och rättsmedicinsk bedömning. Inga omedelbara\nfynd utesluter olycka. Utredning inleds med förhör av personer med koppling\ntill fastigheten och offret.\n\nBeslutat om utredningsåtgärder: Förhör med Reza Tehrani (genomfört 2023-10-14),\nErik Sandström (2023-10-14), Joakim Wester (2023-10-14), Lena Björk (2023-10-14),\nPetra Holm (2023-10-14), Marcus Ek (2023-10-14)."
+    },
+    {
+      "id": "mat-brottsplats-01",
+      "type": "document",
+      "title": "Brottsplatsbeskrivning",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "BROTTSPLATSBESKRIVNING\nLindqvist & Wester KB — Katarina Westers arbetsrum\nPlan 4, Birger Jarlsgatan 42, Stockholm\nDokumenterad av kriminalteknikerna (NFC): 2023-10-13, kl. 22:18–23:40\nTekniker: Lars Engvall, Sofia Kvist\n\n---\n\nBYGGNADEN OCH PLANEN\n\nKontorsbyggnad uppförd ca 1923, tegelfasad. Fjärde våningen nås via hiss eller\ntrapphus. Entrén i bottenvåningen har en övervakningskamera monterad ovan\ndörröppningen. Lindqvist & Wester KB upptar hela plan 4. Planen är uppdelad i\nen östlig och en västlig flygel förenade av en korridor med reception i mitten.\nKatarina Westers arbetsrum är ett hörnkontor i västra flygeln, sydväst, med\nfönster mot söder och väster.\n\n---\n\nKORRIDOREN UTANFÖR RUMMET\n\nBred, heltäckningsmattad korridor med god akustisk dämpning. Katarina Westers\ndörr är markerad med ett inramat A4: \"K. Wester, Senior Partner.\"\n\nDörren stod på glänt vid tekniskt tillträde kl. 22:18, enligt uppgift från\nlokalvårdaren Tehrani. Tehrani uppgav att dörren var stängd men olåst när han\nfann offret. Inga märken på dörrkarmen eller låsblecket.\n\n---\n\nARBETSRUMMET — ALLMÄNT\n\nUngefär 24 kvm. Tak: stuck, ca 3 m höjd. Parkett under heltäckningsmatta längs\nväggarna. Fönster mot söder (innergård) och väster (Birger Jarlsgatan).\nPersienner halvt nedfällda vid tekniskt tillträde.\n\nBelysning: taklampa tänd. Skrivbordslampa tänd. Läslykta vid bokhyllan: släckt.\n\n---\n\nMÖBLERING OCH INVENTARIER\n\nSkrivbord: massivt mörkt trä (troligen valnöt), placerat mot västväggen med\nstolen mot fönstret. Mått ca 180 × 90 cm. Underskåp på höger sida med ett\nmässingshandtag — låst.\n\nBokhyllor längs östra och norra väggen, golv till tak. På hyllan närmast\nfönstret, övre rad: ett kristallprismat (ca 20 cm, fasettpipat) på svart\npiedestal. Märkt i botten: \"Advokatsamfundet Hederspris 2015 — Lindqvist &\nWester KB.\"\n\nTavla: antik karta Stockholm 1897, västra väggen.\n\n---\n\nOFFRETS POSITION VID FYND\n\nKatarina Wester påträffades liggande på golvet framför skrivbordet, på rygg,\nmed huvudet mot det högra skrivbordshörnet. Armarna längs kroppen. Benen\nnågot sammanhållna.\n\nSår i vänster tinning: ca 3 × 1,5 cm, oregelbunden form. Blod på golvet ca\n20 × 30 cm i anslutning till huvudet. Inget blod synligt på skrivbordshörnet\n— avvikelse noteras, överlämnas till rättsmedicinalverket.\n\nDatorskärmen: tänd, inloggad. Senast aktiv: oredigerat e-postutkast. Ingen\naktivitet registrerad efter 19:02.\n\n---\n\nKRISTALLPRISMATEN\n\nPrismat på sin plats på bokhyllan. Inget synligt blod. Inga synliga\nfingeravtryck — avviker från övriga föremål på hyllan.\n\nTekniker Engvall: \"Prismatets glasyta är anmärkningsvärt ren för ett föremål\nsom stått framme i ett aktivt arbetsrum.\"\n\nPrismatan tas med för teknisk analys.\n\n---\n\nKOPIERINGSRUMMET (angränsande, västra flygeln)\n\nCa 8 kvm. Kopiator, skrivare, förbrukningsmaterial. Plasthandskar i\npapperskorgen under kopiatorn — oanvända i utseendet, placerade ovanpå\növrigt innehåll. Tas med för analys.\n\n---\n\nKRIMINALTEKNISK NOTERING — DÖDSORSAK OCH KROPPSLÄGE\n\nLikstelhet: märkbar men ej fullständig vid ca kl. 22:30. Käke och nacke.\nKonsistent med döden 1–4 timmar före undersökningstillfället.\n\nLikfärgning (livor mortis): framträdande längs ryggsida. Blancherbar vid lätt\ntryck — konsistent med < 6 timmar sedan döden. Bedömning av eventuell\nförflyttning överlämnas till rättsläkaren.\n\nSårvinkelns riktning: konsistent med slag ovanifrån-snett-bakifrån.\nSkrivbordshörnet sitter lägre och till vänster om offrets sittposition.\nDiskrepansen flaggas för rättsmedicinalverket.\n\n---\n\nÖVRIGT\n\n- Offrets handväska bakom dörren — plånbok och telefon inuti, ostört.\n- Kaffemugg på skrivbordet, halvfull, kall. Tejpad: \"KATARINAS\".\n- Inga tecken på inbrott, stök eller kamp.",
+      "relatedEvidenceIds": [
+        "ev-skrivbordshorn"
+      ]
+    },
+    {
+      "id": "mat-kriminalteknisk-01",
+      "type": "forensic",
+      "title": "Kriminalteknisk platsdokumentation",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "KRIMINALTEKNISK PLATSDOKUMENTATION\nLindqvist & Wester KB, Birger Jarlsgatan 42, plan 4\nNFC (Nationellt Forensiskt Centrum)\nDatum: 2023-10-13, kl. 22:18–23:40\nDokumentnr: NFC-2023-4712\n\n---\n\nBEVISFÖRTECKNING\n\n| Nr | Föremål | Fundplats | Åtgärd |\n|----|---------|-----------|--------|\n| 01 | Kristallprismat, fasettpipat, ca 20 cm | Bokhyllan, arbetsrummet | Beslag, teknisk analys |\n| 02 | Plasthandskar (2 st, vita, stl M) | Papperskorgen, kopieringsrummet | Beslag, DNA/fingeravtryck |\n| 03 | Datorenhet (stationär, HP) | Skrivbordet, arbetsrummet | Speglingskopia av hårddisk |\n| 04 | Mobiltelefon (Samsung Galaxy) | Offrets handväska | Beslag, digital analys |\n| 05 | Kaffemugg, keramik | Skrivbordet | Fotodokumenterad, ej beslagen |\n\n---\n\nDÖDSRELATERADE FYND\n\nLikstelhet: Påbörjad. Tydlig stelhet i käke och nacke, ej fullt genomgången.\nNotering: konsistent med ett dödsfall 1–4 timmar före undersökningstillfället (ca kl. 22:30).\n\nLikfärgning (livor mortis): Framträdande längs ryggsida och bakre delar av armar.\nBlancherbar vid lätt tryck — bekräftar att 6 timmar ej förflutit sedan döden.\n\nLikfärgningens position: Noteras och fotograferas. Avvikelse från fyndpositionen kan\nbedömas av rättsläkare vid obduktionen. Överlämnas utan slutsats.\n\nSårundersökning (yttre): Sår i vänster tinning, ca 3 × 1,5 cm, djupt, komprimerat.\nBlödning mot golvet. Tekniker Kvist flaggar att sårvinkelns riktning och skrivbordshörnets\nläge inte omedelbart harmonierar — formell bedömning tillkommer rättsläkare.\n\n---\n\nÖVRIGT DOKUMENTERAT\n\n- Inga spår av inbrott i fastighetens entré eller på plan 4.\n- Inga vittnesuppgifter om ljud (skrik, slag) under kvällen.\n- Entrékameran i bottenvåningen fungerar och loggar normalt. Logg begärd.\n- Rörelsesensorer i västra flygeln: loggar begärda från fastighetsägaren.\n\n---\n\nUnderskrift: Lars Engvall, Sofia Kvist — NFC\nRapport sammanställd: 2023-10-14",
+      "relatedEvidenceIds": [
+        "ev-skrivbordshorn",
+        "ev-prismat"
+      ]
+    },
+    {
+      "id": "mat-personlista-01",
+      "type": "document",
+      "title": "Personlista",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "PERSONLISTA\nLindqvist & Wester KB — utredning dödsfall Katarina Wester\nUpprättad av: Kriminalinspektör Anna Södergren, 2023-10-14\n\n---\n\nNedan förtecknas samtliga personer med känd koppling till platsen eller offret\nsom är av intresse för utredningen.\n\n---\n\nOFFER\n\nKatarina Wester, 58 år\nDelägare och senior partner, Lindqvist & Wester KB\nLinnégatan 14, 114 47 Stockholm\nSpecialiserad på arvs- och fastighetsrätt. Delägare sedan 2004. Skild 2010.\nPåträffad avliden i sitt arbetsrum kl. 21:02, fredagen den 13 oktober 2023.\n\n---\n\nANSTÄLLDA PÅ BYRÅN — BEKRÄFTAT TILLTRÄDE FREDAG 13 OKT\n\nErik Sandström, 44 år\nPartner, Lindqvist & Wester KB\nHantverkargatan 22, 112 21 Stockholm\nNära kollega och protégé till Katarina Wester. Bekräftad kvar i byggnaden efter\növriga anställda. Lämnade byggnaden kl. 19:37 (kamerabekräftat).\nFörhörd: 2023-10-14.\n\nLena Björk, 49 år\nJunior partner, Lindqvist & Wester KB\nUpplandsgatan 7, 113 28 Stockholm\nLämnade byggnaden kl. 18:45 (kamerabekräftat). Uppger att hon var på yogaklass\nkl. 19:00–20:30.\nFörhörd: 2023-10-14.\n\nPetra Holm, 45 år\nReceptionist, Lindqvist & Wester KB\nAnställd 8 år. Lämnade byggnaden kl. 17:28 (kamerabekräftat).\nFörhörd: 2023-10-14.\n\nMarcus Ek, 32 år\nJunior associate, Lindqvist & Wester KB\nLämnade byggnaden kl. 17:46 (kamerabekräftat). Skickade SMS till Erik Sandström\nkl. 21:18.\nFörhörd: 2023-10-14.\n\nThomas Lindqvist, 71 år\nGrundare och namnpartner, Lindqvist & Wester KB\nHalvpensionerad — på byrån måndag och torsdag. Ej bekräftat på plats fredag 13 okt.\nFörhör ej genomfört per 2023-10-14.\n\n---\n\nÖVRIGA PERSONER I BYGGNADEN FREDAG 13 OKT\n\nJoakim Wester, 53 år\nVD, Wester Fastigheter AB\nOffrets ex-make. Hade möte med sin fastighetsadvokat Johan Roos på plan 5 i\nsamma byggnad. Lämnade byggnaden kl. 20:02 (kamerabekräftat).\nFörhörd: 2023-10-14.\n\nReza Tehrani, 38 år\nLokalvårdare, Städproffs AB\nTilldelad Birger Jarlsgatan 42 tre kvällar i veckan. Fann offret kl. 21:02 och\nringde 112. Befann sig i byggnaden sedan ca kl. 18:50.\nFörhörd: 2023-10-14.\n\n---\n\nÖVRIGA PERSONER AV INTRESSE\n\nMaja Lindgren, ålder ej fastställd\nDotter till den 2020 avlidne klienten Anders Lindgren. Anlitade advokat Jonas\nEnell i juni 2023 i anledning av ett tvistemål rörande sin fars dödsbo.\nKoppling till brev mottaget av offret 29 september 2023. Förhör ej genomfört.\n\nJohan Roos, advokat\nRoos Advokatbyrå, plan 5, Birger Jarlsgatan 42. Joakim Westers fastighetsadvokat.\nBekräftar möte med Wester under fredagskvällen. Mötet avslutades ca 19:28.\nFörhör ej genomfört."
+    },
+    {
+      "id": "mat-kameralog-01",
+      "type": "document",
+      "title": "Kameralog — entré",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "KAMERALOG — ENTRÉKAMERA\nBirger Jarlsgatan 42, Stockholm\nUtdrag begärt av: Polismyndigheten Stockholm, Kriminalinspektör A. Södergren\nBegäran: 2023-10-14\nPeriod: 2023-10-13, kl. 08:00–22:00\nKamera: Entré, plan 0 (enda kamera i fastigheten)\nSystemansvarig: Birger Fastighets AB\n\n---\n\n| Tid   | Person                    | Riktning |\n|-------|---------------------------|----------|\n| 08:12 | Sandström, Erik           | In       |\n| 08:38 | Wester, Katarina          | In       |\n| 08:44 | Holm, Petra               | In       |\n| 09:02 | Björk, Lena               | In       |\n| 09:15 | Ek, Marcus                | In       |\n| 12:03 | Wester, Joakim            | In       |\n| 12:41 | Wester, Joakim            | Ut       |\n| 14:15 | Wester, Joakim            | In       |\n| 17:28 | Holm, Petra               | Ut       |\n| 17:46 | Ek, Marcus                | Ut       |\n| 18:45 | Björk, Lena               | Ut       |\n| 19:37 | Sandström, Erik           | Ut       |\n| 20:02 | Wester, Joakim            | Ut       |\n| 21:02 | — (larm 112, patrull 413) | —        |\n| 21:26 | Patrull 413 (Karlsson/Lindström) | In |\n| 21:38 | Ambulans (Ek/Nilsson)     | In       |\n| 22:18 | NFC-tekniker (Engvall/Kvist) | In    |\n\nOBS: Wester, Katarina — ingen utpassering registrerad.\n\nOBS: Städpersonal (Städproffs AB) använder separat personalingång i\nkällarplanet — ingår ej i ovanstående logg. Reza Tehranis närvaro i\nfastigheten bekräftad via intern städlogg och vittnesuppgift.\n\n---\n\nSystemets driftstatus: Normal. Inga avbrott eller felposter 2023-10-13.",
+      "relatedEvidenceIds": [
+        "ev-kameralog"
+      ]
+    },
+    {
+      "id": "mat-forhör-reza-01",
+      "type": "testimony",
+      "title": "Förhör — Reza Tehrani (initialt)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INITIAL INTERVJU\nFörhörsperson: Reza Tehrani, 38 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-14, kl. 09:15\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Reza, tack för att du kom in. Jag vet att det var en traumatisk kväll.\n    Vi behöver höra din berättelse. Kan du börja med att berätta när du\n    anlände till Birger Jarlsgatan 42?\n\nRT: Jag kom dit vid halv sju, ungefär. Vi brukar vara där tre kvällar i\n    veckan — måndag, onsdag, fredag. Jag tar fjärde våningen. Det är mitt\n    område sedan fyra år.\n\nFL: Vad hände när du kom upp till plan 4?\n\nRT: Jag tog hissen, hämtade städvagnen ur förrådet. Börjar alltid med östra\n    flygeln — kontorsrum och toaletterna — sen västra. Tar ungefär två timmar.\n\nFL: Märkte du något ovanligt?\n\nRT: Nej. Det var normalt. Tyst, som det brukar vara på fredagkvällar.\n    Fast... ljuset var tänt hos frun. Hos Wester.\n\nFL: \"Frun\" — menar du Katarina Wester?\n\nRT: Ja. Jag kallar henne så ibland, i mitt huvud. Inte elakt. Hon var fin\n    mot mig. Ljuset lyste under hennes dörr när jag passerade. Det är ganska\n    vanligt att hon jobbade sent. Jag tänkte inget särskilt.\n\nFL: Hörde du något från rummet?\n\nRT: Nej. Ingenting. Men jag hade hörlurar på. Det är inte förbjudet.\n\nFL: Berätta om när du hittade henne.\n\nRT: Det var sent. Jag var klar med östra flygeln och köket. Gick mot\n    västra. Hennes dörr stod på glänt. Det var konstigt — hon stänger\n    alltid. Jag knackade. Inget svar. Knackade igen. Dörren gick upp.\n    Och då såg jag henne.\n\nFL: Vad såg du?\n\nRT: Hon låg på golvet framför skrivbordet. Jag ropade. Inget. Jag gick in,\n    la handen på hennes axel, skakade lite. Hon rörde sig inte. Det var blod\n    på golvet. Jag backade ut och ringde 112.\n\nFL: Rörde du vid något annat i rummet?\n\nRT: Nej. Bara hennes axel.\n\nFL: Kände du Katarina Wester väl?\n\nRT: Lite. Hon hälsade alltid, frågade en gång om min familj. Det är mer\n    än de flesta gör. Hon klagade på mig en gång — på mitt arbete — men\n    det var hennes rätt. Jag förstår det.\n\nFL: Du visste om klagomålet?\n\nRT: Ja. Min chef berättade i september. Det var jobbigt. Men jag är inte\n    arg. Hon var en bra människa, det tror jag.\n\nFL: Träffade du någon annan i byggnaden under kvällen?\n\nRT: I hissen på väg upp — en man. Gick av på andra eller tredje, jag är\n    inte säker. Jag tittade inte på ansiktet. Mörk jacka, tror jag.\n\nFL: Är det något du vill tillägga? Något som kändes konstigt?\n\nRT: Hennes dörr. Den stod på glänt. Det har jag aldrig sett förut\n    när hon jobbade. Det var det enda konstiga.\n\nFL: Tack, Reza. Vi kan behöva kontakta dig igen.",
+      "relatedCharacterIds": [
+        "char-reza"
+      ]
+    },
+    {
+      "id": "mat-forhör-erik-01",
+      "type": "testimony",
+      "title": "Förhör — Erik Sandström (initialt)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INITIAL INTERVJU\nFörhörsperson: Erik Sandström, 44 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-14, kl. 10:30\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Erik, tack för att du kom. Jag förstår att det är väldigt svårt.\n\nES: Förlåt. Jag sov inte. Jag förstår fortfarande inte riktigt vad som\n    hänt.\n\nFL: Ta den tid du behöver. Kan du berätta om gårdagen — från när du kom\n    in på jobbet?\n\nES: Jag kom strax efter åtta. Det är normalt för mig. Katarina var inne\n    vid halv nio, tror jag. Vi pratade lite under morgonen om ett pågående\n    ärende. En helt normal dag, inledningsvis.\n\nFL: Märkte du något annorlunda med Katarina under dagen?\n\nES: Hon verkade koncentrerad. Stängde sin dörr på förmiddagen, vilket hon\n    inte brukar göra. Jag tänkte inte mer på det då.\n\nFL: Varför stannade du kvar efter kontorstid?\n\nES: Jag hade en inlaga som måste vara klar till måndag. Det händer att jag\n    jobbar fredagkvällar när det är pressat.\n\nFL: Fick du inlagan klar?\n\nES: Nej. Det gick trögt. Jag kom inte riktigt igång. Strax efter halv sju\n    bestämde jag mig för att lämna och fortsätta på måndag.\n\nFL: Gick du förbi Katarinas rum på vägen ut?\n\nES: Hennes rum ligger i den andra flygeln. Nej, jag gick direkt mot hissen.\n\nFL: Såg du någon annan i byggnaden?\n\nES: Nära entrén — Joakim Wester, hennes ex. Han brukar ha möten i byggnaden.\n    Vi nickade åt varandra. Pratar inte.\n\nFL: Och du åkte direkt hem?\n\nES: Ja. Ringde Helena på vägen — min fru. Var hemma strax efter halv nio.\n    Vi åt middag. Sedan fick jag SMS från Marcus Ek att något hänt vid byrån.\n    Jag förstod ingenting. Sen ringde polisen.\n\nFL: Hur var er relation till Katarina de senaste veckorna?\n\nES: Hon verkade lite distraherad. Ställde in en lunch vi brukar ha. Men det\n    var Katarina — om något var fel sa hon det inte om hon inte ville. Jag\n    frågade inte.\n\nFL: Kan du tänka dig att någon ville henne illa?\n\nES: Katarina skapade inte fiender lätt. Men hon var hård. Joakim var bitter.\n    Lena var frustrerad. Det är inte detsamma som att vilja någon död.\n\nFL: Tack, Erik. Vi kan behöva tala med dig igen.",
+      "relatedCharacterIds": [
+        "char-erik"
+      ]
+    },
+    {
+      "id": "mat-forhör-joakim-01",
+      "type": "testimony",
+      "title": "Förhör — Joakim Wester (initialt)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INITIAL INTERVJU\nFörhörsperson: Joakim Wester, 53 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-14, kl. 11:45\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Joakim, du befann dig i samma byggnad som din ex-fru under fredagskvällen.\n    Vi behöver gå igenom vad du gjorde.\n\nJW: Självklart. Jag förstår det. Jag hade inget med det här att göra, men\n    jag förstår att ni måste fråga.\n\nFL: Berätta om ditt besök.\n\nJW: Jag hade möte med min fastighetsadvokat Johan Roos. Han har kontor på\n    plan 5 i samma byggnad — ett praktiskt sammanträffande, ingenting mer.\n    Mötet gällde ett fastighetsprojekt på Lidingö. Det har pågått länge.\n\nFL: Hur länge var du på mötet?\n\nJW: Vi började vid tre. Avslutade — jag skulle säga — vid kvart i åtta, kanske.\n    Det var ett långt möte.\n\nFL: Träffade du Katarina?\n\nJW: Nej. Jag gick aldrig till plan 4. Det finns ingen anledning för mig att\n    göra det. Vi är inte vänner.\n\nFL: Ni hade en pågående juridisk tvist?\n\nJW: Vi äger en fastighet gemensamt på Lidingö. Jag vill sälja. Hon ville\n    inte. Det är en tråkig historia som pågått för länge. Det är inte hat,\n    det är... tröghet. Hennes tröghet.\n\nFL: Var befann du dig i byggnaden efter mötet?\n\nJW: Jag stannade i lobbyn på plan 5 en stund. Ringde ett samtal med min\n    projektledare om Lidingöprojektet. Det tog en stund. Sedan gick jag ner\n    och lämnade byggnaden.\n\nFL: Kameraloggen visar att du lämnade kl. 20:02.\n\nJW: Det stämmer ungefär. Samtalet var långt.\n\nFL: Kände du till att Katarina jobbade kvar den kvällen?\n\nJW: Nej. Hur skulle jag veta det? Vi kommunicerar via advokater.\n\nFL: Hur reagerade du när du fick veta att hon dött?\n\nJW: Det var... oväntat. Jag vet inte vad jag ska säga. Jag hoppades att\n    vi skulle lösa fastighetsgrejen en dag. Nu vet jag inte vad som händer.\n\nFL: Kan du tänka dig att någon ville henne illa?\n\nJW: Katarina skapade problem för folk. Det är skillnad mot att vilja någon\n    illa. Jag ville inte henne illa. Jag ville att hon skulle skriva på ett\n    papper. Det är allt.\n\nFL: Tack, Joakim.",
+      "relatedCharacterIds": [
+        "char-joakim"
+      ]
+    },
+    {
+      "id": "mat-forhör-lena-01",
+      "type": "testimony",
+      "title": "Förhör — Lena Björk (initialt)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INITIAL INTERVJU\nFörhörsperson: Lena Björk, 49 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-14, kl. 13:00\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Lena, berätta om din fredagkväll. Du lämnade byrån kl. 18:45?\n\nLB: Ja. Jag gick lite sent — brukar gå vid sex. Hade ett ärende att\n    avsluta.\n\nFL: Vart gick du när du lämnade?\n\nLB: Direkt till Östermalm Hälsoklubb. Yogaklass kl. 19:00. Det är fast\n    i schemat varje fredag. Och sedan hem.\n\nFL: Hur länge var du på yogaklassen?\n\nLB: Hela passet. 19:00 till 20:30. Instruktören Mia Strand känner igen mig,\n    om ni vill fråga henne.\n\nFL: Sedan gick du direkt hem?\n\nLB: Ja.\n\nFL: Hur var din relation till Katarina Wester?\n\nLB: Professionell. Ansträngd, om jag ska vara ärlig. Hon hade blockerat\n    min partnerskapsnominering upprepade gånger. Det är inget hemligt på\n    byrån. Det satt hårt.\n\nFL: Ni hade ett konfronterande utbyte i korridoren två dagar innan hennes\n    död. Vittnen har hört det.\n\nLB: Ja. Jag var frustrerad. Jag sa att hon skulle komma att ångra det. Det\n    lät värre än vad jag menade. Jag menade att det var ett dåligt beslut\n    för byrån. Det är allt.\n\nFL: Kan du förstå att det låter hotfullt?\n\nLB: Ja, det kan jag. Men det var inte ett hot. Det var en frustration som\n    läckte ut. Jag är inte stolt över det.\n\nFL: Hur mår du nu?\n\nLB: Jag vet inte. Vi var inte vänner. Men det är ändå en människa.\n    Och det förändrar allt på byrån.\n\nFL: Tack, Lena.",
+      "relatedCharacterIds": [
+        "char-lena"
+      ]
+    },
+    {
+      "id": "mat-forhör-petra-01",
+      "type": "testimony",
+      "title": "Förhör — Petra Holm (initialt)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INITIAL INTERVJU\nFörhörsperson: Petra Holm, 45 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-14, kl. 14:15\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Petra, du är receptionist på byrån sedan åtta år — du känner personalen\n    väl. Kan du berätta om din fredagkväll?\n\nPH: Jag lämnade vid 17:28, lite tidigt. Fredagar är lugna. Jag tyckte att\n    det inte var mer att göra.\n\nFL: Vem var kvar på byrån när du gick?\n\nPH: Erik — Erik Sandström. Han sa åt mig att han stannade och avslutar en\n    inlaga. Det händer ibland. Han bad mig inte oroa mig.\n\nFL: Var Katarina Wester kvar?\n\nPH: Ja. Hennes dörr var stängd, men hennes kappa hängde på kroken i\n    receptionen, som den alltid gör när hon är inne.\n\nFL: Märkte du något ovanligt under fredagen?\n\nPH: Erik verkade lite... inte sig lik. Han brukade alltid hälsa ordentligt,\n    fråga om helgen. På fredagmorgonen var han korthuggad. Inte otrevlig,\n    men frånvarande.\n\nFL: Och Katarina?\n\nPH: Stängde sin dörr tidigt. Det var något med henne den sista tiden. Sedan\n    september ungefär. Mer tillbakadragen. Hon mottog ett rekommenderat brev\n    i slutet av september — signerade det själv i receptionen, vilket hon\n    aldrig brukar göra. Jag hanterar normalt posten.\n\nFL: Vet du vad brevet gällde?\n\nPH: Nej. Och det är inte min sak att fråga. Men det var ovanligt.\n\nFL: Känner du till att Joakim Wester ibland är i byggnaden?\n\nPH: Ja. Hans advokat sitter på plan 5. Han passerar receptionen ibland.\n    Hälsar inte. Tittar rakt igenom en.\n\nFL: Kan du tänka dig att någon på byrån ville Katarina illa?\n\nPH: Det är svårt att säga. Lena var arg — det var ingen hemlighet. Men Lena\n    är inte... hon är inte den typen. Erik var hennes närmaste. Han skulle\n    ha gjort vad som helst för henne.\n\n    [paus]\n\n    Eller det trodde jag.\n\nFL: Tack, Petra.",
+      "relatedCharacterIds": [
+        "char-petra"
+      ]
+    },
+    {
+      "id": "mat-forhör-marcus-01",
+      "type": "testimony",
+      "title": "Förhör — Marcus Ek",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INITIAL INTERVJU\nFörhörsperson: Marcus Ek, 32 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-14, kl. 15:00\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Marcus, du skickade ett SMS till Erik Sandström kl. 21:18 om att något\n    hänt vid byrån. Hur fick du veta det?\n\nME: Jag bor på Östermalm. Cyklade förbi Birger Jarlsgatan. Såg ambulansen,\n    folk på gatan. Kollade på Flashback — det hade redan dykt upp ett inlägg.\n    Jag tänkte på Erik direkt, att han jobbade kvar.\n\nFL: Hur väl känner du Erik Sandström?\n\nME: Ganska bra, för att vara kollegor. Han är lätt att prata med. Han och\n    Katarina var byråns kärna — de jobbade tätt.\n\nFL: Märkte du något annorlunda med Erik under fredagen?\n\nME: Han var lite frånvarande. Inte arg, inte konstig — bara inte helt med.\n    Svårt att förklara. Jag la märke till det men tänkte inte vidare.\n\nFL: Och Katarina?\n\nME: Jag hörde att hon och Erik hade ett kort utbyte på morgonen. Jag gick\n    förbi korridoren — Erik stängde hennes dörr, vilket var ovanligt. De pratade\n    lågt. Det verkade inte trevligt, men jag hörde ingenting av vad de sa.\n\nFL: Visste du att Erik stannade kvar på kvällen?\n\nME: Jag antog det när jag tänkte på det i efterhand. Det passar in i hans\n    beteende under dagen.\n\nFL: Känner du till att det fanns konflikter på byrån? Lena Björk och Katarina?\n\nME: Alla vet om det. Lena är duktig, Katarina sade nej. Det var spänning.\n    Men det var under ytan — ingen scenframträdelse om det, förutom den\n    gången i korridoren för ett par dagar sedan.\n\nFL: Tack, Marcus.",
+      "relatedCharacterIds": [
+        "char-marcus"
+      ]
+    },
+    {
+      "id": "mat-prelim-rmv",
+      "type": "forensic",
+      "title": "Preliminärt rättsmedicinskt utlåtande",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "PRELIMINÄRT RÄTTSMEDICINSKT UTLÅTANDE\nRättsmedicinalverket Stockholm\nÄrende nr: RMV-2023-4198\nDatum för obduktion: 2023-10-16\nDatum för utlåtande: 2023-10-20\nUtfärdat av: Rättsläkare Ingrid Palmér, docent\n\nAvser: Katarina Wester, född 1965-03-17, personnummer 650317-XXXX\nBeställare: Polismyndigheten Stockholm, Kriminalinspektör A. Södergren\n\n---\n\nYTTRE UNDERSÖKNING\n\nSår i vänster tinning: oregelbundet, ca 3 × 1,5 cm, komprimerat djupt sår\nmed omgivande kontusionszon. Sårkanal konsistent med trubbigt slag. Sårvinkelns\nriktning och mönster bedöms konsistent med slag ovanifrån-snett-bakifrån.\nSkrivbordshörnets placering och höjd (74 cm, vänster om fyndpositionen) är ej\nfullt förenliga med sårbilden.\n\nInga ytterligare yttre skador eller defensiva skador (handleder, underarmar\nfria från defensionsmärken).\n\n---\n\nINRE UNDERSÖKNING\n\nDödsorsak: Skallbasisfraktur med subaraknoidal blödning till följd av trubbigt\nvåld mot vänster tinning. Omedelbar medvetslöshet sannolikt. Döden bedöms ha\ninträffat inom minuter efter skadetillfället.\n\nInga tecken på förgiftning (alkohol, sedativa, övriga toxikologiska fynd)\nframkommer av preliminär analys. Slutgiltiga toxikologiska svar inväntas.\n\n---\n\nBEDÖMNING AV DÖDSTID\n\nBaserat på kroppsundersökning vid obduktionen, uppgifter från kriminalteknikerna\n(likstelhet och likfärgning vid platsdokumentation ca kl. 22:30) samt tillgänglig\nomgivningsinformation bedöms den avlidna ha avsomnat:\n\n    MELLAN KL. 18:30 OCH 20:30 FREDAGEN DEN 13 OKTOBER 2023\n\nExakt tidpunkt kan ej fastställas med forensiska metoder.\n\n---\n\nANMÄRKNING — MÖJLIG FÖRFLYTTNING\n\nLikfärgningens (livor mortis) position vid obduktionen är ej helt konsistent med\nfyndpositionen. Fynd indikerar att kroppen kan ha förflyttats eller ompositionerats\nefter dödsfallet — detta kan dock ej fastslås med säkerhet i detta skede.\nYtterligare analys pågår.\n\n---\n\nSLUTSATS\n\nDödsorsaken är skallbasisfraktur med subaraknoidal blödning till följd av\nkraftigt trubbigt våld mot vänster tinning. Döden är inte naturlig. Huruvida\nvåldet är självtillfogat, olycksfallsbetingat eller tilldelat av annan person\nkan ej avgöras av rättsmedicinska fynd ensamma.\n\nUtlåtandet är preliminärt. Slutgiltigt utlåtande avges efter fullständig\nlaboratorieanalys.\n\nIngrid Palmér\nRättsläkare, Rättsmedicinalverket Stockholm",
+      "relatedEvidenceIds": [
+        "ev-rmv"
+      ]
+    },
+    {
+      "id": "mat-forhör-reza-02",
+      "type": "testimony",
+      "title": "Uppföljningsförhör — Reza Tehrani",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — UPPFÖLJNINGSINTERVJU\nFörhörsperson: Reza Tehrani, 38 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-17, kl. 10:00\nPlats: Polismyndigheten Stockholm, City\n\n\n---\n\nFL: Reza, vi vill förstå din rörelse på plan 4 mer i detalj. Du sa att du\n    passerade Katarina Westers dörr tidigt under kvällen. Kan du försöka\n    minnas mer exakt hur dags?\n\nRT: Jag har tänkt på det. Jag kom upp med hissen, hämtade städvagnen —\n    det tar kanske tio minuter. Sen gick jag mot den östra flygeln. Men\n    jag passerade den västra korridor först för att hämta en extra mopp\n    från städskåpet. Det städskåpet ligger nära hennes rum.\n\n    Klockan... det var ungefär fem i sju? Sju i sju? Kring den tiden.\n\nFL: Kring 19:05–19:10?\n\nRT: Ja. Ungefär. Jag lyssnade på musik, jag kollar inte klockan hela tiden.\n\nFL: Och du såg ljuset under dörren?\n\nRT: Ja. Det lyste — det gör det alltid när hon är kvar. Jag tänkte\n    ingenting. Gick vidare till östra flygeln.\n\nFL: Vi vill fråga om en specifik observation. Såg du någon annan person\n    i den västra korridor under kvällen — förutom när du hittade Wester?\n\nRT: [paus]\n\n    Ja. Det är något jag inte sa förra gången. Inte för att jag gömde det —\n    jag tänkte inte på att det var viktigt.\n\nFL: Berätta.\n\nRT: Det var lite senare. Jag var klar med östra sidan. Gick tillbaka mot\n    hissen för att tömma vagnen. Och i korridoren, nära hissen — det gick\n    en man. Han gick mot hissen. Ryggen mot mig.\n\nFL: Hur dags var det?\n\nRT: Klockan... tjugo över sju, kanske? Fem i halv åtta? Det stämmer ungefär med\n    att jag var halvklar med östra sidan.\n\nFL: Känner du igen mannen?\n\nRT: Nej. Jag såg bara ryggen. Han hade en mörk kostym — marinblå, tror jag.\n    Mörkblå. Gick snabbt men inte sprang. Han tittade inte åt mitt håll.\n\nFL: Kan du ge en uppskattning av längd eller kroppsbyggnad?\n\nRT: Ungefär 180. Normalbyggd, kanske lite bredaxlad. Inte gammal.\n    Det är allt jag kan säga.\n\nFL: Är det möjligt att det var Joakim Wester — han var i byggnaden under\n    kvällen?\n\nRT: Det kan vara vem som helst. Jag kan inte säga det. Jag vet att Joakim\n    Wester ibland är i byggnaden — jag har sett honom vid receptionen.\n    Men jag såg bara en rygg.\n\nFL: Tack, Reza. Det hjälper oss.",
+      "relatedCharacterIds": [
+        "char-reza"
+      ],
+      "relatedEvidenceIds": [
+        "ev-reza-obs"
+      ]
+    },
+    {
+      "id": "mat-forhör-erik-02",
+      "type": "testimony",
+      "title": "Uppföljningsförhör — Erik Sandström",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — UPPFÖLJNINGSINTERVJU\nFörhörsperson: Erik Sandström, 44 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-17, kl. 13:00\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Erik, vi har nu granskat byråns IT-system. Din dator loggades ut\n    manuellt kl. 19:24 på fredagskvällen. Inga dokument skapades eller\n    sparades efter kl. 15:38. Hur förklarar du det om du jobbade med\n    en inlaga?\n\nES: Jag... det stämmer att det inte gick bra. Jag öppnade filen ett par\n    gånger. Men jag kom ingenstans. Det var en av de kvällar när ingenting\n    fastnar.\n\nFL: Vad gjorde du under tiden — 17:30 till 19:24?\n\nES: Satt vid skrivbordet. Tänkte. Läste igenom det jag redan hade.\n    Det händer att man sitter still mer än man arbetar.\n\nFL: Vi har också sett din sökhistorik från förmiddagen. Du sökte på\n    \"advokatsamfundet anmälan konsekvenser\" och liknande termer kl. 10:15.\n    Vad var det du letade efter?\n\nES: [tystnad]\n\n    Katarina hade nämnt... hon hade nämnt ett scenario. Om ett gammalt\n    ärende. Jag ville förstå konsekvenserna. Det är allt.\n\nFL: Vilket ärende?\n\nES: Det är... det är komplicerat. Jag föredrar att prata med min advokat\n    innan jag svarar på det.\n\nFL: Du är inte misstänkt, Erik. Inte formellt.\n\nES: Jag vet det. Men jag vill ändå prata med min advokat.\n\nFL: Okej. En sista fråga: du sa att du inte gick förbi Katarinas rum på\n    vägen ut. Kameran visar att du lämnade kl. 19:37. Joakim Wester lämnade\n    kl. 20:02. Är du säker på att du inte stötte på honom i byggnaden?\n\nES: Jag minns att jag såg honom nära entrén. Det kan ha stämt — kl. 19:37\n    och han var kvar en stund. Jag vet inte exakt var det var. Jag var trött.\n\nFL: Vi återkommer.",
+      "relatedCharacterIds": [
+        "char-erik"
+      ]
+    },
+    {
+      "id": "mat-forhör-joakim-02",
+      "type": "testimony",
+      "title": "Uppföljningsförhör — Joakim Wester",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — UPPFÖLJNINGSINTERVJU\nFörhörsperson: Joakim Wester, 53 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-17, kl. 14:30\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Joakim, Johan Roos receptionslogg visar att ditt möte avslutades kl. 19:28.\n    Kameran visar att du lämnade byggnaden kl. 20:02. Det är 34 minuter.\n    Du sa att du ringde ett långt samtal. Men vad hände under resten av\n    den tiden?\n\nJW: Samtalet tog 22 minuter — Magnus Gren kan bekräfta det. Det stämmer.\n    Resten... jag satt i lobbyn på plan 5. Samlade tankarna. Det var ett\n    tungt möte.\n\nFL: \"Tungt\" — på vilket sätt?\n\nJW: Finansieringen av Lidingöprojektet är komplicerad. Utan Katarinas\n    andel av fastigheten kan vi inte gå vidare som planerat. Det är 40\n    miljoner i vinst vi pratar om. Det var ett svårt samtal.\n\nFL: Gick du någonstans under den här perioden? Ner till plan 4, till exempel?\n\nJW: Nej. Absolut inte. Varför skulle jag? Det finns ingenting för mig\n    på plan 4.\n\nFL: Kände du till att Katarina jobbade kvar den kvällen?\n\nJW: Nej. Jag upprepar det. Vi kommunicerar inte direkt. Jag visste inte\n    att hon var kvar.\n\nFL: Är det möjligt att du såg henne — eller någon annan — i korridoren\n    under din tid i byggnaden?\n\nJW: Jag såg Erik Sandström i närheten av hissen. Han verkade... stressad.\n    Skyndade sig. Vi nickade åt varandra. Det var det.\n\nFL: Hur dags?\n\nJW: Jag vet inte exakt. Kanske kl. 19:40? Det stämmer med att han lämnade\n    kl. 19:37 och jag befann mig i entréplan.\n\nFL: Tack, Joakim.",
+      "relatedCharacterIds": [
+        "char-joakim"
+      ]
+    },
+    {
+      "id": "mat-forhör-lena-02",
+      "type": "testimony",
+      "title": "Uppföljningsförhör — Lena Björk",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — UPPFÖLJNINGSINTERVJU\nFörhörsperson: Lena Björk, 49 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-17, kl. 15:30\nPlats: Polismyndigheten Stockholm, City\n\n---\n\nFL: Lena, Östermalm Hälsoklubb:s system visar att du checkade in kl. 19:04\n    men checkade ut kl. 19:51. Det är 47 minuter in i ett 90-minuterspass.\n    Du sa att du var kvar hela klassen.\n\nLB: Jag... nej. Det stämmer inte riktigt. Jag lämnade lite tidigare.\n\nFL: Varför sa du att du var kvar hela klassen?\n\nLB: Jag ville inte att det skulle se ut som ett hål i mitt alibi. Det\n    var dumt. Jag förstår det nu.\n\nFL: Vart gick du när du lämnade?\n\nLB: Till Kafé Saturnus, på Eriksgatan. Satt där ensam från ungefär 20:05\n    till strax innan 21:00.\n\nFL: Vad gjorde du där?\n\nLB: Jobbade på min bärbara. Skrev.\n\nFL: Vad skrev du?\n\nLB: [paus]\n\n    En ansökan. Till en annan byrå. Lindström & Partners — de har erbjudit\n    mig en delägartitel. Jag hade accepterat verbalt. Jag ville inte att\n    det kom ut innan jag meddelat det officiellt. Det är det jag skyddade.\n    Inte ett brott.\n\nFL: \"Du kommer att ångra det\" — vad menade du med det?\n\nLB: Att jag tänkte ta med mig tre av byråns klienter när jag slutar. Att\n    det skulle bli kännbart för byrån. Det var ett svagt ögonblick. Jag menade\n    inte att hota henne.\n\nFL: Kan du styrka att du var på kaféet?\n\nLB: Kassakvitto finns — jag betalade med kort. Och personalen där känner\n    igen mig, jag brukar jobba där.\n\nFL: Tack, Lena.",
+      "relatedCharacterIds": [
+        "char-lena"
+      ]
+    },
+    {
+      "id": "mat-forhör-thomas-01",
+      "type": "testimony",
+      "title": "Förhör — Thomas Lindqvist",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INTERVJU\nFörhörsperson: Thomas Lindqvist, 71 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-18, kl. 11:00\nPlats: Lindqvist & Wester KB, plan 4 (Thomas Lindqvists arbetsrum)\n\n---\n\nFL: Thomas, du var inte på kontoret fredagen. Var befann du dig?\n\nTL: Hemma i Djursholm. Jag är halvpensionerad — måndag och torsdag på\n    byrån, det är min uppgörelse. Fredagar är för trädgården och barnbarnen.\n\nFL: Hur länge kände du Katarina Wester?\n\nTL: Sedan 1999. Hon kom till mig med en rekommendation från ett kontaktnät\n    jag respekterade. Det räckte. Hon var kompetent på ett sätt som inte\n    kräver förklaring. Vi jobbade sida vid sida i 24 år.\n\nFL: Märkte du att något hade förändrats i hennes beteende de senaste\n    veckorna?\n\nTL: [paus] Ja. Hon ställde in en lunch i september. Det berättas inte,\n    men vi åt lunch varannan torsdag i tjugo år. Sedan bad hon om ett möte\n    med mig som aldrig bokades. Det var ovanligt.\n\nFL: Frågade du henne?\n\nTL: Nej. Det är inte vår kultur. Om Katarina ville att jag skulle veta\n    något, skulle hon ha sagt det. Det var hennes sätt att vara.\n\nFL: Kände du till klienten Anders Lindgren och det ärende Katarina\n    hanterade 2019?\n\nTL: Anders Lindgren var en gammal klient till byrån — hade arbetat med oss\n    sedan 80-talet. Han dog 2020. Katarina tog hand om dödsboet. Jag deltog\n    inte. Jag lämnade komplexa arvsmål till henne och Erik, det var deras\n    specialitet.\n\nFL: Har du sett eller hört talas om ett bolag som heter Arvestum\n    Consulting AB?\n\nTL: Nej. Vad är det?\n\nFL: Det framgår av vår utredning. Ingenting du kan berätta om det?\n\nTL: Ingenting. Det är ett namn jag inte känner igen.\n\n    [paus]\n\n    Är det något jag borde ha känt till?\n\nFL: Det undersöker vi. Tack, Thomas.",
+      "relatedCharacterIds": [
+        "char-thomas"
+      ]
+    },
+    {
+      "id": "mat-forhör-maja-01",
+      "type": "testimony",
+      "title": "Förhör — Maja Lindgren",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "FÖRHÖRSPROTOKOLL — INTERVJU\nFörhörsperson: Maja Lindgren, 46 år\nFörhörsledare: Kriminalinspektör Anna Södergren (FL)\nDatum: 2023-10-19, kl. 10:00\nPlats: Polismyndigheten Stockholm, City\nBiträde: Advokat Jonas Enell (Lindgrens juridiska ombud)\n\n---\n\nFL: Maja, tack för att du kom. Vi förstår att det här är känsligt.\n    Du anlitade advokat Enell i juni 2023 i anledning av din fars dödsbo.\n    Kan du berätta bakgrunden?\n\nML: Min far dog i april 2020. Han hade arbetat med Lindqvist & Wester länge.\n    Katarina Wester skötte dödsboet. Jag ifrågasatte aldrig det — pappan\n    litade på henne och jag litade på pappan.\n\n    Men sedan 2022 började jag titta igenom pappren. Pappa hade pratat om\n    att han ville ge en del till en kulturstiftelse han tyckte om. Det\n    syntes ingenstans i utfallet. Och det hade tillkommit ett tilläggstestamente\n    jag inte kände till.\n\nFL: Vad hände när du anlitade Jonas Enell?\n\nJE (Enell): Vi granskade tilläggstestamentet från maj 2019. Dokumentet\n    är juridiskt korrekt i sin form, men de fakturerade tjänsterna från\n    Arvestum Consulting AB kan vi inte verifiera. Vi bedömde att det fanns\n    grund för en anmälan till Advokatsamfundet och eventuellt polisen.\n\nFL: Ni skickade ett brev till Katarina Wester den 29 september?\n\nJE: Korrekt. Vi informerade henne om att vi identifierat oegentligheter och\n    att vi avsåg att göra en formell anmälan inom kort. Vi gav henne möjligheten\n    att kontakta oss dessförinnan.\n\nFL: Hörde ni från henne?\n\nJE: Nej. Vi hörde ingenting. Och sedan nåddes vi av nyheten om hennes bortgång.\n\nML: [lågt] Pappa skulle ha haft pengarna. Kulturstiftelsen han älskade.\n    Det var 4,6 miljoner kronor.\n\nFL: Tack, Maja. Tack, Jonas.",
+      "relatedCharacterIds": [
+        "char-maja"
+      ]
+    },
+    {
+      "id": "mat-datorlogg-erik",
+      "type": "document",
+      "title": "Datorlogg — Erik Sandström",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "DATORAKTIVITETSLOGG — ERIK SANDSTRÖM\nLindqvist & Wester KB — IT-systemet\nUtdrag begärt av: Polismyndigheten Stockholm\nPeriod: 2023-10-13\nSystemansvarig: Anders Ljung, IT-ansvarig Lindqvist & Wester KB\n\n---\n\nINLOGGNINGSHISTORIK\n\n| Tid   | Händelse           | Enhet         |\n|-------|--------------------|---------------|\n| 08:14 | Inloggning         | Arbetsstation |\n| 12:41 | Skärmlås (auto)    | Arbetsstation |\n| 13:02 | Upplåsning         | Arbetsstation |\n| 18:58 | Skärmlås (auto)    | Arbetsstation |\n| 19:24 | Utloggning (manuell) | Arbetsstation |\n\n---\n\nDOKUMENTAKTIVITET — 2023-10-13\n\n| Tid   | Dokument                          | Åtgärd   |\n|-------|-----------------------------------|----------|\n| 08:16 | Svensson_fastigheter_inlaga_v3.docx | Öppnad |\n| 09:19 | Svensson_fastigheter_inlaga_v3.docx | Stängd (ej sparad) |\n| 13:04 | Svensson_fastigheter_inlaga_v3.docx | Öppnad |\n| 15:38 | Svensson_fastigheter_inlaga_v3.docx | Stängd (ej sparad) |\n\nOBS: Inga dokument skapade, sparade eller skickade under perioden 17:00–19:24.\n\n---\n\nSÖKHISTORIK — BYRÅNS INTERNÄT OCH WEBBLÄSARE\n\n| Tid   | Sökterm / URL                                    |\n|-------|--------------------------------------------------|\n| 10:15 | \"advokatsamfundet anmälan konsekvenser\"          |\n| 10:18 | \"whistleblower skydd advokat Sverige\"            |\n| 10:22 | \"frivillig bekännelse Advokatsamfundet praxis\"   |\n| 10:31 | advokatsamfundet.se/etik/disciplinnämnden        |\n| 14:52 | Aftonbladet.se (nyheter, ej arbetsrelaterat)     |\n\n---\n\nIT-kommentar (A. Ljung): Söktermer 10:15–10:31 loggas av systemet automatiskt\nvia byråns filtrerade nätverksgateway. Sökningarna är gjorda från Sandströms\ninloggningssession.",
+      "relatedCharacterIds": [
+        "char-erik"
+      ],
+      "relatedEvidenceIds": [
+        "ev-datorlogg"
+      ]
+    },
+    {
+      "id": "mat-datorlogg-katarina",
+      "type": "document",
+      "title": "Datorlogg — Katarina Wester",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "DATORAKTIVITETSLOGG — KATARINA WESTER\nLindqvist & Wester KB — IT-systemet\nUtdrag begärt av: Polismyndigheten Stockholm\nPeriod: 2023-10-13\nSystemansvarig: Anders Ljung, IT-ansvarig Lindqvist & Wester KB\n\n---\n\nINLOGGNINGSHISTORIK\n\n| Tid   | Händelse           | Enhet         |\n|-------|--------------------|---------------|\n| 08:40 | Inloggning         | Arbetsstation |\n| 12:12 | Skärmlås (auto)    | Arbetsstation |\n| 13:14 | Upplåsning         | Arbetsstation |\n| 16:45 | Skärmlås (auto)    | Arbetsstation |\n| 16:52 | Upplåsning         | Arbetsstation |\n| 19:02 | Senaste aktivitet registrerad (tangentbord) | Arbetsstation |\n\nOBS: Ingen utloggning registrerad. Systemet förblev inloggat till dess\natt polisen begärde säkring av enheten (2023-10-14, kl. 09:30).\n\n---\n\nDOKUMENTAKTIVITET — 2023-10-13 (urval)\n\n| Tid   | Dokument                                      | Åtgärd        |\n|-------|-----------------------------------------------|---------------|\n| 08:41 | Lindgren_dodsboutredning_2019_intern.pdf      | Öppnad        |\n| 09:08 | Lindgren_dodsboutredning_2019_intern.pdf      | Stängd        |\n| 11:20 | Advokatsamfundet_etik_vägledning_2022.pdf     | Öppnad        |\n| 11:45 | Advokatsamfundet_etik_vägledning_2022.pdf     | Stängd        |\n| 18:58 | Utkast_e-post (ej namngiven, ej skickad)      | Öppnad        |\n| 19:02 | Utkast_e-post (ej namngiven, ej skickad)      | Senaste aktivitet |\n\nOBS: E-postutkastet (18:58–19:02) är tomt — ämnesrad och brödtext saknas.\nDet verkar som om Wester öppnade ett nytt e-postfönster men aldrig påbörjade\ntexten.",
+      "relatedCharacterIds": [
+        "char-katarina"
+      ]
+    },
+    {
+      "id": "mat-samtalslogg-erik",
+      "type": "document",
+      "title": "Samtalslogg — Erik Sandström",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "SAMTALSLOGG — ERIK SANDSTRÖM\nOperatör: Telia\nUtdrag begärt av: Polismyndigheten Stockholm\nPeriod: 2023-10-13, kl. 00:00–23:59\nAbonnemangnummer: 070-XXX XX 78\n\n---\n\n| Tid   | Riktning   | Nummer/Namn              | Längd    |\n|-------|------------|--------------------------|----------|\n| 09:04 | Utgående   | 070-XXX XX 12 (Helena Sandström) | 2 min |\n| 10:58 | Ingående   | 08-XXX XX 44 (Svensson Fastigheter AB) | 8 min |\n| 12:15 | Utgående   | 08-XXX XX 44 (Svensson Fastigheter AB) | 3 min |\n| 15:02 | Utgående   | 070-XXX XX 12 (Helena Sandström) | 4 min |\n| 19:45 | Utgående   | 070-XXX XX 12 (Helena Sandström) | 6 min |\n| 21:45 | Ingående   | 08-XXX XX 91 (Polismyndigheten) | 11 min |\n\nOBS: Inga samtal registrerade under perioden 15:02–19:45.\nTelefonen var aktiv (ansluten till mobilnätet) under hela perioden.\n\n---\n\nKommentar: Helena Sandström (070-XXX XX 12) bekräftar utgående samtal 19:45.\nUppger att maken sade \"På väg hem. Jobbig dag.\" och att han anlände kl. ca 20:28.",
+      "relatedCharacterIds": [
+        "char-erik"
+      ]
+    },
+    {
+      "id": "mat-samtalslogg-joakim",
+      "type": "document",
+      "title": "Samtalslogg — Joakim Wester",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "SAMTALSLOGG — JOAKIM WESTER\nOperatör: Tele2\nUtdrag begärt av: Polismyndigheten Stockholm\nPeriod: 2023-10-13, kl. 00:00–23:59\nAbonnemangnummer: 073-XXX XX 34\n\n---\n\n| Tid   | Riktning   | Nummer/Namn                    | Längd    |\n|-------|------------|--------------------------------|----------|\n| 08:42 | Utgående   | 08-XXX XX 19 (Roos Advokatbyrå) | 4 min  |\n| 11:55 | Ingående   | 08-XXX XX 19 (Roos Advokatbyrå) | 2 min  |\n| 13:58 | Utgående   | 070-XXX XX 55 (Magnus Gren, projektledare) | 18 min |\n| 19:32 | Utgående   | 070-XXX XX 55 (Magnus Gren, projektledare) | 22 min |\n| 20:15 | Utgående   | 070-XXX XX 12 (privat, ej identifierat) | 3 min |\n\nOBS: Samtalet kl. 19:32 (22 min) bekräftat av Magnus Gren. Gren uppger att\nsamtalet rörde Lidingöprojektets finansieringsstruktur.\n\nTidsgap: Joakim Westers möte (Roos Advokatbyrå) avslutades ca 19:28 (receptionslogg\nRoos Advokatbyrå). Kameraloggen visar utpassering kl. 20:02. Samtalet 19:32\nförklarar 22 minuter. Återstående ca 8 minuter ej redovisade.",
+      "relatedCharacterIds": [
+        "char-joakim"
+      ]
+    },
+    {
+      "id": "mat-bankutdrag-arvestum",
+      "type": "financial",
+      "title": "Ekonomiskt underlag — Arvestum Consulting AB",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "EKONOMISKA DOKUMENT — ARVESTUM CONSULTING AB\nUnderlag inhämtat via Skatteverket och Bolagsverket\nKompilerat av: Kriminalinspektör A. Södergren, med bistånd av\nEkobrottsenheten, 2023-10-18\n\n---\n\nBOLAGSINFORMATION\n\nBolag: Arvestum Consulting AB\nOrg.nr: 559XXX-XXXX\nRegistrerat: Mars 2019\nStatus: Aktivt (ingen registrerad verksamhet sedan 2022)\nStyrelseledamot: Laurent Morel (nominell, luxemburgsk medborgare)\nFaktisk kontroll: Ej klarlagd i detta skede (pågående utredning)\n\n---\n\nSAMMANFATTNING AV FAKTURERING MOT DÖDSBOET LINDGREN\n\nDödsbo: Anders Lindgrens dödsbo (org.nr 835XXX-XXXX)\nFörvaltare: Lindqvist & Wester KB (Katarina Wester, ansvarig partner)\n\n| Datum     | Fakturanr | Beskrivning                              | Belopp (SEK) |\n|-----------|-----------|------------------------------------------|-------------|\n| 2020-06-12 | ARV-001  | \"Juridisk rådgivning, dödsboförvaltning\" | 980 000     |\n| 2020-08-30 | ARV-002  | \"Utredningsarvode, fastighetsvärdering\"  | 1 240 000   |\n| 2020-10-15 | ARV-003  | \"Konsultarvode, testamentsvalidering\"    | 890 000     |\n| 2020-12-01 | ARV-004  | \"Avslutande förvaltningsarvode\"          | 1 490 000   |\n| TOTALT    |           |                                          | 4 600 000   |\n\n---\n\nNOTERING FRÅN EKOBROTTSENHETEN\n\nSamtliga fakturor är godkända av Katarina Wester i hennes egenskap av\nförvaltare. Inga av de fakturerade tjänsterna kan verifieras mot externa\nleveransdokument. Mottagande bankkonto (Arvestum AB) är kopplat till ett\nluxemburgskt holdingbolag vars slutliga ägare ännu ej fastställts.\n\nUtredning pågår.",
+      "relatedCharacterIds": [
+        "char-erik",
+        "char-katarina"
+      ],
+      "relatedEvidenceIds": [
+        "ev-arvestum"
+      ]
+    },
+    {
+      "id": "mat-kalender-katarina",
+      "type": "document",
+      "title": "Katarinas kalender",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "KALENDER — KATARINA WESTER\nLindqvist & Wester KB — Outlook-kalender\nUtdrag begärt av: Polismyndigheten Stockholm\nPeriod: 2023-09-01 – 2023-10-13\nIT-ansvarig: Anders Ljung\n\n---\n\nURVAL: RELEVANTA POSTER\n\n| Datum      | Tid         | Rubrik / Anteckning                         | Status    |\n|------------|-------------|---------------------------------------------|-----------|\n| 2023-09-29 | 09:00       | \"Möte E.S. — intern\" (handskrivet på post-it, ej kalenderbokning) | — |\n| 2023-09-29 | (heldag)    | Schemalagd lunch med Thomas L. (bok. 2 sep) | INSTÄLLD  |\n| 2023-10-02 | 12:00       | Lunch Erik Sandström — Operakällaren (bok.)  | INSTÄLLD (av Wester) |\n| 2023-10-06 | 10:00       | Partnermöte (kvartal)                        | Genomfört |\n| 2023-10-09 | 14:00       | \"Jonas Enell, möte?\" (anteckning, ej bokning) | —        |\n| 2023-10-11 | —           | [Ingen bokning]                              | —         |\n| 2023-10-12 | 10:00       | Klientmöte, Eriksson & Son (arvsmål)         | Genomfört |\n| 2023-10-13 | 09:00       | \"ES — samtal\" (handskrivet, ej bokning)      | —         |\n| 2023-10-13 | 13:00       | Inget inbokat                                | —         |\n| 2023-10-16 | 09:00       | \"Möte Advokatsamfundet — förberedelse\"       | (framtida, ej genomfört) |\n\n---\n\nKommentar: Posten 2023-10-16 \"Möte Advokatsamfundet — förberedelse\" är den\nenda framtida bokning i kalendern utöver rutinmöten. Inga externa kontakter\ninbokade med Advokatsamfundet bekräftade från deras sida.",
+      "relatedCharacterIds": [
+        "char-katarina"
+      ],
+      "relatedEvidenceIds": [
+        "ev-kalender"
+      ]
+    },
+    {
+      "id": "mat-brev-enell",
+      "type": "letter",
+      "title": "Brev från advokat Jonas Enell",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "BREV — ADVOKAT JONAS ENELL TILL KATARINA WESTER\nJonas Enell Advokatbyrå\nNorrlandsgatan 18, 111 43 Stockholm\nTel: 08-XXX XX 00\n\nKatarina Wester\nLindqvist & Wester KB\nBirger Jarlsgatan 42\n111 20 Stockholm\n\nStockholm den 26 september 2023\n\nREKOMMENDERAT\n\nAngående: Anders Lindgrens dödsbo — oegentligheter i tilläggstestamente\n(2019-05-XX)\n\nFru Wester,\n\nJag företräder Maja Lindgren, dotter till den 2020 avlidne Anders Lindgren,\ni en granskning av dödsboet efter hennes fader.\n\nVid genomgång av dödsbohandlingarna har vi identifierat ett tilläggstestamente\nundertecknat maj 2019 i vilket 4 600 000 kronor omdirigeras till Arvestum\nConsulting AB för \"juridiska tjänster och utredningskostnader.\" Vi har sökt\nmen inte kunnat verifiera att dessa tjänster har levererats eller att det\nfinns ett legitimt affärsmässigt förhållande mellan dödsboet och det nämnda\nbolaget.\n\nVi har vidare noterat att Arvestum Consulting AB inte förekommer i Lindqvist\n& Westers egna leverantörsregister, och att bolagets registrerade styrelseledamot\nsaknar känd koppling till juridisk verksamhet i Sverige.\n\nVi avser att göra en formell anmälan till Advokatsamfundets disciplinnämnd\nsamt polisanmäla för misstänkt testamentsbedrägeri inom kort. Innan vi gör\ndet ger vi er möjlighet att ta kontakt med oss för att lämna upplysningar\nsom kan belysa förhållandena.\n\nVi inväntar er kontakt senast den 13 oktober 2023.\n\nMed hänsyn till ärendets allvar har jag valt att skicka detta brev rekommenderat.\n\nJonas Enell\nAdvokat, Jonas Enell Advokatbyrå",
+      "relatedCharacterIds": [
+        "char-katarina",
+        "char-maja"
+      ],
+      "relatedEvidenceIds": [
+        "ev-enell"
+      ]
+    },
+    {
+      "id": "mat-arvestum-mapp",
+      "type": "document",
+      "title": "Dokumentmapp — Arvestum",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "ARVESTUM CONSULTING AB — DOKUMENTMAPP\nHittad i Katarina Westers arbetsrum\n\n---\n\nMAPPENS INNEHÅLL\n\nPlastmappen märkt \"ARVESTUM\" innehåller följande handlingar:\n\n1. Tilläggstestamente — Anders Lindgren, daterat 2019-05-14\n   Tre sidor. Undertecknat av Anders Lindgren. Bevittnat av: Katarina Wester\n   och Erik Sandström. Omdirigerar 4 600 000 kronor till Arvestum Consulting\n   AB för \"juridiska tjänster och utredningskostnader avseende dödsboförvaltning.\"\n\n2. Bolagsregistrering — Arvestum Consulting AB\n   Kopia av Bolagsverket-utdrag, mars 2019. Styrelseledamot: Laurent Morel.\n   Säte: Luxemburg (registrerat via ett luxemburgskt holdingbolag).\n\n3. Fakturakopior (4 st)\n   ARV-001 till ARV-004, totalt 4 600 000 kronor. Mottagarkonto angivet —\n   ett luxemburgskt bankkonto. Samtliga godkända av K. Wester.\n\n4. Handskriven lapp (odaterad):\n   \"Det finns inget sätt att ta tillbaka det som gjordes. Det finns bara\n   ett sätt att göra det rätt. Jag vet vad det kostar.\"\n\n5. Utskrift av e-post (intern, 2019-05-09):\n   Från: Erik Sandström\n   Till: Katarina Wester\n   \"Allt klart med L.M. Dokumenten är redo. Vi gör det på torsdag.\"",
+      "relatedCharacterIds": [
+        "char-erik",
+        "char-katarina"
+      ],
+      "relatedEvidenceIds": [
+        "ev-arvestum"
+      ]
+    },
+    {
+      "id": "mat-handskar-01",
+      "type": "forensic",
+      "title": "Teknisk analys — plasthandskar",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "TEKNISK ANALYS — PLASTHANDSKAR\nNFC (Nationellt Forensiskt Centrum)\nÄrende nr: NFC-2023-4712, bilaga B\nDatum: 2023-10-21\n\nFöremål: Två plasthandskar (vita, tunna, storlek M), beslagtagna från\npapperskorgen i kopieringsrummet, Lindqvist & Wester KB, plan 4.\nUpphittad av: Kriminalinspektör A. Södergren vid genomgång av angränsande\nutrymmen, 2023-10-14.\n\n---\n\nHUR SPELARNA HITTAR DETTA:\nSpelarna måste be om undersökning av kopieringsrummet. Brottsplatsbeskrivningen\nnämner att handskarna observerades vid genomgång — men de analyseras inte\nautomatiskt utan att spelarna begär det.\n\n---\n\nFYND\n\nDNA: Insidan av vänster handske bär DNA konsistent med en manlig donator.\nDNA-profil har tagits fram och jämförs mot databas. Resultat inväntas.\n\nFingeravtryck: Inga fingeravtryck på utsidan — konsistent med att handskarna\nburits på händerna och sedan vänts av utan att utsidan berörts med bara händer.\n\nMikrospår: På insidan av höger handske: spår av glas-mikrofragment konsistenta\nmed kristallglas. Fragmenten är submillimetriska. Analysen bekräftar att\nhandskarna sannolikt burits vid kontakt med ett glastillverkat föremål.\n\n---\n\nBEDÖMNING\n\nHandskarna har burits av en person som hanterat ett föremål av kristallglas.\nKombinationen av DNA inuti och mikrofragment av kristallglas på insidan\nav höger handske är tekniskt signifikant.",
+      "relatedEvidenceIds": [
+        "ev-handskar"
+      ]
+    },
+    {
+      "id": "mat-prismat-teknisk",
+      "type": "forensic",
+      "title": "Teknisk analys — kristallprismat",
+      "actAvailability": [
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "TEKNISK ANALYS — KRISTALLPRISMAT\nNFC (Nationellt Forensiskt Centrum)\nÄrende nr: NFC-2023-4712, bilaga A\nDatum: 2023-10-21\n\nFöremål: Kristallprismat, fasettpipat, ca 20 cm högt, på svart piedestal.\nMärkt: \"Advokatsamfundet Hederspris 2015 — Lindqvist & Wester KB.\"\nVikt: ca 1,8 kg. Beslagtaget från bokhyllan i Katarina Westers arbetsrum.\n\n---\n\nHUR SPELARNA HITTAR DETTA:\nSpelarna måste begära att prismatan analyseras noggrant — brottsplatsbeskrivningen\nnämner att den togs med för teknisk analys. Resultaten ges på begäran.\n\n---\n\nFINGERAVTRYCK\n\nPrismatets glasytor är anmärkningsvärt fria från fingeravtryck.\nKontrollanalys av omgivande föremål på hyllan (diplom, keramikskulptur,\nkarmarna) visar normalt förekommande fingeravtryck. Prismatan avviker.\n\nBedömning: Prismatan har troligen rengjorts eller hanterats med skyddsplagg\n(handskar) vid ett tillfälle nära i tid till när den senast befann sig på hyllan.\n\n---\n\nBIOLOGISKA SPÅR\n\nI en liten spricka längs basplattans underkant hittades:\n- Hårfragment: 2 st, ca 3–4 cm, pigmenterade. DNA-analys genomförd:\n  profil matchar offret Katarina Wester.\n- Vävnadsmikrorester: konsistenta med kutis (hud/underhud).\n  Kvantitet liten men tillräcklig för analys.\n\n---\n\nBEDÖMNING\n\nPrismatans bas bär biologiska spår konsistenta med kontakt med offrets\nvänstra tinning. Avsaknaden av fingeravtryck i kombination med biologiska\nspår i sprickan vid basen stödjer slutsatsen att prismatan rengjorts ytligt\nmen att spår bevarats i fördjupningen.\n\nPrismatan bedöms ha använts som slagföremål mot offrets huvud.",
+      "relatedEvidenceIds": [
+        "ev-prismat"
+      ]
+    },
+    {
+      "id": "mat-foto-brottsplats-01",
+      "type": "photo",
+      "title": "Foto — arbetsrummet, översikt",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "[Fotografi 1 — Översiktsbild, arbetsrummet]\nTaget från dörröppningen mot söder. Skrivbordet i bildens mitt, offret synlig på golvet framför det. Bokhyllorna längs höger vägg. Persienner halvt nedfällda. Taklampa och skrivbordslampa tända. Rummet i övrigt ostört. Kristallprismat synligt på bokhyllan i bakgrunden.",
+      "assetPath": "cases/arvssynden/images/b1-brottsplats.png"
+    },
+    {
+      "id": "mat-foto-brottsplats-03",
+      "type": "photo",
+      "title": "Foto — skrivbordshörnet (närbild)",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "[Fotografi 3 — Skrivbordshörnet, närbild]\nNärbild på skrivbordets högra hörn, höjdmarkering 74 cm från golvet. Hörnet är rent — inget blod, inga vävnadsrester. Blodspår syns på golvet i bildens nederkant, men inte på hörnet som offret enligt den initiala bedömningen ska ha slagit i.",
+      "assetPath": "cases/arvssynden/images/b3-skrivbord.png",
+      "relatedEvidenceIds": [
+        "ev-skrivbordshorn"
+      ]
+    },
+    {
+      "id": "mat-foto-brottsplats-04",
+      "type": "photo",
+      "title": "Foto — bokhyllan med prismat",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "[Fotografi 4 — Bokhyllan närmast fönstret]\nKristallprismat på svart piedestal, ca 20 cm, fasettpipat glas. Anmärkningsvärt ren och fingeravtrycksfri yta. Intill prismatet: diplom och ett inramat foto som bär synligt damm och fingeravtryck. Kontrasten är påfallande.",
+      "assetPath": "cases/arvssynden/images/b4-bokhylla.png",
+      "relatedEvidenceIds": [
+        "ev-prismat"
+      ]
+    },
+    {
+      "id": "mat-foto-brottsplats-05",
+      "type": "photo",
+      "title": "Foto — kopieringsrummet, papperskorgen",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "playerVisible": true,
+      "gmOnly": false,
+      "content": "[Fotografi 5 — Kopieringsrummet]\nPapperskorgen under kopiatorn. Två vita, tunna plasthandskar (stl M) ligger ovanpå övrigt innehåll. De ser till ytan oanvända ut. Numrerad bevismarkör intill.",
+      "assetPath": "cases/arvssynden/images/b5-papperskorg.png"
+    }
+  ],
+  "clues": [
+    {
+      "id": "clue-01",
+      "title": "Skrivbordet",
+      "hint": "Handlar om ett fynd på brottsplatsen som de flesta ser men få stannar vid.",
+      "content": "Titta noga på fotografiet av skrivbordshörnet (fotografi 3). Kriminalteknikerna flaggade för att det inte finns blod på hörnet — trots att den initiala bedömningen var att Katarina föll och slog huvudet just där. Om det var ett olycksfall, var kom blodet ifrån?",
+      "actAvailability": [
+        1,
+        2,
+        3
+      ],
+      "isEmergencyOnly": false,
+      "relatedEvidenceIds": [
+        "ev-skrivbordshorn"
+      ]
+    },
+    {
+      "id": "clue-02",
+      "title": "Det låsta skåpet",
+      "hint": "Handlar om varför någon inte hade råd att låta Katarina leva till måndag.",
+      "content": "Katarinas skrivbord har ett låst underskåp. Nyckeln hängde på insidan av hennes väskficka. Vad hon förvarade där — och vilket brev hon fick i slutet av september — förklarar varför hon dog just den fredag hon dog. Inte olyckan. Inte slumpen. Tidpunkten var inte slumpmässig.",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "isEmergencyOnly": false,
+      "relatedCharacterIds": [
+        "char-katarina"
+      ],
+      "relatedEvidenceIds": [
+        "ev-enell",
+        "ev-arvestum",
+        "ev-kalender"
+      ]
+    },
+    {
+      "id": "clue-03",
+      "title": "En kväll utan arbete",
+      "hint": "Handlar om en person i byggnaden som inte gjorde det han uppgav sig göra.",
+      "content": "En person stannade kvar på byrån för att avsluta ett arbete. Byråns IT-system visar att han inte sparade ett enda dokument under hela kvällen. Hans dator stängdes av manuellt kl. 19:24, minuter efter att Katarinas datoraktivitet upphörde. Han lämnade byggnaden kl. 19:37. Städaren såg en man i mörk marinblå kostym gå mot hissen vid samma tid. Kameran bekräftar vem som bar marinblå kostym den dagen.",
+      "actAvailability": [
+        2,
+        3
+      ],
+      "isEmergencyOnly": true,
+      "relatedCharacterIds": [
+        "char-erik"
+      ],
+      "relatedEvidenceIds": [
+        "ev-datorlogg",
+        "ev-kameralog",
+        "ev-reza-obs"
+      ]
+    }
+  ],
+  "solution": {
+    "perpetratorId": "char-erik",
+    "motive": "Erik Sandström och Katarina Wester manipulerade 2019 Anders Lindgrens testamente och förde 4,6 miljoner kronor till skalbolaget Arvestum Consulting AB. I september 2023 fick Katarina ett brev från arvingen Maja Lindgrens advokat: oegentligheterna hade upptäckts och en anmälan var på väg. Katarina beslutade att gå till myndigheterna på eget initiativ och berättade det för Erik fredagmorgonen den 13 oktober. För Erik innebar hennes bekännelse undergång — karriär, familj och frihet. Det var inte ett rationellt mord utan ett desperat.",
+    "method": "Erik stannade kvar efter att övriga gått, hämtade tunna plasthandskar i kopieringsrummet och gick till Katarinas rum strax efter 19:00. Samtalet blev kort; Katarina upprepade sitt beslut och vände sig mot datorn. Erik lyfte kristallprismatet (ca 1,8 kg) från hyllan bakom henne och slog henne i vänster tinning bakifrån. Sedan arrangerade han scenen som ett fall mot skrivbordshörnet, återplacerade och rengjorde prismatet, lade handskarna i papperskorgen, stängde av datorn 19:24 och lämnade byggnaden 19:37.",
+    "timeline": [
+      {
+        "time": "09:25",
+        "description": "Katarina berättar för Erik om sitt beslut att gå till myndigheterna.",
+        "characterIds": [
+          "char-katarina",
+          "char-erik"
+        ]
+      },
+      {
+        "time": "10:15",
+        "description": "Erik söker på byråns dator: \"advokatsamfundet anmälan konsekvenser\".",
+        "characterIds": [
+          "char-erik"
+        ]
+      },
+      {
+        "time": "17:20",
+        "description": "Erik berättar för Petra att han stannar kvar — hon lämnar 17:28.",
+        "characterIds": [
+          "char-erik",
+          "char-petra"
+        ]
+      },
+      {
+        "time": "18:45",
+        "description": "Lena Björk lämnar byggnaden.",
+        "characterIds": [
+          "char-lena"
+        ]
+      },
+      {
+        "time": "18:55",
+        "description": "Erik hämtar plasthandskar i kopieringsrummet.",
+        "characterIds": [
+          "char-erik"
+        ]
+      },
+      {
+        "time": "19:02",
+        "description": "Erik knackar på Katarinas dörr — hennes sista datoraktivitet.",
+        "characterIds": [
+          "char-erik",
+          "char-katarina"
+        ]
+      },
+      {
+        "time": "19:07",
+        "description": "Reza passerar dörren och ser ljuset — Katarina levde.",
+        "characterIds": [
+          "char-reza"
+        ]
+      },
+      {
+        "time": "19:09",
+        "description": "Erik slår Katarina med kristallprismatet.",
+        "characterIds": [
+          "char-erik",
+          "char-katarina"
+        ]
+      },
+      {
+        "time": "19:09–19:22",
+        "description": "Erik arrangerar scenen som ett olycksfall.",
+        "characterIds": [
+          "char-erik"
+        ]
+      },
+      {
+        "time": "19:23–19:24",
+        "description": "Erik lämnar handskarna i papperskorgen och stänger av datorn manuellt.",
+        "characterIds": [
+          "char-erik"
+        ]
+      },
+      {
+        "time": "19:37",
+        "description": "Erik lämnar byggnaden — Katarina ännu ej utpasserad.",
+        "characterIds": [
+          "char-erik"
+        ]
+      },
+      {
+        "time": "20:02",
+        "description": "Joakim Wester lämnar byggnaden.",
+        "characterIds": [
+          "char-joakim"
+        ]
+      },
+      {
+        "time": "21:02",
+        "description": "Reza Tehrani hittar kroppen och ringer 112.",
+        "characterIds": [
+          "char-reza"
+        ]
+      }
+    ],
+    "keyEvidenceIds": [
+      "ev-skrivbordshorn",
+      "ev-prismat",
+      "ev-handskar",
+      "ev-datorlogg",
+      "ev-arvestum",
+      "ev-enell",
+      "ev-kameralog",
+      "ev-reza-obs"
+    ],
+    "misleadingTrails": [
+      "Joakim Wester: i byggnaden, lämnade nästan en halvtimme efter Erik, 40 MSEK-motiv och 8 oredovisade minuter. Oskyldig — visste inte att Katarina var kvar, kände inte till Arvestum, och telefonsamtalet med projektledaren bekräftar tiden.",
+      "Lena Björk: offentlig konfrontation (\"Du kommer att ångra det\"), lämnade yogan 47 minuter för tidigt och dolde ett kafébesök. Oskyldig — hon färdigställde en jobbansökan till en konkurrerande byrå; kortkvitto och personal bekräftar.",
+      "Reza Tehrani: enda personen bekräftat på våningen, hittade kroppen, hade ett klagomål hängande som hotade hans försörjning. Oskyldig — rörelsesensor och städtidslinje stämmer, han hade hörlurar på."
+    ],
+    "importantDetails": [
+      "Fotografiet av skrivbordshörnet (foto 3) visar inget blod — hade Katarina fallit naturligt mot hörnet borde blodet finnas där.",
+      "Prismatet är anmärkningsvärt fingeravtrycksfritt i ett annars normalt rum.",
+      "Eriks dator stängdes av MANUELLT kl. 19:24 — inte via auto-lås. Han var medveten och aktiv.",
+      "Katarinas kalender har \"Möte Advokatsamfundet\" den 16 oktober — mordet skedde tre dagar innan hon tänkte bekänna.",
+      "E-postutskriften i Arvestum-mappen (Erik till Katarina, 2019): \"Allt klart med L.M. Dokumenten är redo.\" — Erik var aktiv i planeringen, inte bara medvittne.",
+      "Den handskrivna lappen i Arvestum-mappen är Katarinas — hennes uppgörelse med sig själv, inte ett hot."
+    ],
+    "fullNarrative": "Erik Sandström mördade Katarina Wester fredagen den 13 oktober 2023 kl. ungefär 19:09. I maj 2019 hade de gemensamt manipulerat Anders Lindgrens testamente och fört 4,6 miljoner kronor till ett skalbolag de kontrollerade. Katarina var arkitekten, Erik medbrottslingen; pengarna finansierade hans villarenovation i Danderyd. I september 2023 fick Katarina brevet från Jonas Enell. Hon satt med det i två veckor och beslutade sig sedan för att gå till myndigheterna på måndag — och gav Erik möjligheten att göra detsamma. Erik tillbringade fredagen på sitt rum utan att arbeta, sökte på \"advokatsamfundet anmälan konsekvenser\", och bestämde sig. Strax efter sju hämtade han plasthandskar i kopieringsrummet, gick till Katarinas rum och slog henne med kristallprismatet när hon vände sig mot datorn. Han arrangerade scenen som ett fall, återplacerade prismatet, lade handskarna i papperskorgen, stängde av datorn 19:24 och lämnade byggnaden 19:37. Städaren Reza Tehrani fann henne kl. 21:02. Polisen rubricerade det inledningsvis som ett misstänkt olycksfall."
+  },
+  "gmNotes": [
+    {
+      "id": "gm-intro-akt1",
+      "title": "Intro — Akt 1",
+      "type": "instruction",
+      "actRelevance": [
+        1
+      ],
+      "content": "Läs upp vid spelstart:\n\nFredagen den 13 oktober 2023. Kl. 21:02 ringer städaren Reza Tehrani 112 från fjärde våningen på Birger Jarlsgatan 42 i Stockholm. Han har hittat sin kollega Katarina Wester — senior partner på advokatbyrån Lindqvist & Wester KB — liggande livlös på golvet i sitt arbetsrum.\n\nPolisen rubricerar inledningsvis dödsfallet som misstänkt olycksfall. Ni är utredarna. Det är upp till er att avgöra vad som verkligen hände."
+    },
+    {
+      "id": "gm-akt1-stamning",
+      "title": "Stämning & vanliga frågor — Akt 1",
+      "type": "atmosphere",
+      "actRelevance": [
+        1
+      ],
+      "content": "Detta är ett diskretionens fall i en diskretionens miljö. Karaktärerna är tillbakadragna, formella, svåra att läsa. De flesta grupper fastnar initialt på Joakim (ekonomiskt motiv, sent i byggnaden) eller Lena (konfrontationen). Det är meningen. Svara neutralt. Peka inte på detaljer. Bekräfta inte teorier."
+    },
+    {
+      "id": "gm-akt2-motsagelser",
+      "title": "Nyckelmotsägelser — Akt 2",
+      "type": "warning",
+      "actRelevance": [
+        2
+      ],
+      "content": "1. ERIK: påstår övertidsarbete — datorloggen visar noll sparade dokument, manuell avstängning 19:24.\n2. LENA: påstår yoga 19:00–20:30 — incheckning visar utcheckning 19:51 (47 min för tidigt).\n3. JOAKIM: påstår att han lämnade direkt efter mötet — Roos receptionslogg: mötet slut 19:28, kamera 20:02 (34 min oredovisade).\n4. REZA: \"hörde ingenting\" — hörlurar på, stöds av rörelsemönstret.\n\nLåt spelarna hitta dem själva."
+    },
+    {
+      "id": "gm-akt2-nivå3",
+      "title": "Nivå 3 — triggers att hålla koll på",
+      "type": "instruction",
+      "actRelevance": [
+        2,
+        3
+      ],
+      "content": "\"Vi undersöker skrivbordet noggrant\" → berätta om det låsta underskåpet och nyckeln i väskan.\n\"Vi öppnar skåpet\" → ge Arvestum-mappen + Enells brev.\n\"Vi undersöker kopieringsrummet\" → handskarna i papperskorgen.\n\"Vi vill att prismatet analyseras\" → teknisk analys av prismatet."
+    },
+    {
+      "id": "gm-roda-sillar",
+      "title": "Röda sillar — upplösning",
+      "type": "background",
+      "actRelevance": [
+        2,
+        3
+      ],
+      "content": "JOAKIM: oskyldig — visste inte att Katarina var kvar, telefonsamtal (22 min) bekräftat, ingen koppling till Arvestum eller Reza.\nLENA: oskyldig — jobbansökan på Kafé Saturnus, kortkvitto + personal bekräftar; \"du kommer att ångra det\" gällde hennes avhopp.\nREZA: oskyldig — rörelsesensor + städtidslinje stämmer, hörlurar på."
+    },
+    {
+      "id": "gm-losningsguide-akt3",
+      "title": "Lösningsguide — Akt 3",
+      "type": "instruction",
+      "actRelevance": [
+        3
+      ],
+      "content": "Den logiska kedjan:\n1. Mordet är inscenerat — inget blod på skrivbordshörnet (foto 3), prismatet har biologiska spår men inga fingeravtryck, kroppen är för symmetriskt positionerad.\n2. Erik hade motiv, medel och tillfälle — Arvestum-bedrägeriet (mapp + Enells brev), söktermerna på morgonen, datorloggen utan dokument, kameran (sist ut), Rezas observation av marinblå kostym.\n3. Handskarna kopplar Erik till prismatet — DNA + kristallglasfragment på insidan.\n\nLösningsdialog: fråga \"Vem? Hur? Varför?\" Rätt person men fel motiv = bekräfta inte fullt ut."
+    }
+  ]
+}
