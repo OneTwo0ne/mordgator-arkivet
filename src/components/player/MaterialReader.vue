@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import type { MaterialItem } from '../../types/caseTypes'
 import { materialGroups, materialTypeLabels } from '../../utils/labels'
 import ArchiveLabel from '../common/ArchiveLabel.vue'
@@ -92,11 +92,18 @@ watch(hasUnread, (unread) => {
   if (!unread && stateFilter.value === 'new') stateFilter.value = 'all'
 })
 
-// Att aktivt öppna ett dokument markerar det som läst.
+// Ett dokument markeras som läst när man LÄMNAR det (byter till ett annat eller
+// lämnar Material-fliken) — inte när man öppnar det. Annars försvinner ett nytt
+// dokument ur "Nytt"-filtret i samma stund man klickar på det.
 function selectItem(id: string) {
+  const leaving = selectedId.value
+  if (leaving && leaving !== id) emit('open', leaving)
   selectedId.value = id
-  emit('open', id)
 }
+
+onBeforeUnmount(() => {
+  if (selectedId.value) emit('open', selectedId.value)
+})
 </script>
 
 <template>
