@@ -12,6 +12,10 @@ function isUnread(id: string): boolean {
   return props.unreadIds?.includes(id) ?? false
 }
 
+function groupUnread(items: MaterialItem[]): number {
+  return items.filter((i) => isUnread(i.id)).length
+}
+
 const query = ref('')
 // Tillståndsfilter, skilt från kategorierna: allt material eller bara oläst.
 const stateFilter = ref<'all' | 'new'>('all')
@@ -166,6 +170,12 @@ onBeforeUnmount(() => {
             <span
               class="flex-1 font-mono text-[0.7rem] tracking-[0.14em] text-ink-faint uppercase"
               >{{ g.label }}</span
+            >
+            <span
+              v-if="groupUnread(g.items)"
+              class="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-oxblood px-1 font-mono text-[0.6rem] text-ink"
+              :title="groupUnread(g.items) + ' nya'"
+              >{{ groupUnread(g.items) }}</span
             >
             <span class="font-mono text-[0.65rem] text-ink-dim">{{ g.items.length }}</span>
           </button>
