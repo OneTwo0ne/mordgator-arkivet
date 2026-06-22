@@ -163,10 +163,19 @@ export interface ICaseService {
   getCluesForAct(caseId: string, actNumber: number): Promise<Clue[]>
   getSolution(caseId: string): Promise<Solution>
   getGMNotes(caseId: string, actNumber: number): Promise<GMNote[]>
+  // "Hela fallet" — union över alla akter. Spelarvyn använder dessa: en
+  // session, allt material tillgängligt direkt (inga nya länkar mitt i spelet).
+  // Akt-systemet finns kvar i datan/GM-vyn för framtida realtidsstyrning.
+  getAllMaterial(caseId: string, gmMode: boolean): Promise<MaterialItem[]>
+  getAllCharacters(caseId: string, gmMode: boolean): Promise<Character[]>
+  getAllEvidence(caseId: string, gmMode: boolean): Promise<Evidence[]>
+  getAllClues(caseId: string): Promise<Clue[]>
 }
 
 export interface ISessionService {
-  createPlayerLink(caseId: string, actNumber: number): string
+  // actNumber är valfritt och utelämnas ur länken: spelarlänken är
+  // akt-oberoende (en länk för hela sessionen).
+  createPlayerLink(caseId: string, actNumber?: number): string
   parseSessionFromUrl(): GameSession | null
   getCurrentAct(): number
 }

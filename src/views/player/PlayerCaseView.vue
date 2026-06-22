@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed, onMounted, ref } from 'vue'
 import { caseService } from '../../services/caseService'
 import type {
   Case,
@@ -19,21 +18,12 @@ import EvidenceBoard from '../../components/player/EvidenceBoard.vue'
 import AppButton from '../../components/common/AppButton.vue'
 
 const props = defineProps<{ caseId: string }>()
-const route = useRoute()
-
-// Aktnummer läses ur query (?act=N). Systemet styr inte spelarna — det visar
-// bara materialet för den akt GM angett i länken.
-const act = computed(() => {
-  const raw = route.query.act
-  const value = Array.isArray(raw) ? raw[0] : raw
-  const parsed = value ? Number.parseInt(value, 10) : NaN
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : 1
-})
 
 const caseData = ref<Case | null>(null)
 const loading = ref(true)
 const error = ref<string | null>(null)
 
+// Hela fallet på en gång — en sessionslänk, inga akter att byta mellan.
 const material = ref<MaterialItem[]>([])
 const characters = ref<Character[]>([])
 const evidence = ref<Evidence[]>([])
@@ -45,48 +35,39 @@ const activeSection = ref<Section>('oversikt')
 const confirmingSolution = ref(false)
 const solutionRevealed = ref(false)
 
-const currentActInfo = computed(() =>
-  caseData.value?.acts.find((a) => a.number === act.value),
-)
+// Öppningstext: första aktens spelarintro sätter scenen för hela sessionen.
+const opening = computed(() => {
+  const acts = caseData.value?.acts ?? []
+  const first = [...acts].sort((a, b) => a.number - b.number)[0]
+  return first?.playerIntro ?? caseData.value?.description ?? ''
+})
 
-const navItems = computed<{ key: Section; label: string }[]>(() => [
+const navItems: { key: Section; label: string }[] = [
   { key: 'oversikt', label: 'Översikt' },
   { key: 'material', label: 'Material' },
   { key: 'personer', label: 'Personer' },
   { key: 'bevis', label: 'Bevis' },
   { key: 'tavla', label: 'Anslagstavla' },
-])
-
-async function loadActData(actNumber: number) {
-  const [m, ch, ev, cl] = await Promise.all([
-    caseService.getMaterialForAct(props.caseId, actNumber, false),
-    caseService.getCharactersForAct(props.caseId, actNumber, false),
-    caseService.getEvidenceForAct(props.caseId, actNumber, false),
-    caseService.getCluesForAct(props.caseId, actNumber),
-  ])
-  material.value = m
-  characters.value = ch
-  evidence.value = ev
-  clues.value = cl
-}
+]
 
 onMounted(async () => {
   try {
-    caseData.value = await caseService.getCase(props.caseId)
-    await loadActData(act.value)
+    const [data, m, ch, ev, cl] = await Promise.all([
+      caseService.getCase(props.caseId),
+      caseService.getAllMaterial(props.caseId, false),
+      caseService.getAllCharacters(props.caseId, false),
+      caseService.getAllEvidence(props.caseId, false),
+      caseService.getAllClues(props.caseId),
+    ])
+    caseData.value = data
+    material.value = m
+    characters.value = ch
+    evidence.value = ev
+    clues.value = cl
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Kunde inte läsa fallet.'
   } finally {
     loading.value = false
-  }
-})
-
-watch(act, (actNumber) => {
-  if (caseData.value) {
-    confirmingSolution.value = false
-    solutionRevealed.value = false
-    activeSection.value = 'oversikt'
-    void loadActData(actNumber)
   }
 })
 
@@ -120,9 +101,8 @@ function revealSolution() {
           >
           <span class="font-serif text-lg text-ink">{{ caseData.title }}</span>
           <span
-            v-if="currentActInfo"
-            class="border border-line-strong px-3 py-1 font-mono text-[0.7rem] tracking-wider text-ink-faint"
-            >Akt {{ currentActInfo.number }} / {{ currentActInfo.title }}</span
+            class="hidden border border-line-strong px-3 py-1 font-mono text-[0.7rem] tracking-wider text-ink-faint sm:block"
+            >{{ caseData.setting }}</span
           >
         </div>
 
@@ -163,10 +143,10 @@ function revealSolution() {
         <!-- ÖVERSIKT -->
         <section v-if="activeSection === 'oversikt'" class="fade-in">
           <p
-            v-if="currentActInfo"
+            v-if="opening"
             class="max-w-[60ch] border-l-2 border-oxblood pl-5 font-serif text-xl leading-relaxed text-ink-soft"
           >
-            {{ currentActInfo.playerIntro }}
+            {{ opening }}
           </p>
 
           <div class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -218,7 +198,7 @@ function revealSolution() {
         <section v-else-if="activeSection === 'material'" class="fade-in">
           <SectionHeading :count="material.length">Material</SectionHeading>
           <MaterialReader v-if="material.length" :items="material" />
-          <p v-else class="text-sm text-ink-dim">Inget material i denna akt.</p>
+          <p v-else class="text-sm text-ink-dim">Inget material i fallet.</p>
         </section>
 
         <!-- PERSONER -->
@@ -246,11 +226,9 @@ function revealSolution() {
             tankeutrymme, och det sparas i den här webbläsaren.
           </p>
           <EvidenceBoard
-            :key="act"
             :characters="characters"
             :evidence="evidence"
             :case-id="caseId"
-            :act="act"
           />
         </section>
 

@@ -142,6 +142,42 @@ class CaseService implements ICaseService {
       availableInAct(note.actRelevance, actNumber),
     )
   }
+
+  // ---- "Hela fallet" — union över alla akter (spelarvyns datakälla) ----
+
+  async getAllMaterial(caseId: string, gmMode: boolean): Promise<MaterialItem[]> {
+    const c = requireCase(caseId)
+    return c.material.filter((item) => {
+      if (!gmMode && item.gmOnly) return false
+      if (!gmMode && !item.playerVisible) return false
+      return true
+    })
+  }
+
+  async getAllCharacters(caseId: string, gmMode: boolean): Promise<Character[]> {
+    const c = requireCase(caseId)
+    return c.characters
+      .filter((ch) => gmMode || !ch.gmOnly)
+      .map((ch) => {
+        if (gmMode) return ch
+        const playerSafe: Character = { ...ch }
+        delete playerSafe.motive
+        return playerSafe
+      })
+  }
+
+  async getAllEvidence(caseId: string, gmMode: boolean): Promise<Evidence[]> {
+    const c = requireCase(caseId)
+    return c.evidence.filter((ev) => {
+      if (!gmMode && ev.gmOnly) return false
+      if (!gmMode && !ev.playerVisible) return false
+      return true
+    })
+  }
+
+  async getAllClues(caseId: string): Promise<Clue[]> {
+    return requireCase(caseId).clues
+  }
 }
 
 export const caseService: ICaseService = new CaseService()

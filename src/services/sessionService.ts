@@ -24,12 +24,13 @@ function readActFromQuery(query: URLSearchParams): number {
 }
 
 class SessionService implements ISessionService {
-  createPlayerLink(caseId: string, actNumber: number): string {
-    // Absolut länk som GM kan kopiera och dela. Inkluderar base-pathen
-    // (location.pathname) så att länken funkar på GitHub Pages-projektsajten.
+  createPlayerLink(caseId: string, _actNumber?: number): string {
+    // En enda akt-oberoende sessionslänk: spelarna ser allt material direkt och
+    // behöver aldrig byta länk mitt i spelet. actNumber ignoreras avsiktligt
+    // (kvar i signaturen för framtida realtidsstyrning).
     const origin = window.location.origin
     const basePath = window.location.pathname
-    return `${origin}${basePath}#/case/${caseId}/player?act=${actNumber}`
+    return `${origin}${basePath}#/case/${caseId}/player`
   }
 
   parseSessionFromUrl(): GameSession | null {

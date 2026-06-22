@@ -38,8 +38,9 @@ const currentActInfo = computed(() =>
   caseData.value?.acts.find((a) => a.number === currentAct.value),
 )
 
+// En enda akt-oberoende sessionslänk — spelarna ser hela fallet direkt.
 const playerLink = computed(() =>
-  sessionService.createPlayerLink(props.caseId, currentAct.value),
+  sessionService.createPlayerLink(props.caseId),
 )
 
 async function loadActData(act: number) {
@@ -127,7 +128,7 @@ async function copyPlayerLink() {
           <p
             class="mb-2 text-[0.7rem] tracking-[0.18em] text-ink-faint uppercase"
           >
-            Spelarlänk för akt {{ currentAct }}
+            Spelarlänk för hela sessionen
           </p>
           <div class="flex flex-wrap items-center gap-3">
             <AppButton variant="solid" @click="copyPlayerLink">
@@ -138,6 +139,14 @@ async function copyPlayerLink() {
               >{{ playerLink }}</code
             >
           </div>
+          <p class="mt-3 text-xs leading-relaxed text-ink-dim">
+            En enda länk för hela spelomgången — spelarna ser allt material direkt
+            och behöver aldrig byta länk. Aktväljaren ovan styr bara <em>din</em>
+            förhandsgranskning här nedanför, inte vad spelarna ser.
+            <span class="text-ink-faint"
+              >(På önskelistan: styra vad spelarna ser i realtid.)</span
+            >
+          </p>
         </div>
       </section>
 

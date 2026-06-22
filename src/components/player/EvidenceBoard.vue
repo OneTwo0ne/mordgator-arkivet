@@ -8,7 +8,6 @@ const props = defineProps<{
   characters: Character[]
   evidence: Evidence[]
   caseId: string
-  act: number
 }>()
 
 type NodeKind = 'person' | 'evidence'
@@ -55,9 +54,7 @@ const linkSel = ref<string | null>(null)
 const board = ref<HTMLElement | null>(null)
 const boardW = ref(880)
 
-const storageKey = computed(
-  () => `mordgator:board:${props.caseId}:${props.act}`,
-)
+const storageKey = computed(() => `mordgator:board:${props.caseId}`)
 
 const visibleNodes = computed(() => nodes.value.filter((n) => show[n.kind]))
 const visibleLinks = computed(() =>
