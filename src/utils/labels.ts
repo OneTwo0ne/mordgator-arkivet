@@ -51,3 +51,29 @@ export const difficultyLabels: Record<'easy' | 'medium' | 'hard', string> = {
   medium: 'Medel',
   hard: 'Svår',
 }
+
+/**
+ * Materialgrupper — slår ihop de tekniska materialtyperna till färre,
+ * meningsfulla kategorier för spelarvyns läslista. Ordningen är visningsordning.
+ */
+export interface MaterialGroup {
+  key: string
+  label: string
+  types: MaterialType[]
+}
+
+export const materialGroups: MaterialGroup[] = [
+  { key: 'forhor', label: 'Förhör', types: ['testimony'] },
+  {
+    key: 'rapporter',
+    label: 'Rapporter',
+    types: ['police-report', 'forensic', 'financial'],
+  },
+  {
+    key: 'dokument',
+    label: 'Dokument & brev',
+    types: ['document', 'letter', 'note'],
+  },
+  { key: 'foton', label: 'Foton', types: ['photo', 'image'] },
+  { key: 'media', label: 'Ljud & video', types: ['audio', 'video'] },
+]
