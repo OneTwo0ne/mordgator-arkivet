@@ -17,17 +17,11 @@ function groupUnread(items: MaterialItem[]): number {
 }
 
 const query = ref('')
-// Tillståndsfilter, skilt från kategorierna: allt material eller bara oläst.
-const stateFilter = ref<'all' | 'new'>('all')
 const selectedId = ref<string | null>(null)
 // Dragspel: högst en öppen kategori åt gången. null = alla stängda (standard).
 const openKey = ref<string | null>(null)
 
-const unreadCount = computed(() => props.unreadIds?.length ?? 0)
-const hasUnread = computed(() => unreadCount.value > 0)
-
 function matchesFilters(item: MaterialItem): boolean {
-  if (stateFilter.value === 'new' && !isUnread(item.id)) return false
   const q = query.value.trim().toLowerCase()
   if (!q) return true
   return (
@@ -70,9 +64,7 @@ const selected = computed(
   () => props.items.find((i) => i.id === selectedId.value) ?? null,
 )
 
-// I "Nytt"-filtret fälls allt ut så inget nytt göms i en stängd grupp.
 function isOpen(key: string): boolean {
-  if (stateFilter.value === 'new') return true
   return openKey.value === key
 }
 function toggleGroup(key: string) {
@@ -85,10 +77,6 @@ watch(flatItems, (list) => {
   if (selectedId.value && !list.some((i) => i.id === selectedId.value)) {
     selectedId.value = null
   }
-})
-
-watch(hasUnread, (unread) => {
-  if (!unread && stateFilter.value === 'new') stateFilter.value = 'all'
 })
 
 // Ett dokument markeras som läst när man LÄMNAR det (byter till ett annat eller
@@ -111,38 +99,13 @@ onBeforeUnmount(() => {
   >
     <!-- Vänsterskena: sök + tillståndsfilter + grupperad dragspelslista -->
     <div class="flex flex-col border-line bg-paper-2 md:border-r">
-      <div class="flex flex-wrap items-center gap-2 border-b border-line p-3">
+      <div class="border-b border-line p-3">
         <input
           v-model="query"
           type="search"
           placeholder="Sök…"
-          class="min-w-0 flex-1 rounded-md border border-line bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-dim focus:border-line-strong focus:outline-none"
+          class="w-full rounded-md border border-line bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-dim focus:border-line-strong focus:outline-none"
         />
-        <button
-          v-if="hasUnread"
-          type="button"
-          class="rounded-md border px-2.5 py-2 font-mono text-[0.6rem] tracking-wider uppercase transition-colors"
-          :class="
-            stateFilter === 'new'
-              ? 'border-oxblood bg-oxblood text-ink'
-              : 'border-oxblood text-oxblood-soft hover:text-ink'
-          "
-          @click="stateFilter = 'new'"
-        >
-          Nytt {{ unreadCount }}
-        </button>
-        <button
-          type="button"
-          class="rounded-md border px-2.5 py-2 font-mono text-[0.6rem] tracking-wider uppercase transition-colors"
-          :class="
-            stateFilter === 'all'
-              ? 'border-oxblood bg-oxblood text-ink'
-              : 'border-line-strong text-ink-faint hover:text-ink'
-          "
-          @click="stateFilter = 'all'"
-        >
-          Alla
-        </button>
       </div>
 
       <div class="max-h-[26rem] overflow-y-auto md:max-h-[44rem]">
