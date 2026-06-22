@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import type { Clue } from '../../types/caseTypes'
 import AppButton from '../common/AppButton.vue'
 
@@ -19,11 +19,6 @@ function open() {
     // localStorage kan vara otillgängligt (privat läge) — ledtråden öppnas ändå.
   }
 }
-
-// Redan öppnad sedan tidigare → räknas också som läst.
-onMounted(() => {
-  if (opened.value) emit('open', props.clue.id)
-})
 </script>
 
 <template>

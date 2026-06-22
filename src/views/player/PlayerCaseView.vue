@@ -192,6 +192,36 @@ watch([activeSection, characters, evidence], () => {
   }
 })
 
+// Gör GM ett material OTILLGÄNGLIGT nollställs dess läst-status — så att det
+// blir "nytt" igen om GM senare gör det tillgängligt på nytt. Läst-status hör
+// ihop med tillgänglighet, inte med att man råkat öppna det en gång.
+let prevVisibleIds = new Set<string>()
+function gmVisibleIds(state: SessionState | null): Set<string> {
+  const ids = new Set<string>()
+  const v = state?.visible
+  if (!v) return ids
+  for (const kind of [
+    'material',
+    'characters',
+    'evidence',
+    'clues',
+  ] as VisibleKind[]) {
+    const map = v[kind]
+    if (map) for (const id of Object.keys(map)) if (map[id]) ids.add(id)
+  }
+  return ids
+}
+watch(sessionState, (state) => {
+  if (!liveMode.value) return
+  const now = gmVisibleIds(state)
+  const removed = [...prevVisibleIds].filter((id) => !now.has(id))
+  if (removed.length) {
+    seenIds.value = seenIds.value.filter((id) => !removed.includes(id))
+    saveSeen()
+  }
+  prevVisibleIds = now
+})
+
 async function loadCaseLists(caseId: string) {
   const [data, m, ch, ev, cl] = await Promise.all([
     caseService.getCase(caseId),
