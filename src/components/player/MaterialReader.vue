@@ -12,10 +12,13 @@ function isUnread(id: string): boolean {
   return props.unreadIds?.includes(id) ?? false
 }
 
-// Fasett: filtrera på materialtyp. 'all' = ingen filtrering.
-const activeType = ref<MaterialType | 'all'>('all')
+// Fasett: filtrera på materialtyp. 'all' = ingen filtrering, 'new' = bara oläst.
+const activeType = ref<MaterialType | 'all' | 'new'>('all')
 const query = ref('')
 const selectedId = ref<string | null>(null)
+
+const unreadCount = computed(() => props.unreadIds?.length ?? 0)
+const hasUnread = computed(() => unreadCount.value > 0)
 
 // Vilka typer förekommer i aktuellt material (bara dessa visas som fasetter).
 const presentTypes = computed<MaterialType[]>(() => {
@@ -27,7 +30,12 @@ const presentTypes = computed<MaterialType[]>(() => {
 const filtered = computed(() => {
   const q = query.value.trim().toLowerCase()
   return props.items.filter((item) => {
-    if (activeType.value !== 'all' && item.type !== activeType.value)
+    if (activeType.value === 'new' && !isUnread(item.id)) return false
+    if (
+      activeType.value !== 'all' &&
+      activeType.value !== 'new' &&
+      item.type !== activeType.value
+    )
       return false
     if (!q) return true
     return (
@@ -42,6 +50,7 @@ const selected = computed(
 )
 
 // Håll ett giltigt val: välj första i filtrerad lista om inget/ogiltigt valt.
+// (Markerar INTE som läst — bara ett klick gör det.)
 watch(
   filtered,
   (list) => {
@@ -52,10 +61,16 @@ watch(
   { immediate: true },
 )
 
-// Att öppna ett dokument markerar det som läst.
-watch(selectedId, (id) => {
-  if (id) emit('open', id)
+// Töms "Nytt"-filtret (allt läst) faller vi tillbaka till Alla.
+watch(hasUnread, (unread) => {
+  if (!unread && activeType.value === 'new') activeType.value = 'all'
 })
+
+// Att aktivt öppna ett dokument markerar det som läst.
+function selectItem(id: string) {
+  selectedId.value = id
+  emit('open', id)
+}
 </script>
 
 <template>
@@ -70,6 +85,23 @@ watch(selectedId, (id) => {
           class="w-full border border-line bg-paper px-3 py-2 text-sm text-ink placeholder:text-ink-dim focus:border-line-strong focus:outline-none"
         />
         <div class="flex flex-wrap gap-1.5">
+          <button
+            v-if="hasUnread"
+            type="button"
+            class="flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
+            :class="
+              activeType === 'new'
+                ? 'border-oxblood bg-oxblood text-ink'
+                : 'border-oxblood/50 text-oxblood-soft hover:text-ink'
+            "
+            @click="activeType = 'new'"
+          >
+            <span
+              v-if="activeType !== 'new'"
+              class="inline-block h-1.5 w-1.5 rounded-full bg-oxblood"
+            />
+            Nytt material · {{ unreadCount }}
+          </button>
           <button
             type="button"
             class="border px-2.5 py-1 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
@@ -113,7 +145,7 @@ watch(selectedId, (id) => {
               ? 'bg-paper-3 shadow-[inset_3px_0_0_var(--color-oxblood)]'
               : 'hover:bg-paper-3/60'
           "
-          @click="selectedId = item.id"
+          @click="selectItem(item.id)"
         >
           <span class="flex items-center gap-2 text-sm text-ink">
             <span
