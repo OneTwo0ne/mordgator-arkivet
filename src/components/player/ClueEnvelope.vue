@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import type { Clue } from '../../types/caseTypes'
 import AppButton from '../common/AppButton.vue'
 
 const props = defineProps<{ clue: Clue; caseId: string }>()
+const emit = defineEmits<{ open: [id: string] }>()
 
 // En öppnad ledtråd förblir öppen mellan sidladdningar (localStorage).
 const storageKey = `mordgator:clue:${props.caseId}:${props.clue.id}`
@@ -11,12 +12,18 @@ const opened = ref(localStorage.getItem(storageKey) === 'open')
 
 function open() {
   opened.value = true
+  emit('open', props.clue.id)
   try {
     localStorage.setItem(storageKey, 'open')
   } catch {
     // localStorage kan vara otillgängligt (privat läge) — ledtråden öppnas ändå.
   }
 }
+
+// Redan öppnad sedan tidigare → räknas också som läst.
+onMounted(() => {
+  if (opened.value) emit('open', props.clue.id)
+})
 </script>
 
 <template>

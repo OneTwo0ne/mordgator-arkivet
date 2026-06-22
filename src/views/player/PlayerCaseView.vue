@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { caseService } from '../../services/caseService'
 import {
   isRealtimeAvailable,
@@ -100,6 +100,98 @@ const navItems: { key: Section; label: string }[] = [
   { key: 'tavla', label: 'Anslagstavla' },
 ]
 
+// ---- Inkorg: oläst-markering för material GM gjort tillgängligt ----
+// En sak är "ny/oläst" tills spelaren öppnat den. Vad som är synligt vid
+// första anslutning räknas som redan läst (baslinje) — bara det GM släpper
+// DÄREFTER dyker upp som nytt.
+const seenIds = ref<string[]>([])
+const seenKey = computed(
+  () => `mordgator:seen:${props.sessionId ?? props.caseId ?? 'static'}`,
+)
+let hadStoredSeen = false
+let baselineDone = false
+
+function isSeen(id: string): boolean {
+  return seenIds.value.includes(id)
+}
+function saveSeen() {
+  try {
+    localStorage.setItem(seenKey.value, JSON.stringify(seenIds.value))
+  } catch {
+    // ignoreras (privat läge)
+  }
+}
+function markSeen(ids: string[]) {
+  let changed = false
+  for (const id of ids) {
+    if (!seenIds.value.includes(id)) {
+      seenIds.value.push(id)
+      changed = true
+    }
+  }
+  if (changed) saveSeen()
+}
+function loadSeen() {
+  try {
+    const raw = localStorage.getItem(seenKey.value)
+    if (raw) {
+      seenIds.value = JSON.parse(raw) as string[]
+      hadStoredSeen = true
+    }
+  } catch {
+    // ignoreras
+  }
+}
+function ensureBaseline() {
+  if (baselineDone) return
+  baselineDone = true
+  if (!hadStoredSeen) {
+    markSeen([
+      ...material.value.map((m) => m.id),
+      ...characters.value.map((c) => c.id),
+      ...evidence.value.map((e) => e.id),
+      ...clues.value.map((c) => c.id),
+    ])
+  }
+}
+
+const unreadMaterialIds = computed(() =>
+  material.value.filter((m) => !isSeen(m.id)).map((m) => m.id),
+)
+const unreadMaterial = computed(() => unreadMaterialIds.value.length)
+const unreadCharacters = computed(
+  () => characters.value.filter((c) => !isSeen(c.id)).length,
+)
+const unreadEvidence = computed(
+  () => evidence.value.filter((e) => !isSeen(e.id)).length,
+)
+const unreadClues = computed(
+  () => clues.value.filter((c) => !isSeen(c.id)).length,
+)
+const totalUnread = computed(
+  () =>
+    unreadMaterial.value +
+    unreadCharacters.value +
+    unreadEvidence.value +
+    unreadClues.value,
+)
+
+function navUnread(key: Section): number {
+  if (key === 'material') return unreadMaterial.value
+  if (key === 'personer') return unreadCharacters.value
+  if (key === 'bevis') return unreadEvidence.value
+  return 0
+}
+
+// Att besöka Personer/Bevis räknar deras synliga kort som lästa.
+watch([activeSection, characters, evidence], () => {
+  if (activeSection.value === 'personer') {
+    markSeen(characters.value.map((c) => c.id))
+  } else if (activeSection.value === 'bevis') {
+    markSeen(evidence.value.map((e) => e.id))
+  }
+})
+
 async function loadCaseLists(caseId: string) {
   const [data, m, ch, ev, cl] = await Promise.all([
     caseService.getCase(caseId),
@@ -116,6 +208,7 @@ async function loadCaseLists(caseId: string) {
 }
 
 onMounted(async () => {
+  loadSeen()
   try {
     if (liveMode.value && props.sessionId) {
       if (!isRealtimeAvailable()) {
@@ -136,10 +229,12 @@ onMounted(async () => {
           resolvedCaseId.value = state.caseId
           await loadCaseLists(state.caseId)
         }
+        ensureBaseline()
         loading.value = false
       })
     } else if (props.caseId) {
       await loadCaseLists(props.caseId)
+      ensureBaseline()
       loading.value = false
     } else {
       error.value = 'Ingen session angiven.'
@@ -204,7 +299,7 @@ function revealSolution() {
             v-for="item in navItems"
             :key="item.key"
             type="button"
-            class="border-b-2 px-4 py-2.5 font-mono text-[0.7rem] tracking-[0.14em] uppercase transition-colors"
+            class="flex items-center gap-2 border-b-2 px-4 py-2.5 font-mono text-[0.7rem] tracking-[0.14em] uppercase transition-colors"
             :class="
               activeSection === item.key
                 ? 'border-oxblood text-ink'
@@ -213,6 +308,11 @@ function revealSolution() {
             @click="go(item.key)"
           >
             {{ item.label }}
+            <span
+              v-if="navUnread(item.key)"
+              class="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-oxblood px-1 text-[0.6rem] text-ink"
+              >{{ navUnread(item.key) }}</span
+            >
           </button>
           <button
             type="button"
@@ -239,34 +339,64 @@ function revealSolution() {
             {{ opening }}
           </p>
 
+          <p
+            v-if="totalUnread"
+            class="mt-6 flex items-center gap-2 border border-oxblood/40 bg-oxblood/5 px-4 py-2.5 text-sm text-ink"
+          >
+            <span class="h-2 w-2 shrink-0 rounded-full bg-oxblood" />
+            Spelledaren har gjort {{ totalUnread }} {{ totalUnread === 1 ? 'ny sak' : 'nya saker' }}
+            tillgängliga sedan ni började — markerade med
+            <span class="font-mono text-xs text-oxblood-soft">Nytt</span> nedan.
+          </p>
+
           <div class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
             <button
               type="button"
-              class="flex flex-col gap-1.5 border border-line bg-paper-2 p-4 text-left transition-colors hover:border-line-strong"
+              class="relative flex flex-col gap-1.5 border border-line bg-paper-2 p-4 text-left transition-colors hover:border-line-strong"
               @click="go('material')"
             >
               <span class="font-serif text-3xl text-ink">{{ material.length }}</span>
               <span class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase">Dokument</span>
+              <span
+                v-if="unreadMaterial"
+                class="absolute top-3 right-3 font-mono text-[0.6rem] text-oxblood-soft"
+                >{{ unreadMaterial }} nytt</span
+              >
             </button>
             <button
               type="button"
-              class="flex flex-col gap-1.5 border border-line bg-paper-2 p-4 text-left transition-colors hover:border-line-strong"
+              class="relative flex flex-col gap-1.5 border border-line bg-paper-2 p-4 text-left transition-colors hover:border-line-strong"
               @click="go('personer')"
             >
               <span class="font-serif text-3xl text-ink">{{ characters.length }}</span>
               <span class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase">Personer</span>
+              <span
+                v-if="unreadCharacters"
+                class="absolute top-3 right-3 font-mono text-[0.6rem] text-oxblood-soft"
+                >{{ unreadCharacters }} nytt</span
+              >
             </button>
             <button
               type="button"
-              class="flex flex-col gap-1.5 border border-line bg-paper-2 p-4 text-left transition-colors hover:border-line-strong"
+              class="relative flex flex-col gap-1.5 border border-line bg-paper-2 p-4 text-left transition-colors hover:border-line-strong"
               @click="go('bevis')"
             >
               <span class="font-serif text-3xl text-ink">{{ evidence.length }}</span>
               <span class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase">Bevis</span>
+              <span
+                v-if="unreadEvidence"
+                class="absolute top-3 right-3 font-mono text-[0.6rem] text-oxblood-soft"
+                >{{ unreadEvidence }} nytt</span
+              >
             </button>
-            <div class="flex flex-col gap-1.5 border border-line bg-paper-2 p-4">
+            <div class="relative flex flex-col gap-1.5 border border-line bg-paper-2 p-4">
               <span class="font-serif text-3xl text-ink">{{ clues.length }}</span>
               <span class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase">Ledtrådar</span>
+              <span
+                v-if="unreadClues"
+                class="absolute top-3 right-3 font-mono text-[0.6rem] text-oxblood-soft"
+                >{{ unreadClues }} nytt</span
+              >
             </div>
           </div>
 
@@ -287,6 +417,7 @@ function revealSolution() {
                 :key="clue.id"
                 :clue="clue"
                 :case-id="resolvedCaseId ?? ''"
+                @open="markSeen([$event])"
               />
             </div>
           </div>
@@ -295,7 +426,12 @@ function revealSolution() {
         <!-- MATERIAL -->
         <section v-else-if="activeSection === 'material'" class="fade-in">
           <SectionHeading :count="material.length">Material</SectionHeading>
-          <MaterialReader v-if="material.length" :items="material" />
+          <MaterialReader
+            v-if="material.length"
+            :items="material"
+            :unread-ids="unreadMaterialIds"
+            @open="markSeen([$event])"
+          />
           <p v-else class="text-sm text-ink-dim">Inget material tillgängligt ännu.</p>
         </section>
 

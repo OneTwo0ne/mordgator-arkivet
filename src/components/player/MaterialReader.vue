@@ -5,7 +5,12 @@ import { materialTypeLabels } from '../../utils/labels'
 import ArchiveLabel from '../common/ArchiveLabel.vue'
 import MaterialRenderer from '../material/MaterialRenderer.vue'
 
-const props = defineProps<{ items: MaterialItem[] }>()
+const props = defineProps<{ items: MaterialItem[]; unreadIds?: string[] }>()
+const emit = defineEmits<{ open: [id: string] }>()
+
+function isUnread(id: string): boolean {
+  return props.unreadIds?.includes(id) ?? false
+}
 
 // Fasett: filtrera på materialtyp. 'all' = ingen filtrering.
 const activeType = ref<MaterialType | 'all'>('all')
@@ -46,6 +51,11 @@ watch(
   },
   { immediate: true },
 )
+
+// Att öppna ett dokument markerar det som läst.
+watch(selectedId, (id) => {
+  if (id) emit('open', id)
+})
 </script>
 
 <template>
@@ -105,10 +115,20 @@ watch(
           "
           @click="selectedId = item.id"
         >
-          <span class="text-sm text-ink">{{ item.title }}</span>
-          <span class="font-mono text-[0.6rem] tracking-wider text-ink-dim uppercase">{{
-            materialTypeLabels[item.type]
-          }}</span>
+          <span class="flex items-center gap-2 text-sm text-ink">
+            <span
+              v-if="isUnread(item.id)"
+              class="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-oxblood"
+              aria-label="Nytt"
+            />
+            {{ item.title }}
+          </span>
+          <span
+            class="font-mono text-[0.6rem] tracking-wider uppercase"
+            :class="isUnread(item.id) ? 'text-oxblood-soft' : 'text-ink-dim'"
+            >{{ isUnread(item.id) ? 'Nytt · ' : ''
+            }}{{ materialTypeLabels[item.type] }}</span
+          >
         </button>
       </div>
     </div>
