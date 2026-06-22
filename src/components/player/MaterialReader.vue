@@ -105,44 +105,38 @@ function selectItem(id: string) {
   >
     <!-- Vänsterskena: sök + tillståndsfilter + grupperad dragspelslista -->
     <div class="flex flex-col border-line bg-paper-2 md:border-r">
-      <div class="space-y-3 border-b border-line p-3">
+      <div class="flex flex-wrap items-center gap-2 border-b border-line p-3">
         <input
           v-model="query"
           type="search"
-          placeholder="Sök i materialet…"
-          class="w-full border border-line bg-paper px-3 py-2 text-sm text-ink placeholder:text-ink-dim focus:border-line-strong focus:outline-none"
+          placeholder="Sök…"
+          class="min-w-0 flex-1 rounded-md border border-line bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-dim focus:border-line-strong focus:outline-none"
         />
-        <div class="flex gap-1.5">
-          <button
-            v-if="hasUnread"
-            type="button"
-            class="flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
-            :class="
-              stateFilter === 'new'
-                ? 'border-oxblood bg-oxblood text-ink'
-                : 'border-oxblood/50 text-oxblood-soft hover:text-ink'
-            "
-            @click="stateFilter = 'new'"
-          >
-            <span
-              v-if="stateFilter !== 'new'"
-              class="inline-block h-1.5 w-1.5 rounded-full bg-oxblood"
-            />
-            Nytt · {{ unreadCount }}
-          </button>
-          <button
-            type="button"
-            class="border px-2.5 py-1 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
-            :class="
-              stateFilter === 'all'
-                ? 'border-oxblood bg-oxblood text-ink'
-                : 'border-line-strong text-ink-faint hover:text-ink'
-            "
-            @click="stateFilter = 'all'"
-          >
-            Allt material
-          </button>
-        </div>
+        <button
+          v-if="hasUnread"
+          type="button"
+          class="rounded-md border px-4 py-2.5 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
+          :class="
+            stateFilter === 'new'
+              ? 'border-oxblood bg-oxblood text-ink'
+              : 'border-oxblood text-oxblood-soft hover:text-ink'
+          "
+          @click="stateFilter = 'new'"
+        >
+          Nytt {{ unreadCount }}
+        </button>
+        <button
+          type="button"
+          class="rounded-md border px-4 py-2.5 font-mono text-[0.65rem] tracking-wider uppercase transition-colors"
+          :class="
+            stateFilter === 'all'
+              ? 'border-oxblood bg-oxblood text-ink'
+              : 'border-line-strong text-ink-faint hover:text-ink'
+          "
+          @click="stateFilter = 'all'"
+        >
+          Alla
+        </button>
       </div>
 
       <div class="max-h-[26rem] overflow-y-auto md:max-h-[44rem]">
