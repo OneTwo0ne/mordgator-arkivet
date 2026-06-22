@@ -16,12 +16,29 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      // Offline behövs inte i nuläget. Vi gör appen installerbar och låter
-      // service workern hålla app-skalet uppdaterat, men cachar inte aggressivt.
+      // Offline behövs inte. Vi precachar därför INGET och kör "nätverket först"
+      // för allt — så att en ny deploy alltid slår igenom direkt vid laddning
+      // (ingen gammal cachad version). Appen förblir installerbar via manifestet
+      // och fetch-hanteraren nedan. Cache används bara som reserv om nätet fallerar.
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,woff2}'],
+        globPatterns: [],
         navigateFallback: null,
         cleanupOutdatedCaches: true,
+        runtimeCaching: [
+          {
+            urlPattern: /.*/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'arkivet-runtime',
+              networkTimeoutSeconds: 4,
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 7,
+              },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
       },
       includeAssets: ['favicon.svg'],
       manifest: {
